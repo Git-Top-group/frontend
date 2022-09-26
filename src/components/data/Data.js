@@ -16,13 +16,14 @@ export const nav = [
     path: "/blog",
   },
   {
-    text: "pricing",
-    path: "/pricing",
+    text: "Profile",
+    path: "/profile",
   },
   {
     text: "contact",
     path: "/contact",
   },
+  
 ]
 export const featured = [
   {

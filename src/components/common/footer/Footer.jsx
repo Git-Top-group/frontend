@@ -5,7 +5,7 @@ import "./footer.css"
 const Footer = () => {
   return (
     <>
-      <section className='footerContact'>
+      {/* <section className='footerContact'>
         <div className='container'>
           <div className='send flex'>
             <div className='text'>
@@ -15,11 +15,11 @@ const Footer = () => {
             <button className='btn5'>Contact Us Today</button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <footer>
         <div className='container'>
-          <div className='box'>
+          {/* <div className='box'>
             <div className='logo'>
               <img src='../images/logo-light.png' alt='' />
               <h2>Do You Need Help With Anything?</h2>
@@ -30,7 +30,7 @@ const Footer = () => {
                 <button>Subscribe</button>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {footer.map((val) => (
             <div className='box'>

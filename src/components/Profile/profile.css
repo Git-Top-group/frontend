@@ -1,0 +1,30 @@
+.profile{
+height: 500px;
+width:500px;
+background-color:rgb(143, 236, 143);
+border:3px solid rgb(143, 236, 143);
+/* margin-bottom: 10px; */
+display :inline-block;
+
+}
+#img{
+border:2px solid rgb(143, 236, 143) ;
+height: 400px;
+
+}
+.editForm{
+    width:500px;
+    background-color: rgb(175, 175, 172);
+    border: 2px solid rgb(143, 236, 143);
+    color:black;
+}
+.editForm input{
+
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(10, 10, 10);
+  
+}
+.totalProfile{
+    display: flex;
+    flex-direction:row ;
+}
