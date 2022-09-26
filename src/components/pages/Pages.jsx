@@ -10,6 +10,8 @@ import Contact from "../contact/Contact"
 import SignUp from '../signup/signup'
 import SignIn from '../Login/login';
 import Profile from '../Profile/Profile';
+import Posts from '../posts/Posts';
+
 const Pages = () => {
   return (
     <>
@@ -24,8 +26,7 @@ const Pages = () => {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
-
-
+          <Route exact path='/posts' component={Posts} />
         </Switch>
         <Footer />
       </Router>
