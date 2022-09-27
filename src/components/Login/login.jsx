@@ -17,7 +17,9 @@ const  SignIn =  () => {
   };
   return (
     <>
-      {auth.loginStatus ?  
+
+
+      {auth.loginStatus && auth.user.id ?  
     <Switch>
     <Redirect from='*' to={`/dashboard/${auth.user.id}`}></Redirect>
     </Switch>

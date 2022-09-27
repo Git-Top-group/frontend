@@ -11,11 +11,14 @@ export default function LoginProvider(props) {
     const [loginStatus, setLoginStatus] = useState(false);
     const [user, setUser] = useState({
         username: cookie.load('username') || "",
-        actions: cookie.load('actions') || []
+        actions: cookie.load('actions') || [],
+        id:cookie.load('id')|| null 
     });
 
     useEffect(() => {
         const tokenFromCookies = cookie.load('token');
+        const userId = cookie.load('id');
+
         if (tokenFromCookies) {
             setLoginStatus(true);
             setUser(user);
@@ -56,6 +59,8 @@ alert(err)
         cookie.remove('token');
         cookie.remove('actions');
         cookie.remove('username');
+        cookie.remove('id');
+
         console.log('cookies removed ++++++++++++')
     }
     const validateMyUser = (user) => {
@@ -66,6 +71,8 @@ alert(err)
             setUser(user);
             cookie.save('token', user.token);
             cookie.save('username', user.username);
+            cookie.save('id', user.id);
+
 
             // const actionsCookie = JSON.stringify(user.actions);
             cookie.save('actions', user.capabilities)
