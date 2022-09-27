@@ -30,7 +30,7 @@ const Pages = () => {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
           <Route exact path='/posts' component={Posts} />
-          <Route exact path={`/dashboard/${auth.user.id}`} component={Dashboard} />
+          <Route path={`/dashboard/:id`} component={Dashboard} />
 
         </Switch>
         <Footer />

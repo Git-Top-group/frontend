@@ -1,12 +1,10 @@
-import React ,{useContext} from 'react'
-import { saveCookies } from 'superagent'
+import React ,{useContext } from 'react'
 
 import {LoginContext} from '../context/context'
 import {Redirect ,Switch} from 'react-router-dom';
 
 
 export default function Dashboard(){
-
 const auth =useContext(LoginContext)
     const handleLogout =()=> { 
      auth.logoutFunction()
@@ -15,17 +13,16 @@ const auth =useContext(LoginContext)
 return(<>
 
 
-{!auth.loginStatus ?  
-    <Switch>
-      <Redirect from='*' to="/signin"></Redirect>
-    </Switch>
-    :<>
+{auth.loginStatus ?  
+        <>
       <h1>welcome to dashboard</h1>
 <button  onClick={handleLogout}>Log Out</button>
       </>
+      :<Switch>
+      <Redirect from='*' to="/signin"></Redirect>
+    </Switch>
     }
+    
 
-</>)
-
-
-}
+</>
+)}
