@@ -12,6 +12,7 @@ export default function Profile(){
         }
 
     return(<>
+    
         <Back name='' title='Fill Your Real Estate Info' cover={img} />
 
         <div className="Post">
