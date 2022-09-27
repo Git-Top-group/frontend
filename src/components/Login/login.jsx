@@ -1,4 +1,5 @@
 import React ,{useState ,useContext} from "react";
+import './login.css'
 // 
 // import Context ,{Auth} from '../context/context'
 // const url = "https://akarcom-mid-project.herokuapp.com";
@@ -35,7 +36,7 @@ console.log(auth.user)
 
    
     
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="loginForm">
         <label>username</label>
         <input type="text" name="username"></input>
         <label>password </label>

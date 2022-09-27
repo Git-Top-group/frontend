@@ -31,7 +31,7 @@ auth.SignUpFunction(e.target.username.value,e.target.password.value )
 
 return(<>
 
-<form onSubmit={handleLogin}>
+<form onSubmit={handleLogin} className="loginForm">
 <label>username</label>
 <input type='text' name='username'></input>
 <label>password </label>
