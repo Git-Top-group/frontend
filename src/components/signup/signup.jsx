@@ -1,4 +1,5 @@
 import React ,{useContext} from 'react';
+import {Link} from 'react-router-dom'
 // const url = 'https://akarcom-mid-project.herokuapp.com'
 import {LoginContext} from '../context/context'
  const SignUp = ()=>{
@@ -37,8 +38,12 @@ return(<>
 <label>password </label>
 <input type="password" name="password" />
 <button type='submit'>Sign Up</button>
+<Link to={'/signin'}>
+            <button className='btn1'>
+              <i className='fa fa-sign-out'></i> Sign In
+            </button>
+            </Link>
 </form>
-
 </>)
 
 }

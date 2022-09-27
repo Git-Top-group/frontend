@@ -1,4 +1,4 @@
-import React from "react"
+import React ,{useContext} from "react"
 import Header from "../common/header/Header"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "../home/Home"
@@ -11,8 +11,11 @@ import SignUp from '../signup/signup'
 import SignIn from '../Login/login';
 import Profile from '../Profile/Profile';
 import Posts from '../posts/Posts';
+import Dashboard from '../dashboard/Dashboard'
+import {LoginContext} from '../context/context'
 
 const Pages = () => {
+  const auth =useContext(LoginContext)
   return (
     <>
       <Router>
@@ -27,6 +30,8 @@ const Pages = () => {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
           <Route exact path='/posts' component={Posts} />
+          <Route exact path={`/dashboard/${auth.user.id}`} component={Dashboard} />
+
         </Switch>
         <Footer />
       </Router>
