@@ -8,8 +8,9 @@ export default function Profile(){
 
     const handleSubmit =(e)=>{
         //add logic 
-        
-        }
+        var text = e.options[e.selectedIndex].text;
+        console.log(text);
+    }
 
     return(<>
         <Back name='' title='Fill Your Real Estate Info' cover={img} />
@@ -21,6 +22,18 @@ export default function Profile(){
         <div class="custom-select">
             
             <br></br>
+            <label> What is Your Real Estate Category? </label>
+        <select name='category'>
+    <option value="0">Apartment</option>
+    <option value="1">Chalet</option>
+    <option value="2">House</option>
+    <option value="3">Land</option>
+    <option value="4">Villa</option>
+    <option value="5">Warehouse</option>
+    </select>
+<br></br>
+<br></br>
+<br></br>
     <label> Process: </label>
         <select name='Process'>
     <option value="0">Sell</option>
