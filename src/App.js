@@ -1,8 +1,16 @@
 import "./App.css"
 import Pages from "./components/pages/Pages"
-
+import LoginProvider from './components/context/context'
 function App() {
-  return <Pages />
+  return(
+
+  <LoginProvider>
+
+    <Pages />
+  </LoginProvider>
+
+
+  )
 }
 
 export default App
