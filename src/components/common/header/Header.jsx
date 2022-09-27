@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import "./header.css"
 import { nav } from "../../data/Data"
 import { Link } from "react-router-dom"
+import SearchBar from '../../search/searchbar'
+// import { Form, Button } from 'react-bootstrap';
 
 const Header = () => {
   const [navList, setNavList] = useState(false)
@@ -13,6 +15,7 @@ const Header = () => {
           <div className='logo'>
             <img src='./images/logo.png' alt='' />
           </div>
+      
           <div className='nav'>
             <ul className={navList ? "small" : "flex"}>
               {nav.map((list, index) => (
@@ -36,6 +39,13 @@ const Header = () => {
               <i className='fa fa-sign-out'></i> Sign Up
             </button>
             </Link>
+             
+             <div className="searchbar">
+             <SearchBar/>
+             </div>
+           
+
+
           </div>
 
           <div className='toggle'>
