@@ -19,16 +19,16 @@ setEdit(false)
 
     return(<>
     <div className="totalProfile">
-    <div className="profile" >
-<h1>firstName +lastName</h1>
-<button onClick={handleEdit}> Edit Profile</button>
-<img id="img" src="https://i.pinimg.com/550x/1c/c5/35/1cc535901e32f18db87fa5e340a18aff.jpg" alt=""></img>
-
-</div>
-   
-    {edit ? false : 
     
-<form className="editForm" onSubmit={handleSubmit}>
+    {edit ? <> 
+     <div className="profile" >
+     <h1>firstName +lastName</h1>
+     <button onClick={handleEdit}> Edit Profile</button>
+     <img id="img" src="https://i.pinimg.com/550x/1c/c5/35/1cc535901e32f18db87fa5e340a18aff.jpg" alt=""></img>
+     
+     </div> 
+     <div className="editForm" >
+<form  onSubmit={handleSubmit}>
 <label>fisrt name : </label>
 <input type="text" placeholder='edit first name' />
 <label>last name : </label>
@@ -42,7 +42,13 @@ setEdit(false)
 
 <button type="submit">Save Changes</button>
 
-</form>
+</form> </div></> :   <div className="profile" >
+<h1>firstName +lastName</h1>
+<button onClick={handleEdit}> Edit Profile</button>
+<img id="img" src="https://i.pinimg.com/550x/1c/c5/35/1cc535901e32f18db87fa5e340a18aff.jpg" alt=""></img>
+
+</div>
+  
 }
 
 </div>
