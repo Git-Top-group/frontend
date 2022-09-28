@@ -21,6 +21,9 @@ export default function CreatePost() {
   const [furnished, setFurnished] = useState(true);
   // eslint-disable-next-line
   const [elevator, setElevator] = useState(true);
+  const [countImg ,setCount] =useState(0);
+  const [img , setImg]= useState("https://images.alphacoders.com/435/thumb-1920-435117.jpg");
+  const [imgBody ,setImageBody] =useState({});
   const [body,setBody]=useState({})
 
   const handleSubmit =(e) => {
@@ -246,10 +249,12 @@ export default function CreatePost() {
           
         }
 
+        setImg(e.target.images.value)
         
    
     console.log(JSON.stringify(body));
   };
+  
   useEffect(()=>{
     if(body.moreInfo){setSubmit(true)}
 
@@ -264,9 +269,26 @@ export default function CreatePost() {
        },
      }
    );
+   //{"rentDuration":"Yearly","id":31,"process":"Sell","type":"Industrial","owner":"Owner","price":101,"area":10,"availability":true,"city":"Zarqa","address":"jjj","moreInfo":"bnbn","model":"lands","userId":23,"updatedAt":"2022-09-28T22:04:39.016Z","createdAt":"2022-09-28T22:04:39.016Z"}
+   setImageBody({
+ postId:data.id,
+ userId:data.userId,
+ model:data.model,
+ imageModel : 'landImages', 
+url1:img,
+
+   })
    console.log(data);
   }
+  // we will call this function after the post is created
+const sendImage =()=>{
 
+  axios.post(`https://akarcom-mid-project.herokuapp.com/newpost/${user.id}/${model}/${imgBody.postId}/${imgBody.imageModel}` , imgBody ,{
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  } )
+}
   return (
     <>
       <Back name="" title="Fill Your Real Estate Info" cover={img} />
@@ -580,6 +602,18 @@ export default function CreatePost() {
             />
             <br></br>
             <br></br>
+            {countImg===0 ? <> <label>Add Image: </label>
+            <div className="imageURL">
+            <input
+              className="Images"
+              type="text"
+              placeholder="add the image Link 'URL' "
+              name="images"
+            />
+{/* <p>add </p> */}
+            </div></> : <></>  }
+   
+           
             <button type="submit">Submit</button> 
             {/* {submit ? :   } */}
            
