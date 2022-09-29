@@ -157,6 +157,11 @@ export default function CreatePost() {
             moreInfo: e.target.moreInfo.value
           });
 
+
+    return(<>
+    
+        <Back name='' title='Fill Your Real Estate Info' cover={img} />
+
     }else if(model==="apartments"&& process==="Rent"){
         setBody({
            
@@ -245,6 +250,7 @@ export default function CreatePost() {
  
           
         }
+
 
         
    
