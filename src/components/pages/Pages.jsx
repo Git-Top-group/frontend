@@ -1,4 +1,4 @@
-import React ,{useContext} from "react"
+import React, { useContext } from "react"
 import Header from "../common/header/Header"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "../home/Home"
@@ -12,11 +12,12 @@ import SignIn from '../Login/login';
 import Profile from '../Profile/Profile';
 import Posts from '../posts/Posts';
 import Dashboard from '../dashboard/Dashboard'
+
 import DropDown from '../dropDown/DropDown'
 import {LoginContext} from '../context/context'
 import {PostsRoutes ,ProfileRoutes} from '../protectedRoutes/UserRoutes'
 const Pages = () => {
-  const auth =useContext(LoginContext)
+  // const auth = useContext(LoginContext)
   return (
     <>
       <Router>
@@ -26,8 +27,10 @@ const Pages = () => {
           <Route exact path='/about' component={About} />
           <Route exact path='/setting' component={DropDown}/>
           <Route exact path='/services' component={Services} />
+
           <Route exact path='/blog' component={Blog} />
           <ProfileRoutes exact path='/profile' component={Profile} />
+
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
