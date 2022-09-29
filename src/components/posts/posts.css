@@ -106,3 +106,18 @@
   
   
 }
+.beforeForm{
+  margin-top: 20px;
+  display:flex ; 
+  justify-content: flex-start;
+  align-items: baseline;
+  color: darkslategray;
+  font-size: 30px;
+
+}
+.beforeForm select{
+
+width:250px ;
+border: 2px solid red ; 
+height: 50px;
+}

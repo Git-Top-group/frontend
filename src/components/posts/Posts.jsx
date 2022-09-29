@@ -23,7 +23,13 @@ export default function CreatePost() {
   const [elevator, setElevator] = useState(true);
   const [countImg ,setCount] =useState(0);
   const [img , setImg]= useState("https://images.alphacoders.com/435/thumb-1920-435117.jpg");
-  const [imgBody ,setImageBody] =useState({});
+  const [imgBody ,setImageBody] =useState({ 
+    postId:0,
+    userId:0,
+    model:" ",
+   url1:img,
+   
+  });
   const [body,setBody]=useState({})
 
   const handleSubmit =(e) => {
@@ -147,7 +153,7 @@ export default function CreatePost() {
             owner: e.target.Owner.value,
             price: e.target.Price.value,
             area: e.target.Area.value,
-            floors:e.target.floors.value ,
+            floorNum:e.target.FloorNumber.value ,
             buildingAge:e.target.BuildingAge.value  ,
             rooms:e.target.Rooms.value ,
             bathrooms: e.target.Bathrooms.value,  
@@ -167,7 +173,7 @@ export default function CreatePost() {
             owner: e.target.Owner.value,
             price: e.target.Price.value,
             area: e.target.Area.value,
-            floors:e.target.FloorNumber.value ,
+            floorNum:e.target.FloorNumber.value ,
             buildingAge:e.target.BuildingAge.value  ,
             rooms:e.target.Rooms.value ,
             bathrooms: e.target.Bathrooms.value,  
@@ -180,7 +186,20 @@ export default function CreatePost() {
             finishing:e.target.Finishing.value, 
             moreInfo: e.target.moreInfo.value
           });
-
+/*process: process,
+            owner: e.target.Owner.value,
+            price: e.target.Price.value,
+            surfaceArea:e.target.SurfaceArea.value , 
+            landArea:e.target.LandArea.value , 
+            buildingAge:e.target.BuildingAge.value  ,
+            rooms:e.target.Rooms.value ,
+            rentDuration:e.target.RentDuration.value,
+            bathrooms: e.target.Bathrooms.value,  
+            availability: available,
+            furnished :furnished ,
+            city: e.target.City.value,
+            address: e.target.address.value,
+            moreInfo: e.target.moreInfo.value */ 
     }else if(model==="chalets"&& process==="Sell"){
         setBody({
             process: process,
@@ -190,11 +209,11 @@ export default function CreatePost() {
             landArea:e.target.LandArea.value , 
             buildingAge:e.target.BuildingAge.value  ,
             rooms:e.target.Rooms.value ,
-            bathrooms: e.target.Bathrooms.value,  
+            bathrooms:e.target.Bathrooms.value ,
             availability: available,
-            furnished :furnished ,
+            furnished :furnished,
             city: e.target.City.value,
-            address: e.target.address.value,
+            address:e.target.address.value,
             moreInfo: e.target.moreInfo.value
           });
 
@@ -269,31 +288,44 @@ export default function CreatePost() {
        },
      }
    );
-   //{"rentDuration":"Yearly","id":31,"process":"Sell","type":"Industrial","owner":"Owner","price":101,"area":10,"availability":true,"city":"Zarqa","address":"jjj","moreInfo":"bnbn","model":"lands","userId":23,"updatedAt":"2022-09-28T22:04:39.016Z","createdAt":"2022-09-28T22:04:39.016Z"}
-   setImageBody({
- postId:data.id,
- userId:data.userId,
- model:data.model,
- imageModel : 'landImages', 
+
+    await setImageBody({
+ postId:data.data.id,
+ userId:data.data.userId,
+ model:data.data.model,
 url1:img,
 
    })
+  
+
    console.log(data);
   }
+
+  useEffect(()=>{
+    sendImage()
+  },[imgBody.postId])
   // we will call this function after the post is created
 const sendImage =()=>{
-
-  axios.post(`https://akarcom-mid-project.herokuapp.com/newpost/${user.id}/${model}/${imgBody.postId}/${imgBody.imageModel}` , imgBody ,{
+let arr=['landImages' ,'houseImages' ,'villaImages' , 'apartmentImages ' , 'warehouseImages ' , 'chaletImages']
+let imageModel = ""
+if(model==="lands"){
+imageModel=arr[0]}else if(model==="houses"){imageModel=arr[1]}else if(model==="villas"){imageModel=arr[2]}else if(model==="apartments"){imageModel=arr[3]}else if(model==="warehouses"){imageModel=arr[4]}else if(model==="chalets"){imageModel=arr[5]}
+// console.log(imageModel) 
+console.log(imgBody.userId , user.id, imgBody.postId)
+let imageData = axios.post(`https://akarcom-mid-project.herokuapp.com/newpost/${imgBody.userId}/${model}/${imgBody.postId}/${imageModel}` , imgBody ,{
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
-  } )
+  } 
+  )
+  console.log(imageData)
 }
   return (
     <>
       <Back name="" title="Fill Your Real Estate Info" cover={img} />
 
       <div className="Post">
+        <div className="beforeForm">
         <label> Model: </label>
         <select
           name="Process"
@@ -319,8 +351,10 @@ const sendImage =()=>{
           <option value="Sell">Sell</option>
           <option value="Rent">Rent</option>
         </select>
+        </div>
         {
           <form className="editForm" onSubmit={handleSubmit}>
+
             <div class="custom-select">
               {model === "lands" || model === "warehouses" ? (
                 <>
@@ -457,7 +491,7 @@ const sendImage =()=>{
                   <select name="Finishing">
                     <option value="Unfinished">Unfinished</option>
                     <option value="Semi-Finished">Semi-Finished</option>
-                    <option value="Fully-Finished2">Fully-Finished</option>
+                    <option value="Fully-Finished">Fully-Finished</option>
                     <option value="Lux">Lux</option>
                     <option value="Super-Lux">Super-Lux</option>
                     <option value="Ultra-Lux">Ultra-Lux</option>
@@ -489,13 +523,14 @@ const sendImage =()=>{
                 <div className="hide"></div>
               ) : (
                 <>
+              
                   <label className="labelLeft"> Bathrooms: </label>
                   <select name="Bathrooms">
-                    <option value="1-Bathroom">1-Bathroom</option>
-                    <option value="2-Bathroom">2-Bathrooms</option>
-                    <option value="3-Bathroom">3-Bathrooms</option>
-                    <option value="4-Bathroom">4-Bathrooms</option>
-                    <option value="+5-Bathrooms">+5-Bathrooms</option>
+                    <option value='1-Bathroom'>1-Bathroom</option>
+                    <option value='2-Bathrooms'>2-Bathrooms</option>
+                    <option value='3-Bathrooms'>3-Bathrooms</option>
+                    <option value='4-Bathrooms'>4-Bathrooms</option>
+                    <option value='+5-Bathrooms'>+5-Bathrooms</option>
                   </select>
                 </>
               )}
