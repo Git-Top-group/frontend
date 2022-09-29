@@ -8,7 +8,7 @@ export default function Dashboard(){
 const auth =useContext(LoginContext)
     const handleLogout =()=> { 
      auth.logoutFunction()
-// auth.loginStatus(false)
+
     }
 return(<>
 
@@ -16,7 +16,7 @@ return(<>
 {auth.loginStatus ?  
         <>
       <h1>welcome to dashboard</h1>
-<button  onClick={handleLogout}>Log Out</button>
+<button  onClick={handleLogout}>Log Out <i className='fa fa-sign-out'></i></button>
       </>
       :<Switch>
       <Redirect from='*' to="/signin"></Redirect>

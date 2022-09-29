@@ -12,9 +12,10 @@ import SignIn from '../Login/login';
 import Profile from '../Profile/Profile';
 import Posts from '../posts/Posts';
 import Dashboard from '../dashboard/Dashboard'
-// import { LoginContext } from '../context/context'
-// import PostProvider from '../context/postContext'
 
+import DropDown from '../dropDown/DropDown'
+import {LoginContext} from '../context/context'
+import {PostsRoutes ,ProfileRoutes} from '../protectedRoutes/UserRoutes'
 const Pages = () => {
   // const auth = useContext(LoginContext)
   return (
@@ -24,15 +25,16 @@ const Pages = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
+          <Route exact path='/setting' component={DropDown}/>
           <Route exact path='/services' component={Services} />
-          {/* <PostProvider> */}
-            <Route exact path='/blog' component={Blog} />
-          {/* </PostProvider> */}
-          <Route exact path='/profile' component={Profile} />
+
+          <Route exact path='/blog' component={Blog} />
+          <ProfileRoutes exact path='/profile' component={Profile} />
+
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
-          <Route exact path='/posts' component={Posts} />
+          <PostsRoutes exact path='/posts' component={Posts} />
           <Route path={`/dashboard/:id`} component={Dashboard} />
 
         </Switch>

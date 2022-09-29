@@ -15,18 +15,28 @@ export const nav = [
     text: "blog",
     path: "/blog",
   },
-  {
-    text: "Profile",
-    path: "/profile",
+  
+   {
+    text: "setting ⚙",
+    path: "/setting",
   },
-  {
-    text: "contact",
-    path: "/contact",
-  },
-  {
-    text: "Posts",
-    path: "/posts",
-  },
+]
+
+export const setting = [
+{  id:1,
+  text: "Profile",
+  path: "/profile",
+},
+{  id:2,
+  text: "Posts",
+  path: "/posts",
+},
+
+{  id:3,
+  text: "Contact",
+  path: "/contact",
+},
+
 ]
 export const featured = [
   {
