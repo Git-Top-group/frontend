@@ -24,11 +24,12 @@ const  SignIn =  () => {
     </Switch>
     :<Switch>
       <form onSubmit={handleLogin} className="loginForm">
-        <label>username</label>
+        <br></br>
+        <label>Username</label>
         <input type="text" name="username"></input>
-        <label>password </label>
+        <label>Password </label>
         <input type="password" name="password" />
-        <button type="submit">login </button>
+        <button className="buttonSignin">login </button>
       </form>
       <Redirect from='*' to="/signin"></Redirect>
       </Switch>

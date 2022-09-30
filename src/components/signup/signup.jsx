@@ -34,11 +34,12 @@ auth.SignUpFunction(e.target.username.value,e.target.password.value )
 return(<>
 
 <form onSubmit={handleLogin} className="loginForm">
-<label>username</label>
+  <br></br>
+<label>Username</label>
 <input type='text' name='username'></input>
-<label>password </label>
+<label>Password </label>
 <input type="password" name="password" />
-<button type='submit'>Sign Up</button>
+<button className='buttonSignup'>Sign Up</button>
 <Link to={'/signin'}>
             <p className='signinlink'>
               <i className='fa fa-sign-out'></i> already have account ?  Sign In

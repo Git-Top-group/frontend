@@ -15,14 +15,16 @@ export const nav = [
     text: "blog",
     path: "/blog",
   },
-  
-   {
-    text: "setting ⚙",
-    path: "/setting",
-  },
+
 ]
 
 export const setting = [
+  {
+    id:5,
+    text: "setting ⚙",
+    path: "/setting",
+  },
+
 {  id:1,
   text: "Profile",
   path: "/profile",
@@ -207,95 +209,88 @@ export const awards = [
 export const location = [
   {
     id: 1,
-    name: "New Orleans, Louisiana",
+    name: "Amman",
     Villas: "12 Villas",
     Apartments: "10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/city-1.png",
+    cover: "./images/location/amman.jpg",
   },
   {
     id: 2,
-    name: "Jerrsy, United State",
+    name: "Irbid",
     Villas: "12 Villas",
     Apartments: "10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/city-2.png",
+    cover: "./images/location/irbid.jpg",
   },
   {
     id: 3,
-    name: "Liverpool, London",
+    name: "Aqaba",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/city-3.png",
+    cover: "./images/location/aqaba.jpg",
   },
   {
     id: 4,
-    name: "NewYork, United States",
+    name: "Al-Karak",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/city-4.png",
+    cover: "./images/location/karak.jpg",
   },
   {
     id: 5,
-    name: "Montreal, Canada",
+    name: "Madaba",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/city-5.png",
+    cover: "./images/location/madaba.jpg",
   },
   {
     id: 6,
-    name: "California, USA",
+    name: "Ajloun",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/city-6.png",
+    cover: "./images/location/ajloun.jpg",
   },
 ]
 export const team = [
   {
     list: "50",
-    cover: "../images/customer/team-1.jpg",
-    address: "Liverpool, Canada",
-    name: "Sargam S. Singh",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    cover: "../images/admin/M.Shraideh.PNG",
+    address: "Jordan, Irbid",
+    name: "Mohammad Al-Shraideh",
+    icon: [<a href="https://github.com/mohammadsh96"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/mohammad-alshraideh/"><i class='fa-brands fa-linkedin'></i></a>],
   },
   {
     list: "70",
-    cover: "../images/customer/team-2.jpg",
-    address: "Montreal, Canada",
-    name: "Harijeet M. Siller",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    cover: "../images/admin/M.Dahleh.PNG",
+    address: "Jordan, Amman",
+    name: "Mohammd Al-Dahleh",
+    icon: [<a href="https://github.com/MohammedAlDahleh"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/mohammed-al-dahleh"><i class='fa-brands fa-linkedin'></i></a>],
   },
   {
     list: "80",
-    cover: "../images/customer/team-3.jpg",
-    address: "Denever, USA",
-    name: "Anna K. Young",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    cover: "../images/admin/Esam.PNG",
+    address: "Jordan, Amman",
+    name: "Esam Ankir",
+    icon: [<a href="https://github.com/Esam-Ankir"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/esam-ankir"><i class='fa-brands fa-linkedin'></i></a>],
   },
   {
     list: "51",
-    cover: "../images/customer/team-4.jpg",
-    address: "2272 Briarwood Drive",
-    name: "Michael P. Grimaldo",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    cover: "../images/admin/Islam.PNG",
+    address: "Jordan, Amman",
+    name: "Islam Rwashdeh",
+    icon: [<a href="https://github.com/islamrwashdeh"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/islam-r147/"><i class='fa-brands fa-linkedin'></i></a>],
   },
   {
     list: "42",
-    cover: "../images/customer/team-5.jpg",
-    address: "2272 Briarwood Drive",
-    name: "Michael P. Grimaldo",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
-  },
-  {
-    list: "38",
-    cover: "../images/customer/team-5.jpg",
-    address: "Montreal, USA",
-    name: "Adam K. Jollio",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    cover: "../images/admin/Hadeel.PNG",
+    address: "Jordan, Amman",
+    name: "Hadeel Saleh",
+    icon: [<a href="https://github.com/hadeel999"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/hadeel-saleh-82480b17a"><i class='fa-brands fa-linkedin'></i></a>],
   },
 ]
 export const price = [
@@ -380,14 +375,10 @@ export const price = [
 export const footer = [
   {
     title: "LAYOUTS",
-    text: [{ list: "Home Page" }, { list: "About Page" }, { list: "Service Page" }, { list: "Property Page" }, { list: "Contact Page" }, { list: "Single Blog" }],
-  },
-  {
-    title: "ALL SECTIONS",
-    text: [{ list: "Headers" }, { list: "Features" }, { list: "Attractive" }, { list: "Testimonials" }, { list: "Videos" }, { list: "Footers" }],
+    text: [{ list: "Home Page", link: "/"}, { list: "About Page", link: "/about" }, { list: "Contact Page", link: "/contact" }],
   },
   {
     title: "COMPANY",
-    text: [{ list: "About" }, { list: "Blog" }, { list: "Pricing" }, { list: "Affiliate" }, { list: "Login" }, { list: "Changelog" }],
+    text: [{ list: "Blog", link: "/blog" }, { list: "Login", link: "signin" }],
   },
 ]
