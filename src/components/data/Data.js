@@ -391,3 +391,12 @@ export const footer = [
     text: [{ list: "About" }, { list: "Blog" }, { list: "Pricing" }, { list: "Affiliate" }, { list: "Login" }, { list: "Changelog" }],
   },
 ]
+
+export const item = [
+  { name: 'apple' },
+  { name: 'banana' },
+  { name: 'pear' },
+  { name: 'apple tango' },
+  { name: 'mango' },
+  { name: 'banana milkshake' },
+]

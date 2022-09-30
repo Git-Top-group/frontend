@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import "./header.css"
 import { nav } from "../../data/Data"
 import { Link } from "react-router-dom"
-
+import SearchBar from '../../ search/searchbar'
 const Header = () => {
   const [navList, setNavList] = useState(false)
 
@@ -36,10 +36,17 @@ const Header = () => {
             </Link>
           </div>
 
+
+
           <div className='toggle'>
             <button onClick={() => setNavList(!navList)}>{navList ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}</button>
           </div>
         </div>
+
+        <div>
+             <SearchBar/>
+          </div>
+
       </header>
     </>
   )

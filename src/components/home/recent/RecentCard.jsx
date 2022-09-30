@@ -6,6 +6,7 @@ import { featured } from "../../data/Data"
 import "../featured/FeaturedCard.css"
 // import PostProvider from '../../context/postContext'
 import Logo from "./noImage.png"
+
 const RecentCard = (props) => {
 
   const auth = useContext(LoginContext)
