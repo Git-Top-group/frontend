@@ -1,6 +1,6 @@
 import React ,{useContext} from 'react';
 import {Link} from 'react-router-dom'
-// const url = 'https://akarcom-mid-project.herokuapp.com'
+// const url = 'https://akarcom-final.herokuapp.com'
 import './signup.css'
 import {LoginContext} from '../context/context'
  const SignUp = ()=>{
@@ -20,8 +20,8 @@ auth.SignUpFunction(e.target.username.value,e.target.password.value )
 //     headers: { 'Content-Type': 'application/json' },
 //     body: JSON.stringify(body)
 // };
-// //https://akarcom-mid-project.herokuapp.com/signup
-// fetch('https://akarcom-mid-project.herokuapp.com/signup', requestOptions)
+// //https://akarcom-final.herokuapp.com/signup
+// fetch('https://akarcom-final.herokuapp.com/signup', requestOptions)
 // .then(response => response.json())
 // .then(data => console.log(data) )
 // .catch(e=>console.log(e));
