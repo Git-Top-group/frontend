@@ -5,7 +5,7 @@ import base64 from 'base-64';
 import cookie from 'react-cookies';
 import axios from 'axios';
 export const LoginContext = React.createContext();
-const API = `https://git-top-akarcom.herokuapp.com`
+const API = `https://akarcom-final.herokuapp.com`
 export default function LoginProvider(props) {
 
     const [loginStatus, setLoginStatus] = useState(false);
@@ -36,7 +36,7 @@ export default function LoginProvider(props) {
          
          const userData = { username:`${username}`, password:`${password}`}
           // validateMyUser(response.body);
-        axios.post('https://git-top-akarcom.herokuapp.com/signup' , userData)
+        axios.post('https://akarcom-final.herokuapp.com/signup' , userData)
        
 .then(console.log(userData))
       } catch (err) {
@@ -61,7 +61,7 @@ alert(err)
         cookie.remove('username');
         cookie.remove('id');
 
-        console.log('cookies removed ++++++++++++')
+        
     }
     const validateMyUser = (user) => {
         if (user.token) {
