@@ -61,7 +61,7 @@ alert(err)
         cookie.remove('username');
         cookie.remove('id');
 
-        console.log('cookies removed ++++++++++++')
+        
     }
     const validateMyUser = (user) => {
         if (user.token) {
