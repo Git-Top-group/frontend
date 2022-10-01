@@ -4,6 +4,7 @@ import Back from "../common/Back";
 import img from "../images/real-estate-hero.jpg";
 import axios from "axios";
 import cookie from "react-cookies";
+import { Switch , Redirect } from "react-router-dom";
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
@@ -22,7 +23,7 @@ export default function CreatePost() {
   // const [img , setImg]= useState("https://images.alphacoders.com/435/thumb-1920-435117.jpg");
 
   const [body, setBody] = useState({});
-
+const [goToPost , setGoToPost]= useState(false)
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -271,7 +272,10 @@ export default function CreatePost() {
         },
       }
     );
-
+if(data.data.id){
+  cookie.save('postId',data.data.id);
+  setGoToPost(true)
+}
     console.log(data);
   };
 
@@ -498,7 +502,7 @@ export default function CreatePost() {
                     <option value="0-11 months">0-11 months</option>
                     <option value="1-5 years">1-5 years</option>
                     <option value="6-9 years">6-9 years</option>
-                    <option value="+10-19 years">+10-19 years</option>
+                    <option value="10-19 years">+10-19 years</option>
                     <option value="+20 years">+20 years</option>
                   </select>
                 </>
@@ -522,7 +526,7 @@ export default function CreatePost() {
                   name="Area"
                   type="number"
                   placeholder="Enter area in m2."
-                />
+                  required />
               </>
             )}
 
@@ -534,7 +538,7 @@ export default function CreatePost() {
                 <input
                   type="number"
                   placeholder="Enter land area in m2."
-                  name="LandArea"
+                  name="LandArea" required
                 />
               </>
             ) : (
@@ -548,7 +552,7 @@ export default function CreatePost() {
                 <input
                   type="number"
                   placeholder="Enter surface area in m2."
-                  name="SurfaceArea"
+                  name="SurfaceArea" required
                 />
               </>
             ) : (
@@ -562,7 +566,7 @@ export default function CreatePost() {
               name="Price"
               type="number"
               placeholder="Enter price in JD."
-            />
+              required  />
             <br></br>
             <br></br>
 
@@ -572,7 +576,7 @@ export default function CreatePost() {
               type="text"
               placeholder="address"
               name="address"
-            />
+              required  />
             <br></br>
             <br></br>
 
@@ -591,7 +595,7 @@ export default function CreatePost() {
                 className="Images"
                 type="text"
                 placeholder="add the image Link 'URL' "
-                name="url1"
+                name="url1" required
               />
               <label>Add image</label>
               <input
@@ -616,6 +620,14 @@ export default function CreatePost() {
         }
       </div>
       <button onClick={post}>Post</button>
+{goToPost ? <> 
+  <Switch>
+    <Redirect from='*' to={`/postDetails/${cookie.load('postId')}`} value={cookie.load('postId')}></Redirect>
+    </Switch>
+    
+</> : <></>}
+
+
     </>
   );
 }
