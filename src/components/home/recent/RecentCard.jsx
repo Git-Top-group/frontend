@@ -21,6 +21,9 @@ const RecentCard = (props) => {
   // console.log("postId", postId);
   const fetchData = async () => {
     console.log("Data fetched");
+    
+
+    
     await fetch(`https://akarcom-mid-project.herokuapp.com/${model}`)
       .then(response => {
         return response.json();
@@ -52,6 +55,7 @@ const RecentCard = (props) => {
   return (
 
     <>
+    
       <div className='modelIcon' >
         {featured.map((items, index) => (
           <div className='box' key={index} >
@@ -72,8 +76,8 @@ const RecentCard = (props) => {
           const { process, model, owner, price, city, id } = val
           const cover = images.url1;
 
-          console.log(images.postId);
-          console.log(id);
+          // console.log(images.postId);
+          // console.log(id);
           // setPostId(id)
           //  {fetchImage(id)}
           return (
