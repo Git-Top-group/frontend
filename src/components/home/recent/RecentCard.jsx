@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react"
 import { LoginContext } from "../../context/context"
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data"
-import "../featured/FeaturedCard.css"
+import "./recentCard.css"
 // import PostProvider from '../../context/postContext'
 import Logo from "./noImage.png"
 const RecentCard = (props) => {
@@ -55,20 +55,24 @@ const RecentCard = (props) => {
   return (
 
     <>
+
     
       <div className='modelIcon' >
         {featured.map((items, index) => (
-          <div className='box' key={index} >
+          <div className='model-box' key={index} >
             <img src={items.cover} alt='' />
             <h4 >{items.name}</h4>
             <label>{items.total}</label>
+            <br></br>
+            <br></br>
             <button onClick={() => setModel(items.name)}>
-              Click me!
+              Filter
             </button>
           </div>
 
         ))}
       </div>
+      
       <br />
       <br />
       <div className='content grid3 mtop'>
@@ -82,25 +86,25 @@ const RecentCard = (props) => {
           //  {fetchImage(id)}
           return (
             <div className='box shadow' key={index}>
-              <div className='img'>
+              <div className='postImg'>
                 <img src={cover || Logo} alt='' />
               </div>
               <div className='text'>
-                <div className='category flex'>
+                <div className='category_flex'>
                   <span style={{ background: process === "Sell" ? "#25b5791a" : "#ff98001a", color: process === "Sell" ? "#25b579" : "#ff9800" }}>{process}</span>
+                  <p className="heart">
                   <i className='fa fa-heart'></i>
+                  </p>
                 </div>
                 <h4>{owner}</h4>
                 <p>
                   <i className='fa fa-location-dot'></i> {city}
                 </p>
               </div>
-              <div className='button flex'>
+              <div className='buttonflex'>
                 <div>
-                  <button className='btn2'>{price}</button> <label htmlFor=''> JOD</label>
+                  <button className='btn2'>{price}</button> <label htmlFor=''> JD</label>
                 </div>
-                <span>{model}</span>
-                <span >post id = {id} </span>
               </div>
             </div>
 

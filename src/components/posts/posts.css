@@ -89,15 +89,12 @@ visibility: hidden;
     background-color: rgba(0, 0, 0, 0.1);
   }
   
-.imageURL {
-  display:flex; 
-  flex-direction:column; 
-  height: min-content;
-  
-
+.imageURL{
+  display:flex ; 
 }
 .imageURL input{
-   /* width: 80%; */
+   width: 100%;
+
 
 }
 .imageURL p{

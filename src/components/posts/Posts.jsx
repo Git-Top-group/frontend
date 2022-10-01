@@ -7,7 +7,8 @@ import cookie from "react-cookies";
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
-  //  const [submit ,setSubmit] = useState(false)
+  const [submit, setSubmit] = useState(false)
+
   const [user] = useState({
     token: cookie.load("token") || null,
     id: cookie.load("id"),
@@ -18,16 +19,24 @@ export default function CreatePost() {
   const [furnished, setFurnished] = useState(true);
   // eslint-disable-next-line
   const [elevator, setElevator] = useState(true);
-  // const [countImg ,setCount] =useState(0);
-  // const [img , setImg]= useState("https://images.alphacoders.com/435/thumb-1920-435117.jpg");
+  const [countImg, setCount] = useState(0);
+  const [img, setImg] = useState("https://images.alphacoders.com/435/thumb-1920-435117.jpg");
+  const [imgBody, setImageBody] = useState({
+    postId: 0,
+    userId: 0,
+    model: " ",
+    url1: img,
 
-  const [body, setBody] = useState({});
+  });
+  const [body, setBody] = useState({})
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (model === "lands" && process === "Sell") {
       setBody({
+
         process: process,
         type: e.target.Type.value,
         owner: e.target.Owner.value,
@@ -36,6 +45,7 @@ export default function CreatePost() {
         availability: available,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -52,6 +62,7 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -74,6 +85,7 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -97,6 +109,7 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -117,6 +130,7 @@ export default function CreatePost() {
         furnished: furnished,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -138,6 +152,7 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -159,6 +174,7 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -181,6 +197,7 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -200,6 +217,7 @@ export default function CreatePost() {
         furnished: furnished,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -220,6 +238,7 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -235,6 +254,7 @@ export default function CreatePost() {
         availability: available,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -251,6 +271,7 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
+
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
         url2: e.target.url2.value,
@@ -278,25 +299,27 @@ export default function CreatePost() {
   return (
     <>
       <Back name="" title="Fill Your Real Estate Info" cover={img} />
-
+      <br></br>
       <div className="Post">
         <div className="beforeForm">
-          <label> Model: </label>
+          <label className="labelLeft"> Model: </label>
+
           <select
             name="Process"
             onClick={(e) => {
               setModel(e.target.value);
             }}
           >
-            <option value="villas">villas</option>
-            <option value="lands">lands</option>
-            <option value="houses">houses</option>
-            <option value="chalets">chalets</option>
-            <option value="apartments">apartments</option>
-            <option value="warehouses">warehouses</option>
+            <option value="villas">Villas</option>
+            <option value="lands">Lands</option>
+            <option value="houses">Houses</option>
+            <option value="chalets">Chalets</option>
+            <option value="apartments">Apartments</option>
+            <option value="warehouses">Warehouses</option>
           </select>
           <br></br>
-          <label> Process: </label>
+          <label className="labelLeft"> Process: </label>
+
           <select
             name="Process"
             onClick={(e) => {
@@ -307,21 +330,11 @@ export default function CreatePost() {
             <option value="Rent">Rent</option>
           </select>
         </div>
+        <br></br>
         {
           <form className="editForm" onSubmit={handleSubmit}>
             <div class="custom-select">
-              {model === "lands" || model === "warehouses" ? (
-                <>
-                  <label className="labelLeft"> Type of Estate: </label>
-                  <select name="Type">
-                    <option value="Industrial">Industrial</option>
-                    <option value="Commercial">Commercial</option>
-                    <option value="Agricultural">Agricultural</option>
-                  </select>
-                </>
-              ) : (
-                <></>
-              )}
+              <br></br><br></br>
 
               <label className="labelLeft"> City: </label>
               <select name="City">
@@ -338,61 +351,8 @@ export default function CreatePost() {
                 <option value="Tafilah">Tafilah</option>
                 <option value="Al-Balqa">Al-Balqa</option>
               </select>
-              {model === "apartments" ? (
-                <>
-                  <label className="labelLeft"> Floor Number: </label>
-                  <select name="FloorNumber">
-                    <option value="Basement">Basement</option>
-                    <option value="Ground-Floor">Ground-Floor</option>
-                    <option value="First-Floor">First-Floor</option>
-                    <option value="Second-Floor">Second-Floor</option>
-                    <option value="Third-Floor">Third-Floor</option>
-                    <option value="Fourth-Floor">Fourth-Floor</option>
-                    <option value="Fifth-Floor">Fifth-Floor</option>
-                    <option value="Higher than 5">Higher than 5</option>
-                  </select>
-                </>
-              ) : (
-                <></>
-              )}
 
-              {process === "Sell" ? (
-                <></>
-              ) : (
-                <>
-                  <label className="labelLeft"> Rent Duration: </label>
-                  <select name="RentDuration">
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                  </select>
-                </>
-              )}
-
-              {model === "apartments" ? (
-                <>
-                  <label className="labelLeft"> Elevator: </label>
-                  <select
-                    name="Elevator"
-                    onClick={(e) => {
-                      e.target.value === "false"
-                        ? setElevator(false)
-                        : setElevator(true);
-                    }}
-                  >
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                  </select>
-                </>
-              ) : (
-                <></>
-              )}
-
-              <br></br>
-              <br></br>
-
-              <label> Availability: </label>
+              <label className="labelLeft"> Availability: </label>
               <select
                 name="Availability"
                 onClick={(e) => {
@@ -405,53 +365,25 @@ export default function CreatePost() {
                 <option value="false">No</option>
               </select>
 
+              <label className="labelLeft"> Owner: </label>
+              <select name="Owner">
+                <option value="Owner">Owner</option>
+                <option value="Broker">Broker</option>
+              </select>
+
               {model === "lands" || model === "warehouses" ? (
+
+                <>
+                  {" "}
+                  <label className="labelLeft"> Type of Estate: </label>
+                  <select name="Type">
+                    <option value="Industrial">Industrial</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Agricultural">Agricultural</option>
+                  </select>
+                </>
+              ) : (
                 <></>
-              ) : (
-                <>
-                  <label className="labelLeft"> Furnished: </label>
-                  <select
-                    name="Furnished"
-                    onClick={(e) => {
-                      e.target.value === "false"
-                        ? setFurnished(false)
-                        : setFurnished(true);
-                    }}
-                  >
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                  </select>
-                </>
-              )}
-              {model === "villas" || model === "houses" ? (
-                <>
-                  <label className="labelLeft"> Number of Floors : </label>
-                  <select name="floors">
-                    <option value="1">one</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                    <option value="4">Four</option>
-                    <option value="5">More</option>
-                  </select>
-                </>
-              ) : (
-                <div className="hide"></div>
-              )}
-              {model === "apartments" || model === "houses" ? (
-                <>
-                  <label className="labelLeft"> Finishing: </label>
-                  <select name="Finishing">
-                    <option value="Unfinished">Unfinished</option>
-                    <option value="Semi-Finished">Semi-Finished</option>
-                    <option value="Fully-Finished">Fully-Finished</option>
-                    <option value="Lux">Lux</option>
-                    <option value="Super-Lux">Super-Lux</option>
-                    <option value="Ultra-Lux">Ultra-Lux</option>
-                    <option value="Deluxe">Deluxe</option>
-                  </select>
-                </>
-              ) : (
-                <div className="hide"></div>
               )}
 
               {model === "lands" || model === "warehouses" ? (
@@ -475,13 +407,14 @@ export default function CreatePost() {
                 <div className="hide"></div>
               ) : (
                 <>
+
                   <label className="labelLeft"> Bathrooms: </label>
                   <select name="Bathrooms">
-                    <option value="1-Bathroom">1-Bathroom</option>
-                    <option value="2-Bathrooms">2-Bathrooms</option>
-                    <option value="3-Bathrooms">3-Bathrooms</option>
-                    <option value="4-Bathrooms">4-Bathrooms</option>
-                    <option value="+5-Bathrooms">+5-Bathrooms</option>
+                    <option value='1-Bathroom'>1-Bathroom</option>
+                    <option value='2-Bathrooms'>2-Bathrooms</option>
+                    <option value='3-Bathrooms'>3-Bathrooms</option>
+                    <option value='4-Bathrooms'>4-Bathrooms</option>
+                    <option value='+5-Bathrooms'>+5-Bathrooms</option>
                   </select>
                 </>
               )}
@@ -504,12 +437,117 @@ export default function CreatePost() {
                 </>
               )}
 
-              <label className="labelLeft"> Owner: </label>
-              <select name="Owner">
-                <option value="Owner">Owner</option>
-                <option value="Broker">Broker</option>
-              </select>
+
+              {model === "lands" || model === "warehouses" ? (
+                <></>
+              ) : (
+                <>
+                  <label className="labelLeft"> Furnished: </label>
+                  <select
+                    name="Furnished"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setFurnished(false)
+                        : setFurnished(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </>
+              )}
+
+              <br></br>
+              <br></br>
+
+
+              {model === "apartments" || model === "houses" ? (
+                <>
+                  <label className="labelLeft"> Finishing: </label>
+                  <select name="Finishing">
+                    <option value="Unfinished">Unfinished</option>
+                    <option value="Semi-Finished">Semi-Finished</option>
+                    <option value="Fully-Finished">Fully-Finished</option>
+                    <option value="Lux">Lux</option>
+                    <option value="Super-Lux">Super-Lux</option>
+                    <option value="Ultra-Lux">Ultra-Lux</option>
+                    <option value="Deluxe">Deluxe</option>
+                  </select>
+                </>
+              ) : (
+                <div className="hide"></div>
+              )}
+
+
+              {model === "apartments" ? (
+                <>
+                  <label className="labelLeft"> Floor Number: </label>
+                  <select name="FloorNumber">
+                    <option value="Basement">Basement</option>
+                    <option value="Ground-Floor">Ground-Floor</option>
+                    <option value="First-Floor">First-Floor</option>
+                    <option value="Second-Floor">Second-Floor</option>
+                    <option value="Third-Floor">Third-Floor</option>
+                    <option value="Fourth-Floor">Fourth-Floor</option>
+                    <option value="Fifth-Floor">Fifth-Floor</option>
+                    <option value="Higher than 5">Higher than 5</option>
+                  </select>
+                </>
+              ) : (
+                <></>
+              )}
+
+              {model === "apartments" ? (
+                <>
+                  <label className="labelLeft"> Elevator: </label>
+                  <select
+                    name="Elevator"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setElevator(false)
+                        : setElevator(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+
+                  </select>
+                </>
+              ) : (
+                <></>
+              )}
+
+              {process === "Sell" ? (
+                <></>
+              ) : (
+                <>
+                  <label className="labelLeft"> Rent Duration: </label>
+                  <select name="RentDuration">
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                  </select>
+                </>
+              )}
+
+              {model === "villas" || model === "houses" ?
+                <>
+                  <label className="labelLeft"> Number of Floors : </label>
+                  <select name="floors">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">More</option>
+
+                  </select>
+                </>
+                :
+                <div className="hide"></div>
+              }
             </div>
+
             <br></br>
             <br></br>
 
@@ -519,14 +557,13 @@ export default function CreatePost() {
               <>
                 <label>Area: </label>
                 <input
-                  name="Area"
+                  name="Area" required
                   type="number"
                   placeholder="Enter area in m2."
                 />
               </>
             )}
 
-            <br></br>
 
             {model === "villas" || model === "chalets" || model === "houses" ? (
               <>
@@ -534,7 +571,7 @@ export default function CreatePost() {
                 <input
                   type="number"
                   placeholder="Enter land area in m2."
-                  name="LandArea"
+                  name="LandArea" required
                 />
               </>
             ) : (
@@ -546,9 +583,9 @@ export default function CreatePost() {
               <>
                 <label>Surface Area: </label>
                 <input
-                  type="number"
+                  type="number" 
                   placeholder="Enter surface area in m2."
-                  name="SurfaceArea"
+                  name="SurfaceArea" required
                 />
               </>
             ) : (
@@ -559,7 +596,7 @@ export default function CreatePost() {
 
             <label>Price: </label>
             <input
-              name="Price"
+              name="Price" required
               type="number"
               placeholder="Enter price in JD."
             />
@@ -571,7 +608,7 @@ export default function CreatePost() {
               className="moreSpace"
               type="text"
               placeholder="address"
-              name="address"
+              name="address" required
             />
             <br></br>
             <br></br>
@@ -581,41 +618,34 @@ export default function CreatePost() {
               className="moreSpace"
               type="text"
               placeholder="Something special about your estate."
-              name="moreInfo"
+              name="moreInfo" required
             />
             <br></br>
             <br></br>
-            <div className="imageURL">
-              <label>Add image</label>
-              <input
-                className="Images"
-                type="text"
-                placeholder="add the image Link 'URL' "
-                name="url1"
-              />
-              <label>Add image</label>
-              <input
-                className="Images"
-                type="text"
-                placeholder="add the image Link 'URL' "
-                name="url2"
-              />{" "}
-              <label>Add image</label>
-              <input
-                className="Images"
-                type="text"
-                placeholder="add the image Link 'URL' "
-                name="url3"
-              />
-            </div>
-            <button type="submit">Submit</button>
+            {countImg === 0 ? <> <label>Add Image: </label>
+              <div className="imageURL">
+                <input
+                  className="Images"
+                  type="text"
+                  placeholder="add the image Link 'URL' "
+                  name="images" required
+                />
+                {/* <p>add </p> */}
+              </div></> : <></>}
+
+            <br></br>
+            <br></br>
+            <button className="bt2" type="submit">Submit</button>
             {/* {submit ? :   } */}
+
+            <br></br>
 
             <br></br>
           </form>
         }
       </div>
       <button onClick={post}>Post</button>
+
     </>
   );
 }
