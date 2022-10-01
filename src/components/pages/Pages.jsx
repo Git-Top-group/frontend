@@ -15,6 +15,7 @@ import Dashboard from '../dashboard/Dashboard'
 import DropDown from '../dropDown/DropDown'
 import {LoginContext} from '../context/context'
 import {PostsRoutes ,ProfileRoutes} from '../protectedRoutes/UserRoutes'
+import Post from '../blog/postTest'
 const Pages = () => {
   const auth =useContext(LoginContext)
   return (
@@ -29,6 +30,8 @@ const Pages = () => {
           <Route exact path='/blog' component={Blog} />
           <ProfileRoutes exact path='/profile' component={Profile} />
           <Route exact path='/contact' component={Contact} />
+          <Route exact path='/test' component={Post} />
+
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
           <PostsRoutes exact path='/posts' component={Posts} />
