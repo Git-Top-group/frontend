@@ -35,6 +35,9 @@ export const setting = [
 {  id:3,
   text: "Contact",
   path: "/contact",
+},{  id:4,
+  text: "setting",
+  path: "/setting",
 },
 
 ]
