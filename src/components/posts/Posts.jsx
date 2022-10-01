@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./posts.css";
 import Back from "../common/Back";
 import img from "../images/real-estate-hero.jpg";
-// import {LoginContext} from '../context/context' ;
 import axios from "axios";
 import cookie from "react-cookies";
-import { post } from "superagent";
-
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
   const [submit, setSubmit] = useState(false)
+
   const [user] = useState({
     token: cookie.load("token") || null,
     id: cookie.load("id"),
@@ -32,6 +30,7 @@ export default function CreatePost() {
   });
   const [body, setBody] = useState({})
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,12 +45,14 @@ export default function CreatePost() {
         availability: available,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "lands" && process === "Rent") {
       setBody({
-
         process: process,
         type: e.target.Type.value,
         owner: e.target.Owner.value,
@@ -61,12 +62,14 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "houses" && process === "Sell") {
       setBody({
-
         process: process,
         owner: e.target.Owner.value,
         price: e.target.Price.value,
@@ -82,12 +85,14 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "houses" && process === "Rent") {
       setBody({
-
         process: process,
         owner: e.target.Owner.value,
         price: e.target.Price.value,
@@ -104,9 +109,12 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "villas" && process === "Sell") {
       setBody({
         process: process,
@@ -122,12 +130,14 @@ export default function CreatePost() {
         furnished: furnished,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "villas" && process === "Rent") {
       setBody({
-
         process: process,
         owner: e.target.Owner.value,
         price: e.target.Price.value,
@@ -142,13 +152,14 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "apartments" && process === "Sell") {
       setBody({
-
-
         process: process,
         owner: e.target.Owner.value,
         price: e.target.Price.value,
@@ -163,12 +174,14 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "apartments" && process === "Rent") {
       setBody({
-
         process: process,
         owner: e.target.Owner.value,
         price: e.target.Price.value,
@@ -184,22 +197,12 @@ export default function CreatePost() {
         city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
-        moreInfo: e.target.moreInfo.value
+
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
       });
-      /*process: process,
-                  owner: e.target.Owner.value,
-                  price: e.target.Price.value,
-                  surfaceArea:e.target.SurfaceArea.value , 
-                  landArea:e.target.LandArea.value , 
-                  buildingAge:e.target.BuildingAge.value  ,
-                  rooms:e.target.Rooms.value ,
-                  rentDuration:e.target.RentDuration.value,
-                  bathrooms: e.target.Bathrooms.value,  
-                  availability: available,
-                  furnished :furnished ,
-                  city: e.target.City.value,
-                  address: e.target.address.value,
-                  moreInfo: e.target.moreInfo.value */
     } else if (model === "chalets" && process === "Sell") {
       setBody({
         process: process,
@@ -214,12 +217,14 @@ export default function CreatePost() {
         furnished: furnished,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "chalets" && process === "Rent") {
       setBody({
-
         process: process,
         owner: e.target.Owner.value,
         price: e.target.Price.value,
@@ -233,12 +238,14 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "warehouses" && process === "Sell") {
       setBody({
-
         process: process,
         type: e.target.Type.value,
         owner: e.target.Owner.value,
@@ -247,12 +254,14 @@ export default function CreatePost() {
         availability: available,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
-      });
 
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
+      });
     } else if (model === "warehouses" && process === "Rent") {
       setBody({
-
         process: process,
         type: e.target.Type.value,
         owner: e.target.Owner.value,
@@ -262,25 +271,20 @@ export default function CreatePost() {
         rentDuration: e.target.RentDuration.value,
         city: e.target.City.value,
         address: e.target.address.value,
-        moreInfo: e.target.moreInfo.value
+
+        moreInfo: e.target.moreInfo.value,
+        url1: e.target.url1.value,
+        url2: e.target.url2.value,
+        url3: e.target.url3.value,
       });
-
-
     }
-
-    setImg(e.target.images.value)
-
 
     console.log(JSON.stringify(body));
   };
 
-  useEffect(() => {
-    if (body.moreInfo) { setSubmit(true) }
-
-  }, [body])
   const post = async () => {
     const data = await axios.post(
-      `https://akarcom-mid-project.herokuapp.com/newpost/${user.id}/${model}`,
+      `https://git-top-akarcom.herokuapp.com/newpost/${user.id}/${model}`,
       body,
       {
         headers: {
@@ -289,38 +293,9 @@ export default function CreatePost() {
       }
     );
 
-    await setImageBody({
-      postId: data.data.id,
-      userId: data.data.userId,
-      model: data.data.model,
-      url1: img,
-
-    })
-
-
     console.log(data);
-  }
+  };
 
-  useEffect(() => {
-    sendImage()
-  }, [imgBody.postId])
-  // we will call this function after the post is created
-  const sendImage = () => {
-    let arr = ['landImages', 'houseImages', 'villaImages', 'apartmentImages ', 'warehouseImages ', 'chaletImages']
-    let imageModel = ""
-    if (model === "lands") {
-      imageModel = arr[0]
-    } else if (model === "houses") { imageModel = arr[1] } else if (model === "villas") { imageModel = arr[2] } else if (model === "apartments") { imageModel = arr[3] } else if (model === "warehouses") { imageModel = arr[4] } else if (model === "chalets") { imageModel = arr[5] }
-    // console.log(imageModel) 
-    console.log(imgBody.userId, user.id, imgBody.postId)
-    let imageData = axios.post(`https://akarcom-mid-project.herokuapp.com/newpost/${imgBody.userId}/${model}/${imgBody.postId}/${imageModel}`, imgBody, {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    }
-    )
-    console.log(imageData)
-  }
   return (
     <>
       <Back name="" title="Fill Your Real Estate Info" cover={img} />
@@ -328,6 +303,7 @@ export default function CreatePost() {
       <div className="Post">
         <div className="beforeForm">
           <label className="labelLeft"> Model: </label>
+
           <select
             name="Process"
             onClick={(e) => {
@@ -343,6 +319,7 @@ export default function CreatePost() {
           </select>
           <br></br>
           <label className="labelLeft"> Process: </label>
+
           <select
             name="Process"
             onClick={(e) => {
@@ -358,6 +335,7 @@ export default function CreatePost() {
           <form className="editForm" onSubmit={handleSubmit}>
             <div class="custom-select">
               <br></br><br></br>
+
               <label className="labelLeft"> City: </label>
               <select name="City">
                 <option value="Amman">Amman</option>
@@ -394,6 +372,7 @@ export default function CreatePost() {
               </select>
 
               {model === "lands" || model === "warehouses" ? (
+
                 <>
                   {" "}
                   <label className="labelLeft"> Type of Estate: </label>
@@ -481,6 +460,7 @@ export default function CreatePost() {
               <br></br>
               <br></br>
 
+
               {model === "apartments" || model === "houses" ? (
                 <>
                   <label className="labelLeft"> Finishing: </label>
@@ -530,6 +510,7 @@ export default function CreatePost() {
                   >
                     <option value="true">Yes</option>
                     <option value="false">No</option>
+
                   </select>
                 </>
               ) : (
@@ -582,6 +563,7 @@ export default function CreatePost() {
                 />
               </>
             )}
+
 
             {model === "villas" || model === "chalets" || model === "houses" ? (
               <>
@@ -657,12 +639,12 @@ export default function CreatePost() {
             {/* {submit ? :   } */}
 
             <br></br>
+
             <br></br>
           </form>
         }
       </div>
       <button onClick={post}>Post</button>
-
 
     </>
   );
