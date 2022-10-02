@@ -8,6 +8,7 @@ const Hero = () => {
 
   return (
     <>
+    
     <div className="ved">
     <ReactPlayer url='https://www.youtube.com/watch?v=5mhOK-3zFic'  
      playing={true}
