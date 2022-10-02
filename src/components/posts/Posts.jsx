@@ -4,7 +4,7 @@ import Back from "../common/Back";
 import img from "../images/real-estate-hero.jpg";
 import axios from "axios";
 import cookie from "react-cookies";
-import { Switch , Redirect } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
@@ -21,7 +21,7 @@ export default function CreatePost() {
 
 
   const [body, setBody] = useState({});
-const [goToPost , setGoToPost]= useState(false)
+  const [goToPost, setGoToPost] = useState(false)
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -63,7 +63,7 @@ const [goToPost , setGoToPost]= useState(false)
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
-        area: e.target.Area.value,
+        // area: e.target.Area.value,
         floors: e.target.floors.value,
         buildingAge: e.target.BuildingAge.value,
         rooms: e.target.Rooms.value,
@@ -85,7 +85,7 @@ const [goToPost , setGoToPost]= useState(false)
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
-        area: e.target.Area.value,
+        // area: e.target.Area.value,
         floors: e.target.floors.value,
         buildingAge: e.target.BuildingAge.value,
         rooms: e.target.Rooms.value,
@@ -270,10 +270,10 @@ const [goToPost , setGoToPost]= useState(false)
         },
       }
     );
-if(data.data.id){
-  cookie.save('postId',data.data.id);
-  setGoToPost(true)
-}
+    if (data.data.id) {
+      cookie.save('postId', data.data.id);
+      setGoToPost(true)
+    }
     console.log(data);
   };
 
@@ -500,7 +500,7 @@ if(data.data.id){
                     <option value="0-11 months">0-11 months</option>
                     <option value="1-5 years">1-5 years</option>
                     <option value="6-9 years">6-9 years</option>
-                    <option value="10-19 years">+10-19 years</option>
+                    <option value="10-19 years">10-19 years</option>
                     <option value="+20 years">+20 years</option>
                   </select>
                 </>
@@ -515,7 +515,7 @@ if(data.data.id){
             <br></br>
             <br></br>
 
-            {model === "villas" || model === "chalets" ? (
+            {model === "villas" || model === "chalets" || model === "houses" ? (
               <div className="hide"></div>
             ) : (
               <>
@@ -564,7 +564,7 @@ if(data.data.id){
               name="Price"
               type="number"
               placeholder="Enter price in JD."
-              required  />
+              required />
             <br></br>
             <br></br>
 
@@ -574,7 +574,7 @@ if(data.data.id){
               type="text"
               placeholder="address"
               name="address"
-              required  />
+              required />
             <br></br>
             <br></br>
 
@@ -618,12 +618,12 @@ if(data.data.id){
         }
       </div>
       <button onClick={post}>Post</button>
-{goToPost ? <> 
-  <Switch>
-    <Redirect from='*' to={`/postDetails/${cookie.load('postId')}`} value={cookie.load('postId')}></Redirect>
-    </Switch>
-    
-</> : <></>}
+      {goToPost ? <>
+        <Switch>
+          <Redirect from='*' to={`/postDetails/${cookie.load('postId')}`} value={cookie.load('postId')}></Redirect>
+        </Switch>
+
+      </> : <></>}
 
 
     </>
