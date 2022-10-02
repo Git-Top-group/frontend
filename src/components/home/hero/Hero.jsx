@@ -1,14 +1,22 @@
 import React from "react"
-import Heading from "../../common/Heading"
+//import Heading from "../../common/Heading"
 import "./hero.css"
-
+import ReactPlayer from 'react-player'
 const Hero = () => {
+  const src ="https://youtu.be/5mhOK-3zFic";
+
+
   return (
     <>
-      <section className='hero'>
-        <div className='container'>
-          <Heading title='Search Your Next Home ' subtitle='Find new & featured property located in your local city.' />
+    <div className="ved">
+    <ReactPlayer url='https://www.youtube.com/watch?v=5mhOK-3zFic'  
+     playing={true}
+     loop ={true}
+    />
 
+    </div>
+
+          {/* <Heading title='Search Your Next Home ' subtitle='Find new & featured property located in your local city.' /> */}
           {/* <form className='flex'>
             <div className='box'>
               <span>City/Street</span>
@@ -29,8 +37,8 @@ const Hero = () => {
               <i className='fa fa-search'></i>
             </button>
           </form> */}
-        </div>
-      </section>
+     
+   
     </>
   )
 }

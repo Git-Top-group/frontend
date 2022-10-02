@@ -6,7 +6,7 @@
 }
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #fff;
+ background-color: #e9edc9;
 }
 .container {
   max-width: 80%;
@@ -28,11 +28,16 @@ ul {
 button {
   border-radius: 5px;
   padding: 17px 30px;
-  background: #27ae60;
+  background:#ce9e62 ;
   border: none;
-  color: #fff;
+  color:#f7f8f8f6;
   cursor: pointer;
   font-weight: bold;
+  border-radius: 40em;
+  touch-action: manipulation;
+  
+  
+  
 }
 button i {
   margin-right: 5px;
@@ -171,4 +176,13 @@ img {
   .back {
     height: 30vh;
   }
+
+  .button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
 }
+
+
+
+

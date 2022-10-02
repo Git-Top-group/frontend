@@ -1,5 +1,5 @@
-.hero {
-  background-image: url("../../../../public/images/banner.png");
+/* .hero {
+  background-image: url("");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -9,6 +9,7 @@
 }
 .hero .container {
   padding-top: 15%;
+  width: 100%;
 }
 .hero h1 {
   color: #fff;
@@ -67,4 +68,14 @@ form h4 {
   form input {
     width: 100%;
   }
-}
+  .ved{
+    width: 300px;
+    margin-left: 30%;
+  }
+} */
+
+.ved{
+  width:10px;
+  margin-left: 30%;
+  background-color: darkgrey;
+  }

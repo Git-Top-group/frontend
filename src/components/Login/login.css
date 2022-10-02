@@ -1,5 +1,5 @@
 .loginForm{
-    border:2px solid rgb(70, 248, 99);
+    border:2px solid #40798c;
     margin-left: 400px;
      width:600px;
 }
@@ -7,7 +7,7 @@
 .buttonSignin{
     border-radius: 5px;
     padding: 17px 30px;
-    background: #27ae60;
+    background:#70a9a1;
     border: none;
     color: #fff;
     cursor: pointer;
