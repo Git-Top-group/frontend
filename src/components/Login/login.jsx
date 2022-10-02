@@ -20,7 +20,7 @@ const  SignIn =  () => {
 
       {auth.loginStatus && auth.user.id ?  
     <Switch>
-    <Redirect from='*' to={`/dashboard/${auth.user.id}`}></Redirect>
+    <Redirect from='*' to={`/dashboard`}></Redirect>
     </Switch>
     :<Switch>
       <form onSubmit={handleLogin} className="loginForm">
