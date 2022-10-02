@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react"
 import "./header.css"
 import { nav, setting } from "../../data/Data"
+import Button from "react-bootstrap/Button";
 
 import { Link } from "react-router-dom"
 import { LoginContext } from "../../context/context";
@@ -35,9 +36,9 @@ const Header = () => {
                     <a href="/profile">Profile</a>
                     <a href="/posts">Create Post</a>
                     <a href="/contact">Contact</a>
-                    <button className="dropbtn" onClick={handleLogOut}><i className='fa fa-sign-out'></i>
+                    <Button className="dropbtn" onClick={handleLogOut}><i className='fa fa-sign-out'></i>
                       Log Out
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -52,9 +53,10 @@ const Header = () => {
             </button>
             </Link> */}
             <Link to={'/signup'}>
-              <button className='btn1'>
-                <i className='fa fa-sign-out'></i> Register
-              </button>
+             
+              <Button variant="success" type="submit"> <i className='fa fa-sign-out'></i>
+              Register
+                </Button>
             </Link>
           </div>
 

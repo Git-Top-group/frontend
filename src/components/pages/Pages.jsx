@@ -35,7 +35,7 @@ const Pages = () => {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
           <PostsRoutes exact path='/posts' component={Posts} />
-          <Route path={`/dashboard/:id`} component={Dashboard} />
+          <Route path={`/dashboard`} component={Dashboard} />
 
         </Switch>
         <Footer />

@@ -81,7 +81,7 @@ visibility: hidden;
   }
   
   /* Hide the items when the select box is closed: */
-  .select-hide {
+  /* .select-hide {
     display: none;
   }
   
@@ -96,8 +96,8 @@ visibility: hidden;
    width: 100%;
 
 
-}
-.imageURL p{
+} */
+/* .imageURL p{
   font-size: 35px;
   font-weight: 600;
   background-color: rgb(16, 97, 0);
@@ -109,24 +109,45 @@ visibility: hidden;
   cursor: pointer;
   
   
-}
+} */
 .beforeForm{
-  /* margin-top: 20px; */
-  display:flex ; 
-  justify-content: flex-start;
-  align-items: center;
-  color: darkslategray;
-  font-size: 30px;
-  width:100%;
-  background-color: rgb(229, 245, 158);
-  height: 70px;
-  padding:40px;
   
+  margin-top: 30px;
+  display:flex ;
+   justify-content:center;
+  align-items: center;
+  width:270px;
+  height: 80px;
+  gap:30px;
+  margin-left: 15px;
 
+  /* border:2px solid rgba(207, 205, 205, 0.867); */
+  
 }
-.beforeForm select{
+/* .beforeForm:hover{
+  border:3px inset rgb(218, 218, 218);
+  border-radius:10px; */
+  /* box-shadow: 10px 20px 50px grey; */
+/* } */
 
-width:250px ;
-border: 2px solid red ; 
-height: 50px;
+
+.Forms form{
+width:85%;
+  display: grid;
+  grid-template-columns: auto auto  auto  auto auto ;
+  
+  gap:13px;
+  padding: 10px;
+  border:2px solid rgba(207, 205, 205, 0.867);
+  margin-left: 15px;
 }
+.Forms form Button{
+height:60px;
+transition: 0.5s;
+}
+.Forms form Button:hover{
+ font-size: 35px;
+ color: red ;
+
+  
+  }

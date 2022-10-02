@@ -14,6 +14,9 @@ export const nav = [
   {
     text: "blog",
     path: "/blog",
+  }, {
+    text: "dashboard",
+    path: "/dashboard",
   },
 
 ]

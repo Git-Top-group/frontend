@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react"
 // import { list } from "../../data/Data"
 import { LoginContext } from "../../context/context"
+import Button from "react-bootstrap/Button";
+
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data"
 import "./recentCard.css"
@@ -67,9 +69,9 @@ const RecentCard = (props) => {
             <label>{items.total}</label>
             <br></br>
             <br></br>
-            <button onClick={() => setModel(items.name)}>
+            <Button variant="danger" onClick={() => setModel(items.name)}>
               Filter
-            </button>
+            </Button>
           </div>
 
         ))}
