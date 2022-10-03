@@ -51,9 +51,9 @@ const RecentCard = (props) => {
     <>
       <div className="modelIcon">
         {featured.map((items, index) => (
-          <div className="box" key={index}>
-            <img src={items.cover} alt="" />
-            <h4>{items.name}</h4>
+          <div className='model-box' key={index} >
+            <img src={items.cover} alt='' />
+            <h5 >{items.name}</h5>
             <label>{items.total}</label>
             <br></br>
             <br></br>

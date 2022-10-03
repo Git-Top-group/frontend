@@ -18,6 +18,10 @@ export const nav = [
     text: "dashboard",
     path: "/dashboard",
   },
+  {
+    text: "dashboard",
+    path: "/dashboard",
+  },
 
 ]
 

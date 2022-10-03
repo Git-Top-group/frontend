@@ -1,6 +1,6 @@
 .modelIcon{
     display: grid;
-    column-gap: 10px;
+    column-gap: 20px;
     grid-template-columns: auto auto auto auto auto auto;
     /* background-color: #2196F3; */
     padding: 0px;
@@ -30,13 +30,13 @@ align-items: center;
 }
 
 
-/*.modelsfilter{
+/* .modelsfilter{
     background-color:rgb(255, 229, 229);
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding-right: 100px;
-}*/
+} */
 
 .modelIcon .model-box{
         box-shadow: 0 0 30px 0 #c3ccc7;
@@ -44,6 +44,7 @@ align-items: center;
         text-align: center;
         padding: 30px;
         cursor: pointer;
+        width: 180px;
     
 }
 
