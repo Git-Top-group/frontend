@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import "./posts.css";
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 import Back from "../common/Back";
 import img from "../images/real-estate-hero.jpg";
 import axios from "axios";
 import cookie from "react-cookies";
-import { Switch , Redirect } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
@@ -18,13 +22,20 @@ export default function CreatePost() {
   const [furnished, setFurnished] = useState(true);
   // eslint-disable-next-line
   const [elevator, setElevator] = useState(true);
-
+  console.log(cookie.load("actions")[0]);
 
   const [body, setBody] = useState({});
-const [goToPost , setGoToPost]= useState(false)
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [goToPost, setGoToPost] = useState(false);
 
+
+
+
+  const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // console.log("------------------")
+
+  // console.log(body)
+  // console.log("------------------")
     if (model === "lands" && process === "Sell") {
       setBody({
         process: process,
@@ -63,7 +74,7 @@ const [goToPost , setGoToPost]= useState(false)
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
-        area: e.target.Area.value,
+
         floors: e.target.floors.value,
         buildingAge: e.target.BuildingAge.value,
         rooms: e.target.Rooms.value,
@@ -85,7 +96,7 @@ const [goToPost , setGoToPost]= useState(false)
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
-        area: e.target.Area.value,
+
         floors: e.target.floors.value,
         buildingAge: e.target.BuildingAge.value,
         rooms: e.target.Rooms.value,
@@ -258,8 +269,17 @@ const [goToPost , setGoToPost]= useState(false)
     }
 
     console.log(JSON.stringify(body));
+    setTimeout(function(){
+      sendPost()
+   }, 1000);
+
+
   };
 
+  const sendPost=()=>{
+
+    post()
+  }
   const post = async () => {
     const data = await axios.post(
       `https://akarcom-final.herokuapp.com/newpost/${user.id}/${model}`,
@@ -270,10 +290,10 @@ const [goToPost , setGoToPost]= useState(false)
         },
       }
     );
-if(data.data.id){
-  cookie.save('postId',data.data.id);
-  setGoToPost(true)
-}
+    if (data.data.id) {
+      cookie.save("postId", data.data.id);
+      setGoToPost(true);
+    }
     console.log(data);
   };
 
@@ -283,136 +303,257 @@ if(data.data.id){
 
       <div className="Post">
         <div className="beforeForm">
-          <label> Model: </label>
-          <select
-            name="Process"
-            onClick={(e) => {
-              setModel(e.target.value);
-            }}
-          >
-            <option value="villas">villas</option>
-            <option value="lands">lands</option>
-            <option value="houses">houses</option>
-            <option value="chalets">chalets</option>
-            <option value="apartments">apartments</option>
-            <option value="warehouses">warehouses</option>
-          </select>
-          <br></br>
-          <label> Process: </label>
-          <select
-            name="Process"
-            onClick={(e) => {
-              setProcess(e.target.value);
-            }}
-          >
-            <option value="Sell">Sell</option>
-            <option value="Rent">Rent</option>
-          </select>
+          <FloatingLabel controlId="floatingSelect" label="Model">
+            <Form.Select
+              aria-label="Floating label select example" size="" 
+              name="Process"
+              onClick={(e) => {
+                setModel(e.target.value);
+              }}
+            >
+              <option value="villas">villas</option>
+              <option value="lands">lands</option>
+              <option value="houses">houses</option>
+              <option value="chalets">chalets</option>
+              <option value="apartments">apartments</option>
+              <option value="warehouses">warehouses</option>
+            </Form.Select>
+          </FloatingLabel>
+
+          <FloatingLabel controlId="floatingSelect" label="Process">
+            <Form.Select
+              aria-label="Floating label select example" size=""
+              name="Process"
+              onClick={(e) => {
+                setProcess(e.target.value);
+              }}
+            >
+              <option value="Sell">Sell</option>
+              <option value="Rent">Rent</option>
+            </Form.Select>
+          </FloatingLabel>
         </div>
-        {
-          <form className="editForm" onSubmit={handleSubmit}>
-            <div class="custom-select">
-              {model === "lands" || model === "warehouses" ? (
-                <>
-                  <label className="labelLeft"> Type of Estate: </label>
-                  <select name="Type">
+
+        <div className="Forms">
+          {/* lands form ----------------------------------------------------  */}
+
+          {model === "lands" ? (
+            <>
+              <Form onSubmit={handleSubmit}>
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example" 
+                    name="City" 
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingSelect"
+                  label="Type of Estate"
+                >
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Type"
+                  >
                     <option value="Industrial">Industrial</option>
                     <option value="Commercial">Commercial</option>
                     <option value="Agricultural">Agricultural</option>
-                  </select>
-                </>
-              ) : (
-                <></>
-              )}
+                  </Form.Select>
+                </FloatingLabel>
 
-              <label className="labelLeft"> City: </label>
-              <select name="City">
-                <option value="Amman">Amman</option>
-                <option value="Zarqa">Zarqa</option>
-                <option value="Irbid">Irbid</option>
-                <option value="Aqaba">Aqaba</option>
-                <option value="Mafraq">Mafraq</option>
-                <option value="Jarash">Jarash</option>
-                <option value="Ma'an">Ma'an</option>
-                <option value="Karak">Karak</option>
-                <option value="Madaba">Madaba</option>
-                <option value="Ajloun">Ajloun</option>
-                <option value="Tafilah">Tafilah</option>
-                <option value="Al-Balqa">Al-Balqa</option>
-              </select>
-              {model === "apartments" ? (
-                <>
-                  <label className="labelLeft"> Floor Number: </label>
-                  <select name="FloorNumber">
-                    <option value="Basement">Basement</option>
-                    <option value="Ground-Floor">Ground-Floor</option>
-                    <option value="First-Floor">First-Floor</option>
-                    <option value="Second-Floor">Second-Floor</option>
-                    <option value="Third-Floor">Third-Floor</option>
-                    <option value="Fourth-Floor">Fourth-Floor</option>
-                    <option value="Fifth-Floor">Fifth-Floor</option>
-                    <option value="Higher than 5">Higher than 5</option>
-                  </select>
-                </>
-              ) : (
-                <></>
-              )}
-
-              {process === "Sell" ? (
-                <></>
-              ) : (
-                <>
-                  <label className="labelLeft"> Rent Duration: </label>
-                  <select name="RentDuration">
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                  </select>
-                </>
-              )}
-
-              {model === "apartments" ? (
-                <>
-                  <label className="labelLeft"> Elevator: </label>
-                  <select
-                    name="Elevator"
+                <FloatingLabel controlId="floatingSelect" label="Availability">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Availability"
                     onClick={(e) => {
                       e.target.value === "false"
-                        ? setElevator(false)
-                        : setElevator(true);
+                        ? setAvailable(false)
+                        : setAvailable(true);
                     }}
                   >
                     <option value="true">Yes</option>
                     <option value="false">No</option>
-                  </select>
-                </>
-              ) : (
-                <></>
-              )}
+                  </Form.Select>
+                </FloatingLabel>
 
-              <br></br>
-              <br></br>
+                <FloatingLabel controlId="floatingSelect" label="Owner">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Owner"
+                  >
+                    <option value="Owner">Owner</option>
+                    <option value="Broker">Broker</option>
+                  </Form.Select>
+                </FloatingLabel>
 
-              <label> Availability: </label>
-              <select
-                name="Availability"
-                onClick={(e) => {
-                  e.target.value === "false"
-                    ? setAvailable(false)
-                    : setAvailable(true);
-                }}
-              >
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-              </select>
+                {process === "Rent" ? (
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Rent Duration"
+                  >
+                    <Form.Select
+                      aria-label="Floating label select example"
+                      name="RentDuration"
+                    >
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </Form.Select>
+                  </FloatingLabel>
+                ) : (
+                  <></>
+                )}
 
-              {model === "lands" || model === "warehouses" ? (
-                <></>
-              ) : (
-                <>
-                  <label className="labelLeft"> Furnished: </label>
-                  <select
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Area of Estate"
+                    name="Area"
+                  />
+                </FloatingLabel>
+
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Price</InputGroup.Text>
+                  <Form.Control
+                    aria-label="Amount (to the nearest dollar)"
+                    name="Price"
+                    type="number"
+                    placeholder="Enter price in JD."
+                  />
+                  <InputGroup.Text>JD</InputGroup.Text>
+                </InputGroup>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Address"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="address"
+                    name="address"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="More Information"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Something special about your estate."
+                    name="moreInfo"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url1"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url2"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url3"
+                  />
+                </FloatingLabel>
+
+                <Button variant="success" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          ) : (
+            <></>
+          )}
+
+          {/* villas form ------------------------------------------------- */}
+
+          {model === "villas" ? (
+            <>
+              <Form onSubmit={handleSubmit}>
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="City"
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingSelect"
+                  label="Number of Floors"
+                >
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="floors"
+                  >
+                    <option value="1">one</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">More</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Furnished">
+                  <Form.Select
+                    aria-label="Floating label select example"
                     name="Furnished"
                     onClick={(e) => {
                       e.target.value === "false"
@@ -422,46 +563,14 @@ if(data.data.id){
                   >
                     <option value="true">Yes</option>
                     <option value="false">No</option>
-                  </select>
-                </>
-              )}
-              {model === "villas" || model === "houses" ? (
-                <>
-                  <label className="labelLeft"> Number of Floors : </label>
-                  <select name="floors">
-                    <option value="1">one</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                    <option value="4">Four</option>
-                    <option value="5">More</option>
-                  </select>
-                </>
-              ) : (
-                <div className="hide"></div>
-              )}
-              {model === "apartments" || model === "houses" ? (
-                <>
-                  <label className="labelLeft"> Finishing: </label>
-                  <select name="Finishing">
-                    <option value="Unfinished">Unfinished</option>
-                    <option value="Semi-Finished">Semi-Finished</option>
-                    <option value="Fully-Finished">Fully-Finished</option>
-                    <option value="Lux">Lux</option>
-                    <option value="Super-Lux">Super-Lux</option>
-                    <option value="Ultra-Lux">Ultra-Lux</option>
-                    <option value="Deluxe">Deluxe</option>
-                  </select>
-                </>
-              ) : (
-                <div className="hide"></div>
-              )}
+                  </Form.Select>
+                </FloatingLabel>
 
-              {model === "lands" || model === "warehouses" ? (
-                <div className="hide"></div>
-              ) : (
-                <>
-                  <label className="labelLeft"> Rooms: </label>
-                  <select name="Rooms">
+                <FloatingLabel controlId="floatingSelect" label="Rooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Rooms"
+                  >
                     <option value="Studio">Studio</option>
                     <option value="1-Bedroom">1-Bedroom</option>
                     <option value="2-Bedrooms">2-Bedrooms</option>
@@ -469,31 +578,37 @@ if(data.data.id){
                     <option value="4-Bedrooms">4-Bedrooms</option>
                     <option value="5-Bedrooms">5-Bedrooms</option>
                     <option value="+6-Bedrooms">+6-Bedrooms</option>
-                  </select>
-                </>
-              )}
+                  </Form.Select>
+                </FloatingLabel>
 
-              {model === "lands" || model === "warehouses" ? (
-                <div className="hide"></div>
-              ) : (
-                <>
-                  <label className="labelLeft"> Bathrooms: </label>
-                  <select name="Bathrooms">
+                <FloatingLabel controlId="floatingSelect" label="Bathrooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Bathrooms"
+                  >
                     <option value="1-Bathroom">1-Bathroom</option>
                     <option value="2-Bathrooms">2-Bathrooms</option>
                     <option value="3-Bathrooms">3-Bathrooms</option>
                     <option value="4-Bathrooms">4-Bathrooms</option>
                     <option value="+5-Bathrooms">+5-Bathrooms</option>
-                  </select>
-                </>
-              )}
+                  </Form.Select>
+                </FloatingLabel>
 
-              {model === "lands" || model === "warehouses" ? (
-                <div className="hide"></div>
-              ) : (
-                <>
-                  <label className="labelLeft"> Building Age: </label>
-                  <select name="BuildingAge">
+                <FloatingLabel controlId="floatingSelect" label="Owner">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Owner"
+                  >
+                    <option value="Owner">Owner</option>
+                    <option value="Broker">Broker</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Building Age">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="BuildingAge"
+                  >
                     <option value="Under-Construction">
                       Under-Construction
                     </option>
@@ -502,130 +617,1103 @@ if(data.data.id){
                     <option value="6-9 years">6-9 years</option>
                     <option value="10-19 years">+10-19 years</option>
                     <option value="+20 years">+20 years</option>
-                  </select>
-                </>
-              )}
+                  </Form.Select>
+                </FloatingLabel>
 
-              <label className="labelLeft"> Owner: </label>
-              <select name="Owner">
-                <option value="Owner">Owner</option>
-                <option value="Broker">Broker</option>
-              </select>
-            </div>
-            <br></br>
-            <br></br>
+                {process === "Rent" ? (
+                  <>
+                    <FloatingLabel
+                      controlId="floatingSelect"
+                      label="Rent Duration"
+                    >
+                      <Form.Select
+                        aria-label="Floating label select example"
+                        name="RentDuration"
+                      >
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Yearly">Yearly</option>
+                      </Form.Select>
+                    </FloatingLabel>
+                  </>
+                ) : (
+                  <></>
+                )}
 
-            {model === "villas" || model === "chalets" ? (
-              <div className="hide"></div>
-            ) : (
-              <>
-                <label>Area: </label>
-                <input
-                  name="Area"
-                  type="number"
-                  placeholder="Enter area in m2."
-                  required />
-              </>
-            )}
+                <FloatingLabel controlId="floatingSelect" label="Availability">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Availability"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setAvailable(false)
+                        : setAvailable(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
 
-            <br></br>
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Land Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter land area in m2."
+                    name="LandArea"
+                  />
+                </FloatingLabel>
 
-            {model === "villas" || model === "chalets" || model === "houses" ? (
-              <>
-                <label>Land Area: </label>
-                <input
-                  type="number"
-                  placeholder="Enter land area in m2."
-                  name="LandArea" required
-                />
-              </>
-            ) : (
-              <div className="hide"></div>
-            )}
-            <br></br>
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Surface Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter surface area in m2."
+                    name="SurfaceArea"
+                  />
+                </FloatingLabel>
 
-            {model === "villas" || model === "chalets" || model === "houses" ? (
-              <>
-                <label>Surface Area: </label>
-                <input
-                  type="number"
-                  placeholder="Enter surface area in m2."
-                  name="SurfaceArea" required
-                />
-              </>
-            ) : (
-              <div className="hide"></div>
-            )}
-            <br></br>
-            <br></br>
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Price</InputGroup.Text>
+                  <Form.Control
+                    aria-label="Amount (to the nearest dollar)"
+                    name="Price"
+                    type="number"
+                    placeholder="Enter price in JD."
+                  />
+                  <InputGroup.Text>JD</InputGroup.Text>
+                </InputGroup>
 
-            <label>Price: </label>
-            <input
-              name="Price"
-              type="number"
-              placeholder="Enter price in JD."
-              required  />
-            <br></br>
-            <br></br>
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Address"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="address"
+                    name="address"
+                  />
+                </FloatingLabel>
 
-            <label>Address: </label>
-            <input
-              className="moreSpace"
-              type="text"
-              placeholder="address"
-              name="address"
-              required  />
-            <br></br>
-            <br></br>
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="More Information"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Something special about your estate."
+                    name="moreInfo"
+                  />
+                </FloatingLabel>
 
-            <label>More Information: </label>
-            <input
-              className="moreSpace"
-              type="text"
-              placeholder="Something special about your estate."
-              name="moreInfo"
-            />
-            <br></br>
-            <br></br>
-            <div className="imageURL">
-              <label>Add image</label>
-              <input
-                className="Images"
-                type="text"
-                placeholder="add the image Link 'URL' "
-                name="url1" required
-              />
-              <label>Add image</label>
-              <input
-                className="Images"
-                type="text"
-                placeholder="add the image Link 'URL' "
-                name="url2"
-              />{" "}
-              <label>Add image</label>
-              <input
-                className="Images"
-                type="text"
-                placeholder="add the image Link 'URL' "
-                name="url3"
-              />
-            </div>
-            <button type="submit">Submit</button>
-            {/* {submit ? :   } */}
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url1"
+                  />
+                </FloatingLabel>
 
-            <br></br>
-          </form>
-        }
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url2"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url3"
+                  />
+                </FloatingLabel>
+
+                <Button variant="success" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          ) : (
+            <></>
+          )}
+
+          {/* houses form ------------------------------------------------------ */}
+
+          {model === "houses" ? (
+            <>
+              <Form onSubmit={handleSubmit}>
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="City"
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingSelect"
+                  label="Number of Floors"
+                >
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="floors"
+                  >
+                    <option value="1">one</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">More</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Furnished">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Furnished"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setFurnished(false)
+                        : setFurnished(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Rooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Rooms"
+                  >
+                    <option value="Studio">Studio</option>
+                    <option value="1-Bedroom">1-Bedroom</option>
+                    <option value="2-Bedrooms">2-Bedrooms</option>
+                    <option value="3-Bedrooms">3-Bedrooms</option>
+                    <option value="4-Bedrooms">4-Bedrooms</option>
+                    <option value="5-Bedrooms">5-Bedrooms</option>
+                    <option value="+6-Bedrooms">+6-Bedrooms</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Bathrooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Bathrooms"
+                  >
+                    <option value="1-Bathroom">1-Bathroom</option>
+                    <option value="2-Bathrooms">2-Bathrooms</option>
+                    <option value="3-Bathrooms">3-Bathrooms</option>
+                    <option value="4-Bathrooms">4-Bathrooms</option>
+                    <option value="+5-Bathrooms">+5-Bathrooms</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Owner">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Owner"
+                  >
+                    <option value="Owner">Owner</option>
+                    <option value="Broker">Broker</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Building Age">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="BuildingAge"
+                  >
+                    <option value="Under-Construction">
+                      Under-Construction
+                    </option>
+                    <option value="0-11 months">0-11 months</option>
+                    <option value="1-5 years">1-5 years</option>
+                    <option value="6-9 years">6-9 years</option>
+                    <option value="10-19 years">+10-19 years</option>
+                    <option value="+20 years">+20 years</option>
+                  </Form.Select>
+                </FloatingLabel>
+                <FloatingLabel controlId="floatingSelect" label="Finishing">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Finishing"
+                  >
+                    <option value="Unfinished">Unfinished</option>
+                    <option value="Semi-Finished">Semi-Finished</option>
+                    <option value="Fully-Finished">Fully-Finished</option>
+                    <option value="Lux">Lux</option>
+                    <option value="Super-Lux">Super-Lux</option>
+                    <option value="Ultra-Lux">Ultra-Lux</option>
+                    <option value="Deluxe">Deluxe</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                {process === "Rent" ? (
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Rent Duration"
+                  >
+                    <Form.Select
+                      aria-label="Floating label select example"
+                      name="RentDuration"
+                    >
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </Form.Select>
+                  </FloatingLabel>
+                ) : (
+                  <></>
+                )}
+
+                <FloatingLabel controlId="floatingSelect" label="Availability">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Availability"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setAvailable(false)
+                        : setAvailable(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Land Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter land area in m2."
+                    name="LandArea"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Surface Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter surface area in m2."
+                    name="SurfaceArea"
+                  />
+                </FloatingLabel>
+
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Price</InputGroup.Text>
+                  <Form.Control
+                    aria-label="Amount (to the nearest dollar)"
+                    name="Price"
+                    type="number"
+                    placeholder="Enter price in JD."
+                  />
+                  <InputGroup.Text>JD</InputGroup.Text>
+                </InputGroup>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Address"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="address"
+                    name="address"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="More Information"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Something special about your estate."
+                    name="moreInfo"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url1"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url2"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url3"
+                  />
+                </FloatingLabel>
+
+                <Button variant="success" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          ) : (
+            <></>
+          )}
+
+          {/*apartments form ------------------------------------------------------ */}
+
+          {model === "apartments" ? (
+            <>
+              <Form onSubmit={handleSubmit}>
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="City"
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Availability">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Availability"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setAvailable(false)
+                        : setAvailable(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Furnished">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Furnished"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setFurnished(false)
+                        : setFurnished(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Floor Numb">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="FloorNumber"
+                  >
+                    <option value="Basement">Basement</option>
+                    <option value="Ground-Floor">Ground-Floor</option>
+                    <option value="First-Floor">First-Floor</option>
+                    <option value="Second-Floor">Second-Floor</option>
+                    <option value="Third-Floor">Third-Floor</option>
+                    <option value="Fourth-Floor">Fourth-Floor</option>
+                    <option value="Fifth-Floor">Fifth-Floor</option>
+                    <option value="Higher than 5">Higher than 5</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Finishing">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Finishing"
+                  >
+                    <option value="Unfinished">Unfinished</option>
+                    <option value="Semi-Finished">Semi-Finished</option>
+                    <option value="Fully-Finished">Fully-Finished</option>
+                    <option value="Lux">Lux</option>
+                    <option value="Super-Lux">Super-Lux</option>
+                    <option value="Ultra-Lux">Ultra-Lux</option>
+                    <option value="Deluxe">Deluxe</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Rooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Rooms"
+                  >
+                    <option value="Studio">Studio</option>
+                    <option value="1-Bedroom">1-Bedroom</option>
+                    <option value="2-Bedrooms">2-Bedrooms</option>
+                    <option value="3-Bedrooms">3-Bedrooms</option>
+                    <option value="4-Bedrooms">4-Bedrooms</option>
+                    <option value="5-Bedrooms">5-Bedrooms</option>
+                    <option value="+6-Bedrooms">+6-Bedrooms</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Bathrooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Bathrooms"
+                  >
+                    <option value="1-Bathroom">1-Bathroom</option>
+                    <option value="2-Bathrooms">2-Bathrooms</option>
+                    <option value="3-Bathrooms">3-Bathrooms</option>
+                    <option value="4-Bathrooms">4-Bathrooms</option>
+                    <option value="+5-Bathrooms">+5-Bathrooms</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Building Age">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="BuildingAge"
+                  >
+                    <option value="Under-Construction">
+                      Under-Construction
+                    </option>
+                    <option value="0-11 months">0-11 months</option>
+                    <option value="1-5 years">1-5 years</option>
+                    <option value="6-9 years">6-9 years</option>
+                    <option value="10-19 years">+10-19 years</option>
+                    <option value="+20 years">+20 years</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Elevator">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Elevator"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setElevator(false)
+                        : setElevator(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Owner">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Owner"
+                  >
+                    <option value="Owner">Owner</option>
+                    <option value="Broker">Broker</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                {process === "Rent" ? (
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Rent Duration"
+                  >
+                    <Form.Select
+                      aria-label="Floating label select example"
+                      name="RentDuration"
+                    >
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </Form.Select>
+                  </FloatingLabel>
+                ) : (
+                  <></>
+                )}
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter land area in m2."
+                    name="Area"
+                  />
+                </FloatingLabel>
+
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Price</InputGroup.Text>
+                  <Form.Control
+                    aria-label="Amount (to the nearest dollar)"
+                    name="Price"
+                    type="number"
+                    placeholder="Enter price in JD."
+                  />
+                  <InputGroup.Text>JD</InputGroup.Text>
+                </InputGroup>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Address"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="address"
+                    name="address"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="More Information"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Something special about your estate."
+                    name="moreInfo"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url1"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url2"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url3"
+                  />
+                </FloatingLabel>
+
+                <Button variant="success" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          ) : (
+            <> </>
+          )}
+
+          {/*warehouses form</div> -----------------------------------------------------------*/}
+          {model === "warehouses" ? (
+            <>
+              <Form onSubmit={handleSubmit}>
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="City"
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingSelect"
+                  label="Type of Estate"
+                >
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Type"
+                  >
+                    <option value="Industrial">Industrial</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Agricultural">Agricultural</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Availability">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Availability"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setAvailable(false)
+                        : setAvailable(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Owner">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Owner"
+                  >
+                    <option value="Owner">Owner</option>
+                    <option value="Broker">Broker</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                {process === "Rent" ? (
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Rent Duration"
+                  >
+                    <Form.Select
+                      aria-label="Floating label select example"
+                      name="RentDuration"
+                    >
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </Form.Select>
+                  </FloatingLabel>
+                ) : (
+                  <></>
+                )}
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Area of Estate"
+                    name="Area"
+                  />
+                </FloatingLabel>
+
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Price</InputGroup.Text>
+                  <Form.Control
+                    aria-label="Amount (to the nearest dollar)"
+                    name="Price"
+                    type="number"
+                    placeholder="Enter price in JD."
+                  />
+                  <InputGroup.Text>JD</InputGroup.Text>
+                </InputGroup>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Address"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="address"
+                    name="address"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="More Information"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Something special about your estate."
+                    name="moreInfo"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url1"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url2"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url3"
+                  />
+                </FloatingLabel>
+
+                <Button variant="success" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          ) : (
+            <></>
+          )}
+
+          {/* chalets form -----------------------------------------------------------------*/}
+          {model === "chalets" ? (
+            <>
+              <Form onSubmit={handleSubmit}>
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="City"
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Availability">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Availability"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setAvailable(false)
+                        : setAvailable(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Furnished">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Furnished"
+                    onClick={(e) => {
+                      e.target.value === "false"
+                        ? setFurnished(false)
+                        : setFurnished(true);
+                    }}
+                  >
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Rooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Rooms"
+                  >
+                    <option value="Studio">Studio</option>
+                    <option value="1-Bedroom">1-Bedroom</option>
+                    <option value="2-Bedrooms">2-Bedrooms</option>
+                    <option value="3-Bedrooms">3-Bedrooms</option>
+                    <option value="4-Bedrooms">4-Bedrooms</option>
+                    <option value="5-Bedrooms">5-Bedrooms</option>
+                    <option value="+6-Bedrooms">+6-Bedrooms</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Bathrooms">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Bathrooms"
+                  >
+                    <option value="1-Bathroom">1-Bathroom</option>
+                    <option value="2-Bathrooms">2-Bathrooms</option>
+                    <option value="3-Bathrooms">3-Bathrooms</option>
+                    <option value="4-Bathrooms">4-Bathrooms</option>
+                    <option value="+5-Bathrooms">+5-Bathrooms</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Owner">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="Owner"
+                  >
+                    <option value="Owner">Owner</option>
+                    <option value="Broker">Broker</option>
+                  </Form.Select>
+                </FloatingLabel>
+
+                <FloatingLabel controlId="floatingSelect" label="Building Age">
+                  <Form.Select
+                    aria-label="Floating label select example"
+                    name="BuildingAge"
+                  >
+                    <option value="Under-Construction">
+                      Under-Construction
+                    </option>
+                    <option value="0-11 months">0-11 months</option>
+                    <option value="1-5 years">1-5 years</option>
+                    <option value="6-9 years">6-9 years</option>
+                    <option value="10-19 years">+10-19 years</option>
+                    <option value="+20 years">+20 years</option>
+                  </Form.Select>
+                </FloatingLabel>
+                {process === "Rent" ? (
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Rent Duration"
+                  >
+                    <Form.Select
+                      aria-label="Floating label select example"
+                      name="RentDuration"
+                    >
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </Form.Select>
+                  </FloatingLabel>
+                ) : (
+                  <></>
+                )}
+<FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Land Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter land area in m2."
+                    name="LandArea"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Surface Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter surface area in m2."
+                    name="SurfaceArea"
+                  />
+                </FloatingLabel>
+
+
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Price</InputGroup.Text>
+                  <Form.Control
+                    aria-label="Amount (to the nearest dollar)"
+                    name="Price"
+                    type="number"
+                    placeholder="Enter price in JD."
+                  />
+                  <InputGroup.Text>JD</InputGroup.Text>
+                </InputGroup>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Address"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="address"
+                    name="address"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="More Information"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Something special about your estate."
+                    name="moreInfo"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url1"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url2"
+                  />
+                </FloatingLabel>
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Add image"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="url3"
+                  />
+                </FloatingLabel>
+
+                <Button variant="success" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
-      <button onClick={post}>Post</button>
-{goToPost ? <> 
-  <Switch>
-    <Redirect from='*' to={`/postDetails/${cookie.load('postId')}`} value={cookie.load('postId')}></Redirect>
-    </Switch>
-    
-</> : <></>}
-
-
+      
+      {goToPost ? (
+        <>
+          <Switch>
+            <Redirect
+              from="*"
+              to={`/postDetails/${cookie.load("postId")}`}
+              value={cookie.load("postId")}
+            ></Redirect>
+          </Switch>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

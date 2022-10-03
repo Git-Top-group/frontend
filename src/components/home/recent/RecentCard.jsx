@@ -2,7 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { baseURL } from "../../../utilize/constants";
 // import { list } from "../../data/Data"
-import { LoginContext } from "../../context/context";
+import { LoginContext } from "../../context/context"
+import Button from "react-bootstrap/Button";
+
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data";
 import "../featured/FeaturedCard.css";
@@ -53,7 +55,11 @@ const RecentCard = (props) => {
             <img src={items.cover} alt="" />
             <h4>{items.name}</h4>
             <label>{items.total}</label>
-            <button onClick={() => setModel(items.name)}>Click me!</button>
+            <br></br>
+            <br></br>
+            <Button variant="danger" onClick={() => setModel(items.name)}>
+              Filter
+            </Button>
           </div>
         ))}
       </div>
