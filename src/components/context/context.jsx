@@ -4,8 +4,10 @@ import base64 from 'base-64';
 // import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
 import axios from 'axios';
+import { baseURL } from "../../utilize/constants";
 export const LoginContext = React.createContext();
-const API = `https://akarcom-mid-project.herokuapp.com`
+const API = `${baseURL}`
+// const API = `https://akarcom-mid-project.herokuapp.com`
 export default function LoginProvider(props) {
 
     const [loginStatus, setLoginStatus] = useState(false);
@@ -36,7 +38,7 @@ export default function LoginProvider(props) {
          
          const userData = { username:`${username}`, password:`${password}`}
           // validateMyUser(response.body);
-        axios.post('https://akarcom-mid-project.herokuapp.com/signup' , userData)
+        axios.post(`${baseURL}/signup` , userData)
        
 .then(console.log(userData))
       } catch (err) {
