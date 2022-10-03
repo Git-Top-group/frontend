@@ -1,5 +1,5 @@
 import React ,{useContext} from "react";
-import {Redirect ,Switch} from 'react-router-dom';
+import {Redirect ,Switch ,Link} from 'react-router-dom';
 import './login.css'
 import {LoginContext} from '../context/context'
 const  SignIn =  () => {
@@ -30,8 +30,13 @@ const  SignIn =  () => {
         <label>Password </label>
         <input type="password" name="password" />
         <button className="buttonSignin">login </button>
+      <Link to={'/signup'}>
+            <p className='signinlink'>
+              <i className='fa fa-sign-out'></i> Don't have account ?  Sign Up
+            </p>
+            </Link>
       </form>
-      <Redirect from='*' to="/signin"></Redirect>
+      <Redirect from='/signup' to="/signin"></Redirect>
       </Switch>
     }
       

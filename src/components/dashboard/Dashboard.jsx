@@ -119,7 +119,7 @@ export default function Dashboard() {
               <td>Esam</td>
               <td>2</td>
               <td>
-                <MDBBtn rounded color='success'>
+                <MDBBtn rounded color='success' >
                   Accept
                 </MDBBtn>
                 <MDBBtn rounded className='mx-2' color='danger'>

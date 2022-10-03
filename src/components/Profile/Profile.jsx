@@ -22,7 +22,7 @@ const Profile = () => {
   const getUserDetails = async () => {
     await fetch(`${baseURL}/user/profile/${cookie.load("id")}`, {
       headers: new Headers({
-        Authorization: `Berar ${cookie.load("token")}`,
+        Authorization: `Bearer ${cookie.load("token")}`,
       }),
     })
       .then((response) => {

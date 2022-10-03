@@ -18,7 +18,7 @@ import UserList from "../UserList/UserList"
 import UserDetails from "../UserDetails/UserDetails"
 import PostDetails from '../PostDetails/PostDetails'
 // import {LoginContext} from '../context/context'
-import {PostsRoutes ,ProfileRoutes} from '../protectedRoutes/UserRoutes'
+import {PostsRoutes ,ProfileRoutes ,DashBoardRoutes} from '../protectedRoutes/UserRoutes'
 const Pages = () => {
   // const auth = useContext(LoginContext)
   return (
@@ -32,13 +32,13 @@ const Pages = () => {
           <Route exact path='/services' component={Services} />
 
           <Route exact path='/blog' component={Blog} />
-          <ProfileRoutes exact path='/profile' component={Profile} />
+          <ProfileRoutes  path='/profile' component={Profile} />
 
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
           <PostsRoutes exact path='/posts' component={Posts} />
-          <Route path={`/dashboard`} component={Dashboard} />
+          <DashBoardRoutes path={`/dashboard`} component={Dashboard} />
           <Route exact path="/postdetails/:model/:id" component={PostDetails}/>
           <Route exact path="/userList" component={UserList}/>
           <Route exact path="/userDetails" component={UserDetails}/>

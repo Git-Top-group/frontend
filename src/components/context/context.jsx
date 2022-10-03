@@ -9,14 +9,16 @@ export const LoginContext = React.createContext();
 const API = `${baseURL}`
 // const API = `https://akarcom-mid-project.herokuapp.com`
 export default function LoginProvider(props) {
-
+ const [signUp ,setSignUp] =useState(false)
     const [loginStatus, setLoginStatus] = useState(false);
     const [user, setUser] = useState({
         username: cookie.load('username') || "",
         actions: cookie.load('actions') || [],
         id:cookie.load('id')|| null 
     });
-
+useEffect(()=>{
+    cookie.save('signUp' ,signUp)
+},[signUp])
     useEffect(() => {
         const tokenFromCookies = cookie.load('token');
         const userId = cookie.load('id');
@@ -30,17 +32,16 @@ export default function LoginProvider(props) {
         }
     }, []);
 
-    const SignUpFunction = async (username, password) => {
+    const SignUpFunction = async (username, password ,email ,phone) => {
       try {
         console.log("hello from sign up : ");
           // const response = await superagent.post(`${API}/users/signup`).set( ` ${base64.decode(`${username}:${password}`)}`);
           // console.log('body >>> ', response);
          
-         const userData = { username:`${username}`, password:`${password}`}
+         const userData = { username:`${username}`, password:`${password}` , phoneNumber:`${phone}` , email:`${email}`}
           // validateMyUser(response.body);
-        axios.post(`${baseURL}/signup` , userData)
-       
-.then(console.log(userData))
+        axios.post(`${baseURL}/signup` , userData)       
+.then(setSignUp(true))
       } catch (err) {
 alert(err)
       }
@@ -100,7 +101,9 @@ alert(err)
         loginFunction: loginFunction,
         logoutFunction: logoutFunction,
         user: user,
-        canDo: can
+        canDo: can,
+        signUp :signUp,
+        setSignUp : setSignUp
     }
     return (
         <LoginContext.Provider value={state}>
