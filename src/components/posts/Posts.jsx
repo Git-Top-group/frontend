@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import "./posts.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
@@ -26,9 +26,16 @@ export default function CreatePost() {
 
   const [body, setBody] = useState({});
   const [goToPost, setGoToPost] = useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
+
+
+
+  const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // console.log("------------------")
+
+  // console.log(body)
+  // console.log("------------------")
     if (model === "lands" && process === "Sell") {
       setBody({
         process: process,
@@ -265,6 +272,8 @@ export default function CreatePost() {
     setTimeout(function(){
       sendPost()
    }, 1000);
+
+
   };
 
   const sendPost=()=>{
@@ -333,8 +342,8 @@ export default function CreatePost() {
               <Form onSubmit={handleSubmit}>
                 <FloatingLabel controlId="floatingSelect" label="City">
                   <Form.Select
-                    aria-label="Floating label select example"
-                    name="City"
+                    aria-label="Floating label select example" 
+                    name="City" 
                   >
                     <option value="Amman">Amman</option>
                     <option value="Zarqa">Zarqa</option>

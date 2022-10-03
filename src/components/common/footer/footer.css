@@ -57,24 +57,3 @@ footer ul li {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-
-.mapouter{
-  position:relative;
-  text-align:right;
-  width:600px;
-  height:400px;
-  margin-left: 30%;
-}
-
-.gmap_canvas {
-  overflow:hidden;
-  background:none!important;
-  width:600px;
-  height:400px;
-}
-
-.gmap_iframe {
-  width:600px!important;
-  height:400px!important;
-}
