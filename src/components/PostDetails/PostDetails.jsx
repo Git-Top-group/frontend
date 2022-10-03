@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { baseURL } from "../../utilize/constants";
+import { baseURL, defaultImageLink } from "../../utilize/constants";
 import noImage from "../images/noImage.png";
 import cookie from "react-cookies";
 import "./PostDetails.css";
@@ -10,6 +10,8 @@ const PostDetails = (props) => {
   const auth = useContext(LoginContext);
 
   const [post, setPost] = useState({});
+  const [images, setImages] = useState([]);
+
   const history = useHistory();
   const getPost = async () => {
     await fetch(
@@ -21,6 +23,14 @@ const PostDetails = (props) => {
 
       .then((data) => {
         setPost(data);
+        let imag = Object.keys(data).map((key) =>
+          key.includes("url") ? data[key] : null
+        );
+        let filteredImage = imag.filter(function (el) {
+          return el != null && el != "";
+        });
+        setImages(filteredImage);
+        console.log(filteredImage);
       });
   };
 
@@ -86,16 +96,64 @@ const PostDetails = (props) => {
       );
     }
   };
+  let slideIndex = 1;
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+  function currentSlide(n) {
+    showSlides((slideIndex = n));
+  }
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
   useEffect(() => {
     getPost();
     window.scrollTo(0, 0);
+    showSlides(slideIndex);
   }, []);
 
   return (
     <div className="container">
       {getTrashIcon()}
-      <div className="img" style={{ textAlign: "center" }}>
-        <img src={noImage} alt="" style={{ width: "60%" }} />
+
+      <div>
+        <div class="slideshow-container">
+          {images.length > 0 ? (
+            images.map((image, index) => {
+              return (
+                <div
+                  class="mySlides fade"
+                  style={{ display: index === 0 ? "block" : "none" }}
+                >
+                  <img src={image} style={{ width: "60%" }} />
+                </div>
+              );
+            })
+          ) : (
+            <div class="mySlides fade">
+              <img src={noImage} style={{ width: "60%" }} />
+            </div>
+          )}
+
+          <a class="prev" onClick={() => plusSlides(-1)}>
+            &#10094;
+          </a>
+          <a class="next" onClick={() => plusSlides(1)}>
+            &#10095;
+          </a>
+        </div>
+        <br />
       </div>
 
       <div className="post-details">
@@ -103,7 +161,7 @@ const PostDetails = (props) => {
           {Object.keys(post).map((key, index) => {
             return (
               <li key={index} className="post-details-item">
-                {post[key] !== null ? (
+                {post[key] !== null && !key.includes("url") ? (
                   <>
                     <strong>{key}:</strong> {post[key].toString()}
                   </>
