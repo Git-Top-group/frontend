@@ -17,7 +17,6 @@ export default function DropDown() {
       >
         {setting.map((item) => {
           return (
-            
             <li key={item.id}>
               <Link
                 to={item.path}
@@ -37,6 +36,7 @@ export default function DropDown() {
               <i className='fa fa-sign-out'></i> logOut
             </button>
             </Link>
+       
       </ul>
       <div className="space"></div>
     </>

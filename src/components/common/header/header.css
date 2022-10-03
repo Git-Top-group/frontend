@@ -1,3 +1,4 @@
+
 header {
   background-color: #fff;
   height: 15vh;
@@ -12,9 +13,11 @@ header img {
   width: 120px;
 }
 header a {
+  color:black;
   margin-left: 30px;
   transition: 0.5s;
   font-weight: 500;
+  text-decoration:none ; 
 }
 header a:hover {
   color: #27ae60;
