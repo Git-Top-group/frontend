@@ -15,16 +15,14 @@ export const nav = [
     text: "blog",
     path: "/blog",
   },
-
-]
-
-export const setting = [
-  {
-    id:5,
+  
+   {
     text: "setting ⚙",
     path: "/setting",
   },
+]
 
+export const setting = [
 {  id:1,
   text: "Profile",
   path: "/profile",
@@ -37,9 +35,6 @@ export const setting = [
 {  id:3,
   text: "Contact",
   path: "/contact",
-},{  id:4,
-  text: "setting",
-  path: "/setting",
 },
 
 ]
@@ -212,88 +207,95 @@ export const awards = [
 export const location = [
   {
     id: 1,
-    name: "Amman",
+    name: "New Orleans, Louisiana",
     Villas: "12 Villas",
     Apartments: "10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/amman.jpg",
+    cover: "./images/location/city-1.png",
   },
   {
     id: 2,
-    name: "Irbid",
+    name: "Jerrsy, United State",
     Villas: "12 Villas",
     Apartments: "10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/irbid.jpg",
+    cover: "./images/location/city-2.png",
   },
   {
     id: 3,
-    name: "Aqaba",
+    name: "Liverpool, London",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/aqaba.jpg",
+    cover: "./images/location/city-3.png",
   },
   {
     id: 4,
-    name: "Al-Karak",
+    name: "NewYork, United States",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/karak.jpg",
+    cover: "./images/location/city-4.png",
   },
   {
     id: 5,
-    name: "Madaba",
+    name: "Montreal, Canada",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/madaba.jpg",
+    cover: "./images/location/city-5.png",
   },
   {
     id: 6,
-    name: "Ajloun",
+    name: "California, USA",
     Villas: "12 Villas",
     Apartments: " 10 Apartments",
     Offices: "07 Offices",
-    cover: "./images/location/ajloun.jpg",
+    cover: "./images/location/city-6.png",
   },
 ]
 export const team = [
   {
     list: "50",
-    cover: "../images/admin/M.Shraideh.PNG",
-    address: "Jordan, Irbid",
-    name: "Mohammad Al-Shraideh",
-    icon: [<a href="https://github.com/mohammadsh96"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/mohammad-alshraideh/"><i class='fa-brands fa-linkedin'></i></a>],
+    cover: "../images/customer/team-1.jpg",
+    address: "Liverpool, Canada",
+    name: "Sargam S. Singh",
+    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
   },
   {
     list: "70",
-    cover: "../images/admin/M.Dahleh.PNG",
-    address: "Jordan, Amman",
-    name: "Mohammd Al-Dahleh",
-    icon: [<a href="https://github.com/MohammedAlDahleh"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/mohammed-al-dahleh"><i class='fa-brands fa-linkedin'></i></a>],
+    cover: "../images/customer/team-2.jpg",
+    address: "Montreal, Canada",
+    name: "Harijeet M. Siller",
+    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
   },
   {
     list: "80",
-    cover: "../images/admin/Esam.PNG",
-    address: "Jordan, Amman",
-    name: "Esam Ankir",
-    icon: [<a href="https://github.com/Esam-Ankir"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/esam-ankir"><i class='fa-brands fa-linkedin'></i></a>],
+    cover: "../images/customer/team-3.jpg",
+    address: "Denever, USA",
+    name: "Anna K. Young",
+    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
   },
   {
     list: "51",
-    cover: "../images/admin/Islam.PNG",
-    address: "Jordan, Amman",
-    name: "Islam Rwashdeh",
-    icon: [<a href="https://github.com/islamrwashdeh"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/islam-r147/"><i class='fa-brands fa-linkedin'></i></a>],
+    cover: "../images/customer/team-4.jpg",
+    address: "2272 Briarwood Drive",
+    name: "Michael P. Grimaldo",
+    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
   },
   {
     list: "42",
-    cover: "../images/admin/Hadeel.PNG",
-    address: "Jordan, Amman",
-    name: "Hadeel Saleh",
-    icon: [<a href="https://github.com/hadeel999"><i class='fa-brands fa-github'></i></a>, <a href="https://www.linkedin.com/in/hadeel-saleh-82480b17a"><i class='fa-brands fa-linkedin'></i></a>],
+    cover: "../images/customer/team-5.jpg",
+    address: "2272 Briarwood Drive",
+    name: "Michael P. Grimaldo",
+    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  },
+  {
+    list: "38",
+    cover: "../images/customer/team-5.jpg",
+    address: "Montreal, USA",
+    name: "Adam K. Jollio",
+    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
   },
 ]
 export const price = [
@@ -378,10 +380,14 @@ export const price = [
 export const footer = [
   {
     title: "LAYOUTS",
-    text: [{ list: "Home Page", link: "/"}, { list: "About Page", link: "/about" }, { list: "Contact Page", link: "/contact" }],
+    text: [{ list: "Home Page" }, { list: "About Page" }, { list: "Service Page" }, { list: "Property Page" }, { list: "Contact Page" }, { list: "Single Blog" }],
+  },
+  {
+    title: "ALL SECTIONS",
+    text: [{ list: "Headers" }, { list: "Features" }, { list: "Attractive" }, { list: "Testimonials" }, { list: "Videos" }, { list: "Footers" }],
   },
   {
     title: "COMPANY",
-    text: [{ list: "Blog", link: "/blog" }, { list: "Login", link: "signin" }],
+    text: [{ list: "About" }, { list: "Blog" }, { list: "Pricing" }, { list: "Affiliate" }, { list: "Login" }, { list: "Changelog" }],
   },
 ]

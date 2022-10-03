@@ -12,10 +12,13 @@ import SignIn from '../Login/login';
 import Profile from '../Profile/Profile';
 import Posts from '../posts/Posts';
 import Dashboard from '../dashboard/Dashboard'
+import PostDetails from '../PostDetails/PostDetails'
 
 import DropDown from '../dropDown/DropDown'
 import {LoginContext} from '../context/context'
 import {PostsRoutes ,ProfileRoutes} from '../protectedRoutes/UserRoutes'
+import UserList from "../UserList/UserList"
+import UserDetails from "../UserDetails/UserDetails"
 const Pages = () => {
   // const auth = useContext(LoginContext)
   return (
@@ -36,7 +39,9 @@ const Pages = () => {
           <Route exact path='/signin' component={SignIn} />
           <PostsRoutes exact path='/posts' component={Posts} />
           <Route path={`/dashboard/:id`} component={Dashboard} />
-
+          <Route exact path="/postdetails/:model/:id" component={PostDetails}/>
+          <Route exact path="/userList" component={UserList}/>
+          <Route exact path="/userDetails" component={UserDetails}/>
         </Switch>
         <Footer />
       </Router>
