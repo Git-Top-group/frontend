@@ -11,10 +11,10 @@ import SignUp from '../signup/signup'
 import SignIn from '../Login/login';
 import Profile from '../Profile/Profile';
 import Posts from '../posts/Posts';
-import Dashboard from '../dashboard/Dashboard'
-
-import DropDown from '../dropDown/DropDown'
-import {LoginContext} from '../context/context'
+import Dashboard from '../dashboard/Dashboard' ;
+import NotFound from './404' ; 
+import DropDown from '../dropDown/DropDown';
+// import {LoginContext} from '../context/context'
 import {PostsRoutes ,ProfileRoutes} from '../protectedRoutes/UserRoutes'
 const Pages = () => {
   // const auth = useContext(LoginContext)
@@ -36,6 +36,7 @@ const Pages = () => {
           <Route exact path='/signin' component={SignIn} />
           <PostsRoutes exact path='/posts' component={Posts} />
           <Route path={`/dashboard`} component={Dashboard} />
+          <Route path="" component={NotFound} /> 
 
         </Switch>
         <Footer />

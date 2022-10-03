@@ -5,11 +5,12 @@ import cookie from "react-cookies";
 export function PostsRoutes({ children, ...rest }) {
   const [user] = useState({
     token: cookie.load("token") || "",
+    actions : cookie.load('actions')[1] || "" , 
   });
   return (
     <>
       <Route>
-        {user.token ? (
+        {user.token && user.actions ==="CRUD_Users" ? (
           <Posts {...rest} />
         ) : (
           <Switch>

@@ -1583,21 +1583,32 @@ export default function CreatePost() {
                 ) : (
                   <></>
                 )}
+<FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Land Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter land area in m2."
+                    name="LandArea"
+                  />
+                </FloatingLabel>
 
-                <label>Land Area: </label>
-                <input
-                  type="number"
-                  placeholder="Enter land area in m2."
-                  name="LandArea"
-                  required
-                />
-                <label>Surface Area: </label>
-                <input
-                  type="number"
-                  placeholder="Enter surface area in m2."
-                  name="SurfaceArea"
-                  required
-                />
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Surface Area"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    as="textarea"
+                    type="number"
+                    placeholder="Enter surface area in m2."
+                    name="SurfaceArea"
+                  />
+                </FloatingLabel>
+
 
                 <InputGroup className="mb-3">
                   <InputGroup.Text>Price</InputGroup.Text>
