@@ -8,12 +8,11 @@ const Team = () => {
     <>
       <section className='team background'>
         <div className='container'>
-          <Heading title='Our Featured Agents' subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.' />
+          <Heading title='GitTop Team' subtitle='Administrators of AkarCom' />
 
           <div className='content mtop grid3'>
             {team.map((val, index) => (
               <div className='box' key={index}>
-                <button className='btn3'>{val.list} Listings</button>
                 <div className='details'>
                   <div className='img'>
                     <img src={val.cover} alt='' />
@@ -28,15 +27,12 @@ const Team = () => {
                       <li key={index}>{icon}</li>
                     ))}
                   </ul>
-                  <div className='button flex'>
-                    <button>
+                  <br></br>
+                  <br></br>
+                  <a href="/contact"><button className='btn3'>
                       <i className='fa fa-envelope'></i>
                       Message
-                    </button>
-                    <button className='btn4'>
-                      <i className='fa fa-phone-alt'></i>
-                    </button>
-                  </div>
+                    </button></a>
                 </div>
               </div>
             ))}
