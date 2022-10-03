@@ -31,7 +31,7 @@ export default function CreatePost() {
 
 
   const handleSubmit = (e) => {
-  //   e.preventDefault();
+    e.preventDefault();
   // console.log("------------------")
 
   // console.log(body)

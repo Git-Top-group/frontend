@@ -7,22 +7,12 @@ export const nav = [
     text: "about",
     path: "/about",
   },
+ 
   {
-    text: "services",
-    path: "/services",
-  },
-  {
-    text: "blog",
+    text: "Services",
     path: "/blog",
-  }, {
-    text: "dashboard",
-    path: "/dashboard",
-  },
-  {
-    text: "dashboard",
-    path: "/dashboard",
-  },
-
+    
+  }, 
 ]
 
 export const setting = [

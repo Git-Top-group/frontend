@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react"
 import "./header.css"
 import { nav, setting } from "../../data/Data"
 import Button from "react-bootstrap/Button";
+import cookie from 'react-cookies';
 
-import { Link } from "react-router-dom"
+import { Link ,Switch , Redirect} from "react-router-dom"
 import { LoginContext } from "../../context/context";
 
 
@@ -31,6 +32,23 @@ const Header = () => {
     }
   };
 
+  const getDashboard = () => {
+  if (
+    (auth !== undefined &&
+      auth.loginStatus &&
+      auth.user.actions !== undefined &&
+      auth.user.actions[0] === "CRUD") ||
+    (auth.user.capabilities !== undefined &&
+      auth.user.capabilities[0] === "CRUD")
+  ) {
+    return (
+      <li>
+        <Link to={"/dashboard"}>Dashboard</Link>
+      </li>
+    );
+  }
+  }
+
   return (
     <>
       <header>
@@ -46,7 +64,7 @@ const Header = () => {
                 </li>
               ))}
 
-
+{getDashboard()}
               <div class="navbar1">
                 <div class="dropdown1">
                   <button class="dropbtn">Settings
@@ -56,9 +74,24 @@ const Header = () => {
                     <a href="/profile">Profile</a>
                     <a href="/posts">Create Post</a>
                     <a href="/contact">Contact</a>
+                    {auth.loginStatus ? 
+                     <Link to={'/'}>
                     <Button className="dropbtn" onClick={handleLogOut}><i className='fa fa-sign-out'></i>
-                      Log Out
-                    </Button>
+                    Log Out
+                    
+                  </Button>
+                     </Link> 
+                    
+                    : <>
+                     <Link to={'/signup'}>
+             
+             <Button  className="dropbtn" type="submit"> <i className='fa fa-sign-out'></i>
+             Register
+               </Button>
+           </Link>
+                    
+                    </>}
+
                   </div>
                 </div>
               </div>
@@ -69,17 +102,16 @@ const Header = () => {
           </div>
           <div className='button flex'>
 
-            {/* <Link to={'/signin'}>
-            <button className='btn1'>
-              <i className='fa fa-sign-out'></i> Sign In
-            </button>
-            </Link> */}
+            {  auth.loginStatus ?  <></> : 
+            
             <Link to={'/signup'}>
              
               <Button variant="success" type="submit"> <i className='fa fa-sign-out'></i>
               Register
                 </Button>
             </Link>
+            
+            }
           </div>
 
           <div className='toggle'>
@@ -92,33 +124,5 @@ const Header = () => {
 }
 
 
-
-
-
-//   return (
-//     <>
-//       <header>
-//         <div className="container flex">
-//           <div className="logo">
-//             <img src="./images/logo.png" alt="" />
-//           </div>
-//           <div className="nav">
-//             <ul className={navList ? "small" : "flex"}>
-//               {nav.map((list, index) => (
-//                 <li key={index}>
-//                   <Link to={list.path}>{list.text}</Link>
-//                 </li>
-//               ))}
-//               {getUserList()}
-//             </ul>
-//           </div>
-//          
-
-//           
-//         </div>
-//       </header>
-//     </>
-//   );
-// };
 
 export default Header;
