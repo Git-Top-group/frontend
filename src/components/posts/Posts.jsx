@@ -1,5 +1,6 @@
 import React, { useState ,useEffect } from "react";
 import "./posts.css";
+import PopoverPositionedExample from '../model/model'
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -504,6 +505,7 @@ export default function CreatePost() {
                 <Button variant="success" type="submit">
                   Submit
                 </Button>
+                <PopoverPositionedExample/>
               </Form>
             </>
           ) : (
@@ -1706,7 +1708,7 @@ export default function CreatePost() {
           <Switch>
             <Redirect
               from="*"
-              to={`/postDetails/${cookie.load("postId")}`}
+              to={`/postdetails/${model}/${cookie.load("postId")}`}
               value={cookie.load("postId")}
             ></Redirect>
           </Switch>
