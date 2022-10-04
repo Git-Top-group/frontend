@@ -152,54 +152,53 @@ export default function Dashboard() {
 
                   return (
 
-                    <div key={index}>
 
 
-                      <tr>
+                    <tr key={index}>
 
-                        <td>
-                          <td>{id}</td>
+                      <td>
+                        <td>{id}</td>
 
-                          <div className='d-flex align-items-center'>
-                            <img
-                              src='https://mdbootstrap.com/img/new/avatars/8.jpg'
-                              alt=''
-                              style={{ width: '45px', height: '45px' }}
-                              className='rounded-circle'
-                            />
-                            <div className='ms-3'>
-                              <p className='fw-bold mb-1'>{client.username}</p>
-                              <p className='text-muted mb-0'>john.doe@gmail.com</p>
-                            </div>
+                        <div className='d-flex align-items-center'>
+                          <img
+                            src='https://mdbootstrap.com/img/new/avatars/8.jpg'
+                            alt=''
+                            style={{ width: '45px', height: '45px' }}
+                            className='rounded-circle'
+                          />
+                          <div className='ms-3'>
+                            <p className='fw-bold mb-1'>{client.username}</p>
+                            <p className='text-muted mb-0'>john.doe@gmail.com</p>
                           </div>
-                        </td>
-                        <td>
-                          <p className='fw-normal mb-1'>Amman</p>
+                        </div>
+                      </td>
+                      <td>
+                        <p className='fw-normal mb-1'>Amman</p>
 
-                        </td>
-                        <td>
-                          <MDBBadge color='primary' pill style={{ width: '70px', height: '25px' }}>
-                            Sell
-                          </MDBBadge>
-                        </td>
-                        <td>{model}</td>
-                        <td>{createdAt}</td>
-                        <td>Esam</td>
-                        <td>{postId}</td>
-                        <td>
-                          <MDBBtn rounded color='success'>
-                            Accept
-                          </MDBBtn>
-                          <MDBBtn rounded className='mx-2' color='danger'>
-                            Reject
-                          </MDBBtn>
-                        </td>
+                      </td>
+                      <td>
+                        <MDBBadge color='primary' pill style={{ width: '70px', height: '25px' }}>
+                          Sell
+                        </MDBBadge>
+                      </td>
+                      <td>{model}</td>
+                      <td>{createdAt}</td>
+                      <td>Esam</td>
+                      <td>{postId}</td>
+                      <td>
+                        <MDBBtn rounded color='success'>
+                          Accept
+                        </MDBBtn>
+                        <MDBBtn rounded className='mx-2' color='danger'>
+                          Reject
+                        </MDBBtn>
+                      </td>
 
-                      </tr>
+                    </tr>
 
 
-                    </div>)
-                } return {}
+                    )
+              } return { }
               })}
 
 
@@ -211,10 +210,10 @@ export default function Dashboard() {
         </div>
 
 
-  ) : (
-    <></>
-  )
-}
+      ) : (
+        <></>
+      )
+      }
 
     </>
   )
