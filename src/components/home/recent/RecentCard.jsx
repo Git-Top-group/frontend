@@ -32,8 +32,9 @@ const RecentCard = (props) => {
   };
   // /:model/:postId/:modelImages
   const fetchImage = async () => {
+    const modelWithoutS = model.substring(0, model.length - 1)
     await fetch(
-      `${baseURL}/${model}/${postId}/landImages`
+      `${baseURL}/${model}/${postId}/${modelWithoutS}Images`
     )
       .then((imgResponse) => {
         return imgResponse.json();
@@ -67,18 +68,14 @@ const RecentCard = (props) => {
       <br />
       <div className="content grid3 mtop">
         {users.map((val, index) => {
-          const { process, model, owner, price, city, id } = val;
-          const cover = images.url1;
-
-          console.log(images.postId);
-          console.log(id);
-          // setPostId(id)
-          //  {fetchImage(id)}
+          // console.log("val", val);
+          const { process, model, owner, price, city, id, url1 } = val
           return (
             <div className="box shadow" key={index}>
               <Link to={`/postdetails/${model}/${id}`}>
                 <div className="img">
-                  <img src={cover || Logo} alt="" />
+
+                  <img src={url1 || Logo} alt='' />
                 </div>
                 <div className="text">
                   <div className="category flex">
