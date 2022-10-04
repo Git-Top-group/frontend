@@ -12,7 +12,7 @@ export const nav = [
     text: "Services",
     path: "/blog",
     
-  }, 
+  },
 ]
 
 export const setting = [

@@ -283,7 +283,7 @@ export default function CreatePost() {
   }
   const post = async () => {
     const data = await axios.post(
-      `https://akarcom-final.herokuapp.com/newpost/${user.id}/${model}`,
+      `https://akarcom-final2.herokuapp.com/newpost/${user.id}/${model}`,
       body,
       {
         headers: {
