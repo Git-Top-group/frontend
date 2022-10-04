@@ -4,7 +4,9 @@ import "./profile.css";
 import cookie from "react-cookies";
 import { baseURL } from "../../utilize/constants";
 import axios from "axios";
-
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 const Profile = () => {
   const defaultEmailLink =
     "https://i.pinimg.com/550x/1c/c5/35/1cc535901e32f18db87fa5e340a18aff.jpg";
@@ -55,7 +57,7 @@ const Profile = () => {
       email: e.target.email.value,
       password: e.target.password.value,
       city: e.target.city.value,
-      userName: e.target.userName.value,
+      username: e.target.userName.value,
       userImage: e.target.userImage.value,
       phone: e.target.phone.value,
     };
@@ -99,45 +101,105 @@ const Profile = () => {
             </button>
             <div className="edit-form-profile">
               <form onSubmit={handleSubmit}>
-                <label>first name : </label>
-                <input
-                  type="text"
-                  placeholder="edit first name"
-                  name="firstName"
-                  value={user.firstName}
-                  onChange={handleChange}
-                />
-                <label>last name : </label>
-                <input
-                  type="text"
-                  placeholder="edit last name"
-                  name="lastName"
-                  value={user.lastName}
-                  onChange={handleChange}
-                />
-                <label>password : </label>
-                <input
-                  type="password"
-                  placeholder="edit password"
-                  name="password"
-                  onChange={handleChange}
-                />
-                <label>City : </label>
+
+              <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Username"
+                  className="mb-3"  
+                >
+                  <Form.Control className="inputF"
+                    placeholder="edit Username"
+                    name="userName"   value={user.username}  onChange={handleChange}
+                  />
+                </FloatingLabel>
+
+              <FloatingLabel
+                  controlId="floatingTextarea" 
+                  label="First Name"
+                  className="mb-3"
+                >
+                  <Form.Control className="inputF"
+                    as="textarea"
+                    placeholder="edit first name"
+                    name="firstName" value={user.firstName}  onChange={handleChange}
+                  />
+                </FloatingLabel>
+                 
+
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Last Name"
+                  className="mb-3"
+                >
+                  <Form.Control
+                  className="inputF"
+                  as="textarea" 
+                    placeholder="edit last name"
+                    name="lastName" value={user.lastName}  onChange={handleChange}
+                  />
+                </FloatingLabel>
+
+                 <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Password"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    
+                    placeholder="Password"  className="inputF"
+                    name="password" type="password" onChange={handleChange}
+                  />
+                </FloatingLabel>
+              
+                <FloatingLabel controlId="floatingSelect" label="City">
+                  <Form.Select
+                    aria-label="Floating label select example"   className="inputF"
+                    name="city" placeholder="edit City"  value={user.city}  onChange={handleChange}
+                  >
+                    <option value="Amman">Amman</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Jarash">Jarash</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Al-Balqa">Al-Balqa</option>
+                  </Form.Select>
+                </FloatingLabel>
+                {/* <label>City : </label>
                 <input
                   type="text"
                   placeholder="edit City"
                   name="city"
                   value={user.city}
                   onChange={handleChange}
-                />
-                <label>Username : </label>
+                /> */}
+
+
+                {/* <label>Username : </label>
                 <input
                   type="text"
                   placeholder="edit Username"
                   name="userName"
                   value={user.username}
                   onChange={handleChange}
-                />
+                /> */}
+                <FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Email"
+                  className="mb-3"
+                >
+                  <Form.Control className="inputF"
+                   
+                    placeholder="edit email"
+                    name="email" type="email"   value={user.email}  onChange={handleChange}
+                  />
+                </FloatingLabel>
+{/* 
                 <label>Email : </label>
                 <input
                   type="text"
@@ -145,18 +207,42 @@ const Profile = () => {
                   name="email"
                   value={user.email}
                   onChange={handleChange}
-                />
-
-                <label>phone : </label>
+                /> */}
+<FloatingLabel
+                  controlId="floatingTextarea"
+                  label="Phone"
+                  className="mb-3"
+                >
+                  <Form.Control className="inputF"
+                    as="textarea"
+                    placeholder="edit phone"
+                    name="phone"     value={user.phone}  onChange={handleChange}
+                  />
+                </FloatingLabel>
+                {/* <label>phone : </label>
                 <input
                   type="text"
                   placeholder="edit phone"
                   name="phone"
                   value={user.phone}
                   onChange={handleChange}
-                /> 
+                />  */}
 
-                <label>User image : </label>
+<FloatingLabel
+                  controlId="floatingTextarea"
+                  label="User Image"
+                  className="mb-3"
+                >
+                  <Form.Control className="inputF"
+                    as="textarea"
+                    placeholder="https://...... "
+                    name="userImage"  value={userImage}
+                    onChange={(e) => {
+                      setUserImage(e.target.value);
+                    }}
+                  />
+                   </FloatingLabel>
+                {/* <label>User image : </label>
                 <input
                   type="text"
                   placeholder="add image link"
@@ -165,7 +251,7 @@ const Profile = () => {
                   onChange={(e) => {
                     setUserImage(e.target.value);
                   }}
-                />
+                /> */}
 
                 <button type="submit" style={{ marginTop: "5px" }}>
                   Save Changes

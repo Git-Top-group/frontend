@@ -11,7 +11,7 @@ const auth =useContext(LoginContext)
 const handleLogin =(e)=>{
     e.preventDefault()
 
-auth.SignUpFunction(e.target.username.value,e.target.password.value  ,e.target.email.value ,e.target.phone.value)
+auth.SignUpFunction(e.target.username.value,e.target.password.value  ,e.target.email.value ,e.target.phone.value ,e.target.firstName.value ,e.target.lastName.value)
 
 
 }
@@ -26,6 +26,12 @@ return(<>
 <input type='text' name='username' required ></input>
 <label>Password </label>
 <input type="password" name="password" required />
+
+<label>First Name</label>
+<input type='text' name='firstName' required ></input>
+<label>Last Name</label>
+<input type='text' name='lastName' required ></input>
+
 <label>Email </label>
 <input type="email" name="email" required />
 <label>Phone Number </label>
