@@ -17,6 +17,7 @@ import DropDown from '../dropDown/DropDown';
 import UserList from "../UserList/UserList"
 import UserDetails from "../UserDetails/UserDetails"
 import PostDetails from '../PostDetails/PostDetails'
+
 // import {LoginContext} from '../context/context'
 import {PostsRoutes ,ProfileRoutes ,DashBoardRoutes} from '../protectedRoutes/UserRoutes'
 const Pages = () => {
@@ -42,6 +43,7 @@ const Pages = () => {
           <Route exact path="/postdetails/:model/:id" component={PostDetails}/>
           <Route exact path="/userList" component={UserList}/>
           <Route exact path="/userDetails" component={UserDetails}/>
+          
           <Route path="" component={NotFound} /> 
 
         </Switch>
