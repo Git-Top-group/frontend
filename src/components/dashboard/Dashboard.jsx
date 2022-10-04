@@ -142,7 +142,6 @@ export default function Dashboard() {
                   //   fetchClients(clientId)
                   // }
 
-
                   console.log({ owner });
                   console.log({ client });
 
@@ -197,8 +196,8 @@ export default function Dashboard() {
                     </tr>
 
 
-                    )
-              } return { }
+                  )
+                } return {}
               })}
 
 
@@ -218,3 +217,20 @@ export default function Dashboard() {
     </>
   )
 }
+
+
+
+
+
+// {
+//   clients.map((clientsVal, index) => {
+//     const { email, username, firstName, lastName, phoneNumber } = clientsVal
+//   })
+// }
+
+
+// {
+//   owners.map((ownersVal, index) => {
+//     const { email, username, firstName, lastName, phoneNumber } = ownersVal
+//   })
+// }
