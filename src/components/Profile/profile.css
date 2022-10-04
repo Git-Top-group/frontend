@@ -1,5 +1,5 @@
 .profile {
-  /* height: 500px; */
+  /* height: 300px; */
   /* width:500px; */
   /* background-color:rgb(103, 243, 103); */
   /* border:3px solid rgb(3, 238, 3); */
@@ -22,14 +22,22 @@
   color: black;
   /* height: 100%; */
 }
-.edit-form-profile input {
+.edit-form-profile .inputF {
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(10, 10, 10);
+  height:75px;
 }
 .edit-form-profile form {
-  margin-top: 5px;
+  margin-top: 15px;
+  position:center;
+  width:700px;
+  height:800px;
+
+
 }
 .totalProfile {
   display: flex;
   flex-direction: row;
+  /* width:500px; */
+
 }

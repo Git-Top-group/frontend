@@ -1,6 +1,6 @@
     .editForm{
         width:auto;
-        background-color: rgb(175, 175, 172);
+        background-color: rgb(173, 175, 172);
         border: 2px solid rgb(143, 236, 143);
         color:black;
         margin: 10px;
@@ -130,20 +130,19 @@
 .Forms form{
 width:85%;
   display: grid;
-  grid-template-columns: auto auto  auto  auto auto ;
+  grid-template-columns: auto auto  auto  auto  ;
   
   gap:13px;
   padding: 10px;
-  border:2px solid rgba(207, 205, 205, 0.867);
+  border:3.5px solid rgba(50, 134, 17, 0.867);
   margin-left: 15px;
 }
 .Forms form Button{
 height:60px;
 transition: 0.5s;
 }
-.Forms form Button:hover{
- font-size: 35px;
- color: red ;
+.head{
+margin : 30px;
 
-  
-  }
+
+}
