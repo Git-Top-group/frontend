@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data";
-import "../featured/FeaturedCard.css";
+import "./recentCard.css"
 // import PostProvider from '../../context/postContext'
 import Logo from "./noImage.png";
 const RecentCard = (props) => {
@@ -77,11 +77,11 @@ const RecentCard = (props) => {
           return (
             <div className="box shadow" key={index}>
               <Link to={`/postdetails/${model}/${id}`}>
-                <div className="img">
+                <div className="postImg">
                   <img src={cover || Logo} alt="" />
                 </div>
                 <div className="text">
-                  <div className="category flex">
+                  <div className="category_flex">
                     <span
                       style={{
                         background:
@@ -91,7 +91,9 @@ const RecentCard = (props) => {
                     >
                       {process}
                     </span>
-                    <i className="fa fa-heart"></i>
+                    <p className="heart">
+                  <i className='fa fa-heart'></i>
+                  </p>
                   </div>
                   <h4>{owner}</h4>
                   <p>
