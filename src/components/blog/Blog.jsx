@@ -10,8 +10,11 @@ const Blog = () => {
     <>
       <section className='blog-out mb'>
         <Back name='Services' title='Services - All Services' cover={img} />
-        <div className='container recent'>
-        <Heading title='Properties that might interest you.' subtitle='fgdfgdfgsd' />
+        <div className='container recent' >
+          <br/>
+          <br/>
+          <br/>
+        <Heading title='Properties that might interest you.' subtitle='Categories' />
           <RecentCard />
         </div>
       </section>

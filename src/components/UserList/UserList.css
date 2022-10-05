@@ -1,5 +1,4 @@
-
-.shadowUserList{
+.shadowUserList {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,45 +15,43 @@
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
     transition: 0.5s;
-    
-    box-shadow: 0 .5rem 1rem #27ae60!important;
+
+    box-shadow: 0 .5rem 1rem #27ae60 !important;
 }
 
-.shadowUserList:hover{
-    box-shadow: 0 .5rem 1rem #fff!important;
-
-/* .box{
-
-border: 2px solid red ;
-
-} */
- .btn4{
-
-background-color: #ffffff;
-color:rgb(0, 0, 0);
-border: 1px inset black ;
-border-radius:10px;
-display:flex ;
-justify-content :center; 
-align-items :center;
-height:60px;
-width:110px;
+.shadowUserList:hover {
+    box-shadow: 0 .5rem 1rem #fff !important;
 }
-.btn3{
+
+.btn4 {
+
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px inset black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 110px;
+}
+
+.btn3 {
 
 
     background-color: #ffffff;
-    color:rgb(0, 0, 0);
-    border: 1px inset black ;
-    border-radius:10px;
+    color: rgb(0, 0, 0);
+    border: 1px inset black;
+    border-radius: 10px;
 
 }
+
 /* .boxo{
 
     box-shadow: 10px 10px 10px #27AE60;
 
 } */
-.boxo:hover{
+.boxo:hover {
     box-shadow: -10px -10px -10px #FFF;
 
 

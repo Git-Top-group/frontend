@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data";
-import "./recentCard.css"
+import "../featured/FeaturedCard.css";
 // import PostProvider from '../../context/postContext'
 import Logo from "./noImage.png";
 const RecentCard = (props) => {
@@ -54,21 +54,17 @@ const RecentCard = (props) => {
       <br />
       <div className="content grid3 mtop">
         {users.map((val, index) => {
-          const { process, model, owner, price, city, id } = val;
-          const cover = images.url1;
-
-          console.log(images.postId);
-          console.log(id);
-          // setPostId(id)
-          //  {fetchImage(id)}
+          const { process, model, owner, price, city, id, url1 } = val
           return (
             <div className="box shadow" key={index}>
               <Link to={`/postdetails/${model}/${id}`}>
                 <div className="postImg">
-                  <img src={cover || Logo} alt="" />
+
+                  <img src={url1 || Logo} alt='' />
+                
                 </div>
                 <div className="text">
-                  <div className="category_flex">
+                  <div className="category flex">
                     <span
                       style={{
                         background:
@@ -78,9 +74,7 @@ const RecentCard = (props) => {
                     >
                       {process}
                     </span>
-                    <p className="heart">
-                  <i className='fa fa-heart'></i>
-                  </p>
+                    <i className="fa fa-heart"></i>
                   </div>
                   <h4>{owner}</h4>
                   <p>
@@ -105,5 +99,3 @@ const RecentCard = (props) => {
 };
 
 export default RecentCard;
-
-
