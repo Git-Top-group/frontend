@@ -32,13 +32,13 @@ useEffect(()=>{
         }
     }, []);
 
-    const SignUpFunction = async (username, password ,email ,phone) => {
+    const SignUpFunction = async (username, password ,email ,phone ,first ,last) => {
       try {
         console.log("hello from sign up : ");
           // const response = await superagent.post(`${API}/users/signup`).set( ` ${base64.decode(`${username}:${password}`)}`);
           // console.log('body >>> ', response);
          
-         const userData = { username:`${username}`, password:`${password}` , phoneNumber:`${phone}` , email:`${email}`}
+         const userData = { username:`${username}`, password:`${password}` , phoneNumber:`${phone}` , email:`${email}`, firstName:`${first}`, lastName:`${last}`}
           // validateMyUser(response.body);
         axios.post(`${baseURL}/signup` , userData)       
 .then(setSignUp(true))

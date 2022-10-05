@@ -4,6 +4,8 @@ import noImage from "../images/noImage.png";
 import cookie from "react-cookies";
 import "./PostDetails.css";
 import { useHistory } from "react-router-dom";
+import {Redirect ,Switch ,Link} from 'react-router-dom';
+
 import { LoginContext } from "../context/context";
 
 const PostDetails = (props) => {
@@ -11,8 +13,8 @@ const PostDetails = (props) => {
 
   const [post, setPost] = useState({});
   const [images, setImages] = useState([]);
-
-  const history = useHistory();
+const [redirect ,setRedirect]=useState(false)
+const history = useHistory();
   const getPost = async () => {
     await fetch(
       `${baseURL}/${props.match.params.model}/${props.match.params.id}`
@@ -22,6 +24,7 @@ const PostDetails = (props) => {
       })
 
       .then((data) => {
+        
         setPost(data);
         let imag = Object.keys(data).map((key) =>
           key.includes("url") ? data[key] : null
@@ -30,10 +33,10 @@ const PostDetails = (props) => {
           return el != null && el != "";
         });
         setImages(filteredImage);
-        console.log(filteredImage);
       });
   };
 
+  
   const deletePost = async () => {
     await fetch(
       `${baseURL}/${props.match.params.model}/${cookie.load("id")}/${
@@ -56,7 +59,7 @@ const PostDetails = (props) => {
   };
 
   const orderNow = async () => {
-    console.log("from order now");
+   
     const message = "here is the message";
     let data = {
       user: {
@@ -73,6 +76,7 @@ const PostDetails = (props) => {
       body: JSON.stringify(data),
     })
       .then((response) => {
+        setRedirect(true)
         return response;
       })
       .then((data) => {
@@ -175,7 +179,17 @@ const PostDetails = (props) => {
       </div>
       {auth.loginStatus && (
         <button onClick={() => orderNow()}>order now</button>
-      )}
+      )} 
+ {/* {not ? <button onClick={() => orderNow()}>order now</button> : <></> }  */}
+
+
+
+      {redirect ? 
+      
+      <Switch>
+        <Redirect from="*" to="/" > </Redirect>
+      </Switch>
+      : <></>}
     </div>
   );
 };

@@ -18,7 +18,6 @@ const RecentCard = (props) => {
 
   const [postId, setPostId] = useState();
 
-  // console.log("postId", postId);
   const fetchData = async () => {
     console.log("Data fetched");
     await fetch(`${baseURL}/${model}`)
@@ -30,21 +29,9 @@ const RecentCard = (props) => {
         setUsers(data);
       });
   };
-  // /:model/:postId/:modelImages
-  const fetchImage = async () => {
-    await fetch(
-      `${baseURL}/${model}/${postId}/landImages`
-    )
-      .then((imgResponse) => {
-        return imgResponse.json();
-      })
-      .then((imgData) => {
-        setImages(imgData);
-      });
-  };
+  
   useEffect(() => {
     fetchData();
-    fetchImage();
   }, [model]);
 
   return (
@@ -118,3 +105,5 @@ const RecentCard = (props) => {
 };
 
 export default RecentCard;
+
+

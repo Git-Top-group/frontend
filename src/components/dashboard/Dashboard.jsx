@@ -6,6 +6,8 @@ import { LoginContext } from '../context/context'
 import { Redirect, Switch } from 'react-router-dom';
 import cookie from "react-cookies";
 import axios from "axios";
+import PostsCards from "../userMane/userPostCards"
+
 
 export default function Dashboard() {
   const [user] = useState({
@@ -23,7 +25,7 @@ export default function Dashboard() {
 
   const fetchOrders = async () => {
     const data = await axios.get(
-      `https://akarcom-final.herokuapp.com/allorders`,
+      `https://akarcom-final2.herokuapp.com/allorders`,
 
       {
         headers: {
@@ -36,7 +38,7 @@ export default function Dashboard() {
   };
   const fetchUsers = async () => {
     const allUsers = await axios.get(
-      `https://akarcom-final.herokuapp.com/users`,
+      `https://akarcom-final2.herokuapp.com/users`,
 
       {
         headers: {
@@ -60,14 +62,14 @@ export default function Dashboard() {
       <div className='featured container'>
       </div>
     </section>
-    {auth.loginStatus ?
+    {/* {auth.loginStatus ?
       <>
         <button onClick={handleLogout}>Log Out <i className='fa fa-sign-out'></i></button>
       </>
       : <Switch>
         <Redirect from='*' to="/signin"></Redirect>
       </Switch>
-    }
+    } */}
     <br></br>
     <br></br>
 
@@ -223,8 +225,24 @@ export default function Dashboard() {
 
 
     ) : (
-      <></>
+      <>
+      
+          
+      <section> 
+       <a href='/posts'>
+        <button className='cc1'>Create Post</button> 
+       </a>
+      </section>
+
+       <div className='container recent'>
+          < PostsCards />
+        </div>
+
+      
+      </>
     )}
+
+      
 
   </>
   )
