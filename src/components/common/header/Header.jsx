@@ -15,7 +15,6 @@ const Header = () => {
     auth.logoutFunction();
   };
   const getUserList = () => {
-    console.log("auth : ", auth);
     if (
       (auth !== undefined &&
         auth.loginStatus &&

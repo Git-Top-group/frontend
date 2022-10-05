@@ -15,7 +15,6 @@ const PostDetails = (props) => {
   const [images, setImages] = useState([]);
 const [redirect ,setRedirect]=useState(false)
 const history = useHistory();
-const [postId ,setPostId]=useState(0)
   const getPost = async () => {
     await fetch(
       `${baseURL}/${props.match.params.model}/${props.match.params.id}`
@@ -25,8 +24,7 @@ const [postId ,setPostId]=useState(0)
       })
 
       .then((data) => {
-        setPostId(data.userId)
-        console.log(data.userId)
+        
         setPost(data);
         let imag = Object.keys(data).map((key) =>
           key.includes("url") ? data[key] : null
@@ -35,10 +33,10 @@ const [postId ,setPostId]=useState(0)
           return el != null && el != "";
         });
         setImages(filteredImage);
-        console.log(filteredImage);
       });
   };
 
+  
   const deletePost = async () => {
     await fetch(
       `${baseURL}/${props.match.params.model}/${cookie.load("id")}/${
@@ -61,7 +59,7 @@ const [postId ,setPostId]=useState(0)
   };
 
   const orderNow = async () => {
-    console.log("from order now");
+   
     const message = "here is the message";
     let data = {
       user: {
@@ -179,9 +177,13 @@ const [postId ,setPostId]=useState(0)
           })}
         </ul>
       </div>
-      {auth.loginStatus && postId!==cookie.load('id') && (
+      {auth.loginStatus && (
         <button onClick={() => orderNow()}>order now</button>
-      )}
+      )} 
+ {/* {not ? <button onClick={() => orderNow()}>order now</button> : <></> }  */}
+
+
+
       {redirect ? 
       
       <Switch>

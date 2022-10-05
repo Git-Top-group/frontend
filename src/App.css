@@ -172,3 +172,20 @@ img {
     height: 30vh;
   }
 }
+.fa-linkedin:before{
+  content :"\f08c";
+  color:rgb(43, 43, 201) ;
+  font-size :40px;
+  
+  }
+  /* .fa-linkedin:after{
+    content :"\f08c"
+    
+    } */
+    .fa-github:before{
+
+padding: -40px;
+      content:"\f09b";
+      color:rgb(0, 0, 0) ;
+      font-size :40px;
+    }

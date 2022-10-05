@@ -225,18 +225,22 @@ export default function Dashboard() {
 
 
     ) : (
-      <></>
-    )}
-    
+      <>
+      
+          
       <section> 
        <a href='/posts'>
-        <button className='cc1'>creat post</button> 
+        <button className='cc1'>Create Post</button> 
        </a>
       </section>
 
        <div className='container recent'>
           < PostsCards />
         </div>
+
+      
+      </>
+    )}
 
       
 

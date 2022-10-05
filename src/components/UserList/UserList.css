@@ -1,0 +1,35 @@
+/* .box{
+
+border: 2px solid red ;
+
+} */
+ .btn4{
+
+background-color: #ffffff;
+color:rgb(0, 0, 0);
+border: 1px inset black ;
+border-radius:10px;
+display:flex ;
+justify-content :center; 
+align-items :center;
+height:60px;
+width:110px;
+}
+.btn3{
+
+
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
+    border: 1px inset black ;
+    border-radius:10px;
+
+}
+/* .boxo{
+
+    box-shadow: 10px 10px 10px #27AE60;
+
+} */
+.boxo:hover{
+    box-shadow: -10px -10px -10px #FFF;
+
+}
