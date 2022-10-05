@@ -2,6 +2,7 @@ import React from "react"
 import Heading from "../../common/Heading"
 import { team } from "../../data/Data"
 import "./team.css"
+import "../../UserList/UserList.css"
 
 const Team = () => {
   return (
@@ -12,6 +13,7 @@ const Team = () => {
 
           <div className='content mtop grid3'>
             {team.map((val, index) => (
+            <div className="shadowUserList">
               <div className='box' key={index}>
                 <div className='details'>
                   <div className='img'>
@@ -34,6 +36,7 @@ const Team = () => {
                       Message
                     </button></a>
                 </div>
+              </div>
               </div>
             ))}
           </div>

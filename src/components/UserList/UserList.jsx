@@ -46,9 +46,11 @@ const UserList = () => {
     <section className="team background">
       <div className="container">
         <Heading title="Users List" />
-
         <div className="content mtop grid3">
           {userList.map((val, index) => (
+            
+
+              <div className="shadowUserList">
             <div className="box" key={index}>
               <button className="btn3">
                 {val.firstName + " " + val.lastName}
@@ -102,6 +104,7 @@ const UserList = () => {
                     </button>
                   </Link>
                 </div>
+              </div>
               </div>
             </div>
           ))}

@@ -30,9 +30,9 @@ const Pages = () => {
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
           <Route exact path='/setting' component={DropDown}/>
-          <Route exact path='/services' component={Services} />
+          {/*<Route exact path='/services' component={Services} />*/}
 
-          <Route exact path='/blog' component={Blog} />
+          <Route exact path='/services' component={Blog} />
           <ProfileRoutes  path='/profile' component={Profile} />
 
           <Route exact path='/contact' component={Contact} />
