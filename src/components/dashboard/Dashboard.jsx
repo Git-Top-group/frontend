@@ -24,10 +24,7 @@ export default function Dashboard() {
   const [orders, setOrders] = useState([])
   const [client, setClient] = useState([])
   const [owner, setOwner] = useState([])
-
-  const [clientId, setClientId] = useState([])
-  const [ownerId, setOwnerId] = useState([])
-
+  const [post, setPost] = useState([])
 
   const fetchOrders = async () => {
     const data = await axios.get(
@@ -39,56 +36,68 @@ export default function Dashboard() {
         },
       }
     );
+    for(let stu of data.data){
+      console.log(stu.model +' '+ stu.ownerId+' '+stu.postId)//4!
+      await fetchOwners(stu.ownerId)//4
+      await fetchClients(stu.clientId)//4
+      await fetchPosts(stu.postId, stu.model)//4
+    }
+      setOrders(data.data)
 
-    setOrders(data.data)
 
   };
-
-
-
   const fetchClients = async (clientId) => {
+    // console.log({clientId});//4!
 
-    const allClients = await axios.get(
-      `${baseURL}/users/${clientId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
-    console.log("11111111111111111111111");
-    setClient(...client, allClients.data)
+    if (clientId) {
+
+      const allClients = await axios.get(
+        `${baseURL}/users/${clientId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+
+      );
+      setClient([...client,allClients.data]);
+    }
   };
 
 
   const fetchOwners = async (ownerId) => {
+    // console.log({ownerId});//4!
+    if (ownerId) {
 
-    const allOwners = await axios.get(
-      `${baseURL}/users/${ownerId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
-    setOwner(...owner, allOwners.data)
+      const allOwners = await axios.get(
+        `${baseURL}/users/${ownerId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      setOwner([...owner, allOwners.data])
+    }
+  };
+  const fetchPosts = async (postId, model) => {
+    if (postId && model) {
+
+      const allPosts = await axios.get(
+        `${baseURL}/${model}/${postId}`
+      );
+      setPost([...post, allPosts.data])
+    }
   };
 
   useEffect(() => {
     fetchOrders()
-    // fetchClients()
-    // fetchOwners()
-
   }, [])
 
-  // const handleChange = () => {
-  //   fetchClients(clientId)
-  //   fetchOwners(ownerId)
-  // }
-
-  // console.log({ owner });
-  // console.log({ client });
-
+  // console.log("orders", orders);
+  console.log("client", client);
+  // console.log("owner", owner);
+  // console.log("post", post);
 
 
   return (
@@ -113,7 +122,6 @@ export default function Dashboard() {
       {cookie.load('actions').includes("CRUD_Users") ? (
 
         <div>
-          {/* <button onClick={() => handleChange()}>Fetch</button> */}
           <MDBTable align='middle'>
             <MDBTableHead>
 
@@ -125,7 +133,7 @@ export default function Dashboard() {
                 <th scope='col'>model</th>
                 <th scope='col'>Created At</th>
                 <th scope='col'>Owner</th>
-                <th scope='col'>Post Id</th>
+                <th scope='col'>Post ID</th>
                 <th scope='col'>Actions</th>
 
               </tr>
@@ -134,30 +142,13 @@ export default function Dashboard() {
             <MDBTableBody>
 
               {orders.map((val, index) => {
+                // console.log("0000000000", val);
                 const { id, clientId, ownerId, postId, model, createdAt } = val
                 if (id !== undefined) {
-
-                  // for (let i = 0; i < orders.length; i++) {
-                  //   fetchOwners(ownerId)
-                  //   fetchClients(clientId)
-                  // }
-
-                  console.log({ owner });
-                  console.log({ client });
-
-
-                  // setClientId(clientId)
-                  // setOwnerId(ownerId)
-
                   return (
-
-
-
                     <tr key={index}>
-
+                      <td>{id}</td>
                       <td>
-                        <td>{id}</td>
-
                         <div className='d-flex align-items-center'>
                           <img
                             src='https://mdbootstrap.com/img/new/avatars/8.jpg'
@@ -165,14 +156,16 @@ export default function Dashboard() {
                             style={{ width: '45px', height: '45px' }}
                             className='rounded-circle'
                           />
-                          <div className='ms-3'>
+
+                          <div className='ms-3' >
                             <p className='fw-bold mb-1'>{client.username}</p>
-                            <p className='text-muted mb-0'>john.doe@gmail.com</p>
+                            {/* <p className='text-muted mb-0'>{client.email}</p> */}
                           </div>
+
                         </div>
                       </td>
                       <td>
-                        <p className='fw-normal mb-1'>Amman</p>
+                        <p className='fw-normal mb-1'>{post.city}</p>
 
                       </td>
                       <td>
@@ -182,7 +175,7 @@ export default function Dashboard() {
                       </td>
                       <td>{model}</td>
                       <td>{createdAt}</td>
-                      <td>Esam</td>
+                      <td>{owner.username}</td>
                       <td>{postId}</td>
                       <td>
                         <MDBBtn rounded color='success'>
@@ -223,14 +216,14 @@ export default function Dashboard() {
 
 
 // {
-//   clients.map((clientsVal, index) => {
+//   client.map((clientsVal, index) => {
 //     const { email, username, firstName, lastName, phoneNumber } = clientsVal
 //   })
 // }
 
 
 // {
-//   owners.map((ownersVal, index) => {
+//   owner.map((ownersVal, index) => {
 //     const { email, username, firstName, lastName, phoneNumber } = ownersVal
 //   })
 // }

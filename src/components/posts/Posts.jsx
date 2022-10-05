@@ -9,6 +9,8 @@ import img from "../images/real-estate-hero.jpg";
 import axios from "axios";
 import cookie from "react-cookies";
 import { Switch, Redirect } from "react-router-dom";
+import { baseURL } from "../../utilize/constants";
+
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
@@ -31,7 +33,7 @@ export default function CreatePost() {
 
 
   const handleSubmit = (e) => {
-  //   e.preventDefault();
+    e.preventDefault();
   // console.log("------------------")
 
   // console.log(body)
@@ -282,7 +284,7 @@ export default function CreatePost() {
   }
   const post = async () => {
     const data = await axios.post(
-      `https://akarcom-final.herokuapp.com/newpost/${user.id}/${model}`,
+      `${baseURL}/newpost/${user.id}/${model}`,
       body,
       {
         headers: {
