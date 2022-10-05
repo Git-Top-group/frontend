@@ -14,6 +14,7 @@ import cookie from "react-cookies";
 import axios from "axios";
 import { baseURL } from "../../utilize/constants";
 import PostsCards from "../userMane/userPostCards"
+import Heading from "../common/Heading";
 
 export default function Dashboard() {
   const [user] = useState({
@@ -44,9 +45,9 @@ export default function Dashboard() {
       }
     );
     for (let stu of data.data) {
-      let a1 = await fetchOwners(stu.ownerId); 
-      let a2 = await fetchClients(stu.clientId); 
-      let a3 = await fetchPosts(stu.postId, stu.model); 
+      let a1 = await fetchOwners(stu.ownerId);
+      let a2 = await fetchClients(stu.clientId);
+      let a3 = await fetchPosts(stu.postId, stu.model);
       arr1.push(a1);
       arr2.push(a2);
       arr3.push(a3);
@@ -103,22 +104,12 @@ export default function Dashboard() {
         />
         <div className="featured container"></div>
       </section>
-      {auth.loginStatus ? (
-        <>
-          <button onClick={handleLogout}>
-            Log Out <i className="fa fa-sign-out"></i>
-          </button>
-        </>
-      ) : (
-        <Switch>
-          <Redirect from="*" to="/signin"></Redirect>
-        </Switch>
-      )}
-      <br></br>
-      <br></br>
 
       {cookie.load("actions").includes("CRUD_Users") ? (
+
         <div>
+          <Heading title="clients recent orders" subtitle="orders table"></Heading>
+          <br></br>
           <MDBTable align="middle">
             <MDBTableHead>
               <tr>
@@ -151,21 +142,21 @@ export default function Dashboard() {
                           />
 
                           <div className="ms-3">
-                            
-                            <p className="fw-bold mb-1">{client[index].username}</p> 
-                           <p className='text-muted mb-0'>{client[index].email}</p>
+
+                            <p className="fw-bold mb-1">{client[index].username}</p>
+                            <p className='text-muted mb-0'>{client[index].email}</p>
                           </div>
                         </div>
                       </td>
                       <td>
-                      <p className="fw-normal mb-1">{post[index].city}</p> 
+                        <p className="fw-normal mb-1">{post[index].city}</p>
                       </td>
                       <td>
                         <MDBBadge
                           color="primary"
                           pill
                           style={{ width: "70px", height: "25px" }}>
-                            {post[index].process}
+                          {post[index].process}
                         </MDBBadge>
                       </td>
                       <td>{model}</td>
@@ -190,19 +181,20 @@ export default function Dashboard() {
         </div>
       ) : (
         <>
-        
-            
-        <section> 
-         <a href='/posts'>
-          <button className='cc1'>Create Post</button> 
-         </a>
-        </section>
-  
-         <div className='container recent'>
+
+
+          <section>
+            <Heading title="manage your posts" subtitle="orders table"></Heading>
+            <a href='/posts'>
+              <button className='cc1'>Create Post</button>
+            </a>
+          </section>
+
+          <div className='container recent'>
             < PostsCards />
           </div>
-  
-        
+
+
         </>
       )}
     </>

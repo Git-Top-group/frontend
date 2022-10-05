@@ -1,6 +1,6 @@
 .modelIcon{
     display: grid;
-    column-gap: 50px;
+    /* column-gap: 50px; */
     grid-template-columns: auto auto auto auto auto auto;
     /* background-color: #2196F3; */
     padding: 10px;

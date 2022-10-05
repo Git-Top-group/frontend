@@ -13,9 +13,12 @@ const About = () => {
           <div className='left row'>
             <Heading title='Our Agency Story' subtitle='Check out our company story and work process' />
 
-            <p>Akarcom is a leading property marketplace to inspire confidence in life’s property decisions..</p>
+            <h4>Akarcom is a leading property marketplace to inspire confidence in life’s property decisions..</h4>
             <p>Our Akarcom offer products and solutions to consumers, agents, and parties interested in property across every step of their property journey. Through our digital solutions, we can make your life easyr.</p>
-            <button className='btn2'>More About Us</button>
+            <a href="/contact">
+            <button className='btn2'>Contact Us</button>
+
+            </a>
           </div>
           <div className='right row'>
             <img src='./immio.jpg' alt='' />

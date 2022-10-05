@@ -18,7 +18,6 @@ const RecentCard = (props) => {
 
   const [postId, setPostId] = useState();
 
-  // console.log("postId", postId);
   const fetchData = async () => {
     console.log("Data fetched");
     await fetch(`${baseURL}/${model}`)
@@ -30,22 +29,9 @@ const RecentCard = (props) => {
         setUsers(data);
       });
   };
-  // /:model/:postId/:modelImages
-  const fetchImage = async () => {
-    const modelWithoutS = model.substring(0, model.length - 1)
-    await fetch(
-      `${baseURL}/${model}/${postId}/${modelWithoutS}Images`
-    )
-      .then((imgResponse) => {
-        return imgResponse.json();
-      })
-      .then((imgData) => {
-        setImages(imgData);
-      });
-  };
+  
   useEffect(() => {
     fetchData();
-    fetchImage();
   }, [model]);
 
   return (
@@ -68,7 +54,6 @@ const RecentCard = (props) => {
       <br />
       <div className="content grid3 mtop">
         {users.map((val, index) => {
-          // console.log("val", val);
           const { process, model, owner, price, city, id, url1 } = val
           return (
             <div className="box shadow" key={index}>
@@ -76,6 +61,7 @@ const RecentCard = (props) => {
                 <div className="postImg">
 
                   <img src={url1 || Logo} alt='' />
+                
                 </div>
                 <div className="text">
                   <div className="category flex">
