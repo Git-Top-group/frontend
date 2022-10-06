@@ -4,6 +4,8 @@
 }
 .location img {
   border-radius: 5px;
+  width: 400px;
+  height: 280px;
 }
 .location .overlay {
   position: absolute;
@@ -22,9 +24,9 @@
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  width: 340px;
-  height: 210px;
+  left: 5;
+  width: 360px;
+  height: 240px;
   background: rgb(15 28 47 / 30%);
   z-index: -1;
   margin: 20px;

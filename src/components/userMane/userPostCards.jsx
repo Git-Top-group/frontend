@@ -36,9 +36,11 @@ const PostsCards = (props) => {
   const [goToPost, setGoToPost] = useState(false);
   const [process, setProcess] = useState("Sell");
   const [Posts, setPosts] = useState([])
+
   const [model, setModel] = useState("lands")
   const [PostModel, setPostModel] = useState("")
   const [PostId, setPostId] = useState()
+
 
   
 const [update,setUpdate]=useState(false)
@@ -53,9 +55,11 @@ const [update,setUpdate]=useState(false)
       }
     );
 
-    console.log(data);
+    
     setPosts(data.data)
-
+if(data.data.length <=0 ){
+  alert("opps !! you don't have posts in this Categories")
+}
   };
 
   const deletePost = async (id) => {

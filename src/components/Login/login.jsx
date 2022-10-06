@@ -2,16 +2,20 @@ import React ,{useContext} from "react";
 import {Redirect ,Switch ,Link} from 'react-router-dom';
 import './login.css'
 import {LoginContext} from '../context/context'
+import cookie from 'react-cookies'
 const  SignIn =  () => {
 
   const auth =useContext(LoginContext)
   const handleLogin = async (e) => {
+
+  
     e.preventDefault();
         var body = {
       username: e.target.username.value,
       password: e.target.password.value,
     };
-    auth.loginFunction(body.username , body.password)
+    auth.loginFunction(body.username , body.password ,e.target.code.value)
+    console.log("+++++++++++++++",auth.loginFunction(body.username , body.password))
     auth.loginStatus(true)
 
   };
@@ -29,6 +33,8 @@ const  SignIn =  () => {
         <input type="text" name="username"></input>
         <label>Password </label>
         <input type="password" name="password" />
+        <label>Subscription Code</label>
+        <input type="password" name="code"></input>
         <button className="buttonSignin">login </button>
       <Link to={'/signup'}>
             <p className='signinlink'>

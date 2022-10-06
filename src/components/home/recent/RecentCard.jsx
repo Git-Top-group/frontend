@@ -4,7 +4,8 @@ import { baseURL } from "../../../utilize/constants";
 // import { list } from "../../data/Data"
 import { LoginContext } from "../../context/context"
 import Button from "react-bootstrap/Button";
-
+import {Redirect ,Switch } from 'react-router-dom';
+import  cookie from 'react-cookies'
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data";
 import "../featured/FeaturedCard.css";
@@ -15,10 +16,10 @@ const RecentCard = (props) => {
   const [users, setUsers] = useState([]);
   const [model, setModel] = useState("lands");
   const [images, setImages] = useState([]);
+  const [bid, setBid] = useState(false);
 
   const [postId, setPostId] = useState();
 
-  // console.log("postId", postId);
   const fetchData = async () => {
     console.log("Data fetched");
     await fetch(`${baseURL}/${model}`)
@@ -30,22 +31,16 @@ const RecentCard = (props) => {
         setUsers(data);
       });
   };
-  // /:model/:postId/:modelImages
-  const fetchImage = async () => {
-    await fetch(
-      `${baseURL}/${model}/${postId}/landImages`
-    )
-      .then((imgResponse) => {
-        return imgResponse.json();
-      })
-      .then((imgData) => {
-        setImages(imgData);
-      });
-  };
+  
   useEffect(() => {
     fetchData();
-    fetchImage();
   }, [model]);
+
+const setBids=(id)=>{
+setPostId(id);
+setBid(true)
+
+}
 
   return (
     <>
@@ -67,18 +62,14 @@ const RecentCard = (props) => {
       <br />
       <div className="content grid3 mtop">
         {users.map((val, index) => {
-          const { process, model, owner, price, city, id } = val;
-          const cover = images.url1;
-
-          console.log(images.postId);
-          console.log(id);
-          // setPostId(id)
-          //  {fetchImage(id)}
+          const { process, model, owner, price, city, id, url1 } = val
           return (
             <div className="box shadow" key={index}>
               <Link to={`/postdetails/${model}/${id}`}>
-                <div className="img">
-                  <img src={cover || Logo} alt="" />
+                <div className="postImg">
+
+                  <img src={url1 || Logo} alt='' />
+                
                 </div>
                 <div className="text">
                   <div className="category flex">
@@ -104,13 +95,25 @@ const RecentCard = (props) => {
                     <label htmlFor=""> JOD</label>
                   </div>
                   <span>{model}</span>
-                  <span>post id = {id} </span>
+                  {/* <span>post id = {id} </span> */}
                 </div>
               </Link>
+              {cookie.load('code') ?  
+              
+              <Link to={`/bid/${model}/${id}`}>
+              <button onClick={()=>setBids(id)}>bidding</button>
+              {/* <span>go to bid</span> */}
+              </Link>
+            : <></>
+            }
             </div>
           );
         })}
       </div>
+{/* {bid ? <Switch>
+  <Redirect from="*" to={`/bid/${model}/${postId}`} /> 
+</Switch>  :<></> }    */}
+
     </>
   );
 };

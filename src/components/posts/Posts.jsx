@@ -6,10 +6,14 @@ import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Back from "../common/Back";
+import Heading from "../common/Heading";
+
 import img from "../images/real-estate-hero.jpg";
 import axios from "axios";
 import cookie from "react-cookies";
 import { Switch, Redirect } from "react-router-dom";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 export default function CreatePost() {
   const [model, setModel] = useState("houses");
   const [process, setProcess] = useState("Sell");
@@ -17,7 +21,8 @@ export default function CreatePost() {
     token: cookie.load("token") || null,
     id: cookie.load("id"),
   });
-
+  
+  const placement ="top" ;
   const [available, setAvailable] = useState(true);
   // eslint-disable-next-line
   const [furnished, setFurnished] = useState(true);
@@ -33,10 +38,7 @@ export default function CreatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  // console.log("------------------")
-
-  // console.log(body)
-  // console.log("------------------")
+ 
     if (model === "lands" && process === "Sell") {
       setBody({
         process: process,
@@ -301,7 +303,9 @@ export default function CreatePost() {
   return (
     <>
       <Back name="" title="Fill Your Real Estate Info" cover={img} />
-
+      <div className="head"> 
+      <Heading title='Create and publish your wonderful property details ' subtitle='Remember Providing Clear and Honest Details will help to Attract more Clients ' />
+      </div>
       <div className="Post">
         <div className="beforeForm">
           <FloatingLabel controlId="floatingSelect" label="Model">
@@ -468,7 +472,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -480,7 +484,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -492,7 +496,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -502,10 +506,25 @@ export default function CreatePost() {
                   />
                 </FloatingLabel>
 
-                <Button variant="success" type="submit">
+                {/* <Button variant="success" type="submit">
                   Submit
-                </Button>
-                <PopoverPositionedExample/>
+                </Button> */}
+               
+        <OverlayTrigger
+          trigger="click"
+          key={placement}
+          placement={placement}
+          overlay={
+            <Popover id={`popover-positioned-${placement}`}>
+              <Popover.Header as="h3">Are You sure !</Popover.Header>
+              <Popover.Body>
+                  <Button type="submit" variant="danger">Confirm</Button>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+          <Button type="submit" variant="success">Submit</Button>
+        </OverlayTrigger>
               </Form>
             </>
           ) : (
@@ -721,7 +740,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -733,7 +752,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -745,7 +764,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -754,10 +773,21 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-
-                <Button variant="success" type="submit">
-                  Submit
-                </Button>
+                <OverlayTrigger
+          trigger="click"
+          key={placement}
+          placement={placement}
+          overlay={
+            <Popover id={`popover-positioned-${placement}`}>
+              <Popover.Header as="h3">Are You sure !</Popover.Header>
+              <Popover.Body>
+                  <Button type="submit" variant="danger">Confirm</Button>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+          <Button type="submit" variant="success">Submit</Button>
+        </OverlayTrigger>
               </Form>
             </>
           ) : (
@@ -985,7 +1015,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -997,7 +1027,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1009,7 +1039,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1018,10 +1048,21 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-
-                <Button variant="success" type="submit">
-                  Submit
-                </Button>
+                <OverlayTrigger
+          trigger="click"
+          key={placement}
+          placement={placement}
+          overlay={
+            <Popover id={`popover-positioned-${placement}`}>
+              <Popover.Header as="h3">Are You sure !</Popover.Header>
+              <Popover.Body>
+                  <Button type="submit" variant="danger">Confirm</Button>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+          <Button type="submit" variant="success">Submit</Button>
+        </OverlayTrigger>
               </Form>
             </>
           ) : (
@@ -1252,7 +1293,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1264,7 +1305,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1276,7 +1317,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1285,10 +1326,21 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-
-                <Button variant="success" type="submit">
-                  Submit
-                </Button>
+                <OverlayTrigger
+          trigger="click"
+          key={placement}
+          placement={placement}
+          overlay={
+            <Popover id={`popover-positioned-${placement}`}>
+              <Popover.Header as="h3">Are You sure !</Popover.Header>
+              <Popover.Body>
+                  <Button type="submit" variant="danger">Confirm</Button>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+          <Button type="submit" variant="success">Submit</Button>
+        </OverlayTrigger>
               </Form>
             </>
           ) : (
@@ -1426,7 +1478,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1438,7 +1490,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1450,7 +1502,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1459,10 +1511,21 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-
-                <Button variant="success" type="submit">
-                  Submit
-                </Button>
+                <OverlayTrigger
+          trigger="click"
+          key={placement}
+          placement={placement}
+          overlay={
+            <Popover id={`popover-positioned-${placement}`}>
+              <Popover.Header as="h3">Are You sure !</Popover.Header>
+              <Popover.Body>
+                  <Button type="submit" variant="danger">Confirm</Button>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+          <Button type="submit" variant="success">Submit</Button>
+        </OverlayTrigger>
               </Form>
             </>
           ) : (
@@ -1658,7 +1721,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1670,7 +1733,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1682,7 +1745,7 @@ export default function CreatePost() {
 
                 <FloatingLabel
                   controlId="floatingTextarea"
-                  label="Add image"
+                  label="Add image URL"
                   className="mb-3"
                 >
                   <Form.Control
@@ -1691,10 +1754,21 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-
-                <Button variant="success" type="submit">
-                  Submit
-                </Button>
+                <OverlayTrigger
+          trigger="click"
+          key={placement}
+          placement={placement}
+          overlay={
+            <Popover id={`popover-positioned-${placement}`}>
+              <Popover.Header as="h3">Are You sure !</Popover.Header>
+              <Popover.Body>
+                  <Button type="submit" variant="danger">Confirm</Button>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+          <Button type="submit" variant="success">Submit</Button>
+        </OverlayTrigger>
               </Form>
             </>
           ) : (

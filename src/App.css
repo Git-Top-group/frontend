@@ -9,7 +9,7 @@ body {
   background-color: #fff;
 }
 .container {
-  /* max-width: 80%; */
+  /* max-width: 90%; */
   margin: auto;
 }
 .flex {
@@ -41,6 +41,8 @@ button i {
   text-align: center;
   width: 60%;
   margin: auto;
+  /* margin-top: 50px; */
+  
 }
 .heading h1 {
   color: #2d3954;
@@ -96,6 +98,7 @@ img {
   cursor: pointer;
 }
 .btn2 {
+  width: 120px;
   border-radius: 50px;
   font-size: 15px;
 }
@@ -172,3 +175,20 @@ img {
     height: 30vh;
   }
 }
+.fa-linkedin:before{
+  content :"\f08c";
+  color:rgb(43, 43, 201) ;
+  font-size :40px;
+  
+  }
+  /* .fa-linkedin:after{
+    content :"\f08c"
+    
+    } */
+    .fa-github:before{
+
+padding: -40px;
+      content:"\f09b";
+      color:rgb(0, 0, 0) ;
+      font-size :40px;
+    }
