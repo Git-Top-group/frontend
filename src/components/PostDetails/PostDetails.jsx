@@ -4,13 +4,16 @@ import noImage from "../images/noImage.png";
 import cookie from "react-cookies";
 import "./PostDetails.css";
 import { useHistory } from "react-router-dom";
-import {Redirect ,Switch ,Link} from 'react-router-dom';
+import {Redirect ,Switch ,Link ,useParams} from 'react-router-dom';
 
 import { LoginContext } from "../context/context";
 
 const PostDetails = (props) => {
   const auth = useContext(LoginContext);
+// const [bid ,setBid]=useState(false)
 
+let params = useParams()
+console.log(params)
   const [post, setPost] = useState({});
   const [images, setImages] = useState([]);
 const [redirect ,setRedirect]=useState(false)
@@ -177,12 +180,12 @@ const history = useHistory();
           })}
         </ul>
       </div>
-      {auth.loginStatus && (
+      {auth.loginStatus && ( <>
+      
         <button onClick={() => orderNow()}>order now</button>
+      </>
+        
       )} 
- {/* {not ? <button onClick={() => orderNow()}>order now</button> : <></> }  */}
-
-
 
       {redirect ? 
       

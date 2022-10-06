@@ -20,7 +20,7 @@ const PostsCards = (props) => {
 
   }
   const [Posts, setPosts] = useState([])
-  const [model, setModel] = useState("lands")
+  const [model, setModel] = useState(" ")
 
   const fetchPost = async () => {
     const data = await axios.get(
@@ -33,9 +33,11 @@ const PostsCards = (props) => {
       }
     );
 
-    console.log(data);
+    
     setPosts(data.data)
-
+if(data.data.length <=0 ){
+  alert("opps !! you don't have posts in this Categories")
+}
   };
 
 
