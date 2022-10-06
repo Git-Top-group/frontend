@@ -5,7 +5,7 @@ import cookie from "react-cookies";
 import "./PostDetails.css";
 import { useHistory } from "react-router-dom";
 import {Redirect ,Switch ,Link} from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 import { LoginContext } from "../context/context";
 
 const PostDetails = (props) => {
@@ -82,6 +82,12 @@ const history = useHistory();
       .then((data) => {
         console.log("done order");
       });
+
+      Swal.fire(
+        'Order Sent Successfully!',
+        'Please Wait Until Admin Contact You.',
+        'success'
+    )
   };
 
   const getTrashIcon = () => {
