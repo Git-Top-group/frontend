@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { baseURL, defaultImageLink } from "../../utilize/constants";
-import noImage from "../images/noImage.png";
-import cookie from "react-cookies";
+import { baseURL } from "../../utilize/constants";
+
 import "./PostBidDetails.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 
-import { useHistory, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { LoginContext } from "../context/context";
 
 const Subscribe = () => {
@@ -20,7 +19,7 @@ const Subscribe = () => {
   const [list, setList] = useState(savedNotes ? JSON.parse(savedNotes) : []);
   const [post, setPost] = useState({});
   const [images, setImages] = useState([]);
-  const [priceBid, setPrice] = useState(0);
+  
  
 
   const getPost = async () => {
@@ -47,7 +46,7 @@ const Subscribe = () => {
     
       let totalprice = parseInt(e.target.Price.value) + post.price; 
 
-      if(e.target.Price.value != null ||e.target.Price.value != undefined ){
+      if(e.target.Price.value !== null ||e.target.Price.value !== undefined ){
         setList([...list, {
           client: auth.user.username,
           email: auth.user.email,

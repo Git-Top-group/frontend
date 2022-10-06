@@ -70,7 +70,7 @@ header .toggle {
   }
 }
 
-<!----------------->
+
 
 .navbar1 {
   overflow: hidden;
@@ -92,13 +92,25 @@ header .toggle {
   overflow: hidden;
 }
 
+.dropdown1 .dropbtn1 {
+  font-size: 16px;
+  border-radius:0px;  
+  border: none;
+  outline: none;
+  color: #27ae60;
+  padding: 14px 16px;
+  background-color: white !important;
+  font-family: inherit;
+  margin: 0;
+  transition: 0.3s;
+}
 .dropdown1 .dropbtn {
   font-size: 16px;  
   border: none;
   outline: none;
   color: #27ae60;
   padding: 14px 16px;
-  background-color: inherit;
+  background-color: inherit ;
   font-family: inherit;
   margin: 0;
   transition: 0.3s;
