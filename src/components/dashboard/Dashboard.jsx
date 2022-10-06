@@ -232,11 +232,11 @@ export default function Dashboard() {
        <a href='/posts'>
         <button className='cc1'>creat post</button> 
        </a>
-      </section>
 
-       <div className='container recent'>
+         <div className='container recent'>
           < PostsCards />
-        </div>
+         </div>
+        </section>
 
       
 
