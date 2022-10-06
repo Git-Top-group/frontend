@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react"
 import "./header.css"
-import { nav, setting } from "../../data/Data"
+import { nav } from "../../data/Data"
 import Button from "react-bootstrap/Button";
-import cookie from 'react-cookies';
 
-import { Link ,Switch , Redirect} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { LoginContext } from "../../context/context";
 
 
@@ -66,7 +65,7 @@ const Header = () => {
 {getDashboard()}
               <div class="navbar1">
                 <div class="dropdown1">
-                  <button class="dropbtn">Settings
+                  <button className="dropbtn1">Settings
                     <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">

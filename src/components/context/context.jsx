@@ -63,6 +63,8 @@ return("error")
         cookie.remove('username');
         cookie.remove('id');
         cookie.remove('code');
+        cookie.remove('email');
+
       
     }
     const validateMyUser = (user ,code) => {

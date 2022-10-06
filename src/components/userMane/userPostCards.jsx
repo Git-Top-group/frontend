@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useContext } from "react"
-// import { list } from "../../data/Data"
 import { LoginContext } from "../context/context"
-// import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../data/Data"
 import Logo from "../home/recent/noImage.png"
 import cookie from "react-cookies";
 import "./U.css"
 import axios from "axios";
-import PopoverPositionedExample from '../model/model'
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -21,10 +18,7 @@ const PostsCards = (props) => {
     id: cookie.load("id"),
   });
   const auth = useContext(LoginContext)
-  const handleLogout = () => {
-    auth.logoutFunction()
-
-  }
+  
   const [available, setAvailable] = useState(true);
   // eslint-disable-next-line
   const [furnished, setFurnished] = useState(true);
@@ -33,8 +27,8 @@ const PostsCards = (props) => {
   console.log(cookie.load("actions")[0]);
 
   const [editBody, setEditBody] = useState({});
-  const [goToPost, setGoToPost] = useState(false);
-  const [process, setProcess] = useState("Sell");
+  // const [goToPost, setGoToPost] = useState(false);
+  const [process, setProcess] = useState("Sell")
   const [Posts, setPosts] = useState([])
 
   const [model, setModel] = useState("lands")
@@ -419,11 +413,12 @@ console.log(editBody)
 
           return (
             <div className='box shadow' key={index}>
+                <a href={`/postdetails/${model}/${id}`}>
               <div className='postImg'>
                 <img src={url1 || Logo} alt='' />
               </div>
               <div className='text'>
-                <a href={`/postdetails/${model}/${id}`}>show details</a>
+              
                 <div className='category_flex'>
                   <span style={{ background: process === "Sell" ? "#25b5791a" : "#ff98001a", color: process === "Sell" ? "#25b579" : "#ff9800" }}>{process}</span>
                   <p className="heart">
@@ -435,8 +430,9 @@ console.log(editBody)
                   <i className='fa fa-location-dot'></i> {city}
                 </p>
               </div>
+                </a>
 
-              <div className='buttonflex'>
+              <div className='buttonflex2'>
                 <button onClick={() => deletePost(id)} >delete </button>
                   <button onClick={() => updatePost(id ,model)} >Update </button>
               </div>
@@ -448,35 +444,7 @@ console.log(editBody)
 {update ?   
       <div className="Post">
         <div className="beforeForm">
-          {/* <FloatingLabel controlId="floatingSelect" label="Model">
-            <Form.Select
-              aria-label="Floating label select example" size="" 
-              name="Process"
-              onClick={(e) => {
-                setModel(e.target.value);
-              }}
-            >
-              <option value="villas">villas</option>
-              <option value="lands">lands</option>
-              <option value="houses">houses</option>
-              <option value="chalets">chalets</option>
-              <option value="apartments">apartments</option>
-              <option value="warehouses">warehouses</option>
-            </Form.Select>
-          </FloatingLabel> */}
-
-          {/* <FloatingLabel controlId="floatingSelect" label="Process">
-            <Form.Select
-              aria-label="Floating label select example" size=""
-              name="Process"
-              onClick={(e) => {
-                setProcess(e.target.value);
-              }}
-            >
-              <option value="Sell">Sell</option>
-              <option value="Rent">Rent</option>
-            </Form.Select>
-          </FloatingLabel> */}
+          
         </div>
 
         <div className="Forms">
@@ -485,25 +453,7 @@ console.log(editBody)
           {model === "lands" ? (
             <>
               <Form onSubmit={handleEdit}>
-                {/* <FloatingLabel controlId="floatingSelect" label="City"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example" 
-                    name="City" 
-                  >
-                    <option value="Amman">Amman</option>
-                    <option value="Zarqa">Zarqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Jarash">Jarash</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Al-Balqa">Al-Balqa</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+              
 
                 <FloatingLabel
                   controlId="floatingSelect"
@@ -534,15 +484,7 @@ console.log(editBody)
                   </Form.Select>
                 </FloatingLabel>
 
-                {/* <FloatingLabel controlId="floatingSelect" label="Owner"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="Owner"
-                  >
-                    <option value="Owner">Owner</option>
-                    <option value="Broker">Broker</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+               
 
                 {process === "Rent" ? (
                   <FloatingLabel
@@ -649,7 +591,7 @@ console.log(editBody)
                 <Button variant="success" type="submit">
                   Submit
                 </Button>
-                <PopoverPositionedExample/>
+            
               </Form>
             </>
           ) : (
@@ -661,26 +603,7 @@ console.log(editBody)
           {model === "villas" ? (
             <>
               <Form onSubmit={handleEdit}>
-                {/* <FloatingLabel controlId="floatingSelect" label="City"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="City"
-                  >
-                    <option value="Amman">Amman</option>
-                    <option value="Zarqa">Zarqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Jarash">Jarash</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Al-Balqa">Al-Balqa</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
-
+                
                 <FloatingLabel
                   controlId="floatingSelect"
                   label="Number of Floors"
@@ -740,15 +663,7 @@ console.log(editBody)
                   </Form.Select>
                 </FloatingLabel>
 
-                {/* <FloatingLabel controlId="floatingSelect" label="Owner"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="Owner"
-                  >
-                    <option value="Owner">Owner</option>
-                    <option value="Broker">Broker</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+              
 
                 <FloatingLabel controlId="floatingSelect" label="Building Age">
                   <Form.Select
@@ -913,25 +828,7 @@ console.log(editBody)
           {model === "houses" ? (
             <>
               <Form onSubmit={handleEdit}>
-                {/* <FloatingLabel controlId="floatingSelect" label="City"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="City"
-                  >
-                    <option value="Amman">Amman</option>
-                    <option value="Zarqa">Zarqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Jarash">Jarash</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Al-Balqa">Al-Balqa</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+               
 
                 <FloatingLabel
                   controlId="floatingSelect"
@@ -992,15 +889,7 @@ console.log(editBody)
                   </Form.Select>
                 </FloatingLabel>
 
-                {/* <FloatingLabel controlId="floatingSelect" label="Owner"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="Owner"
-                  >
-                    <option value="Owner">Owner</option>
-                    <option value="Broker">Broker</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+                
 
                 <FloatingLabel controlId="floatingSelect" label="Building Age">
                   <Form.Select
@@ -1178,23 +1067,7 @@ console.log(editBody)
             <>
               <Form onSubmit={handleEdit}>
                 <FloatingLabel controlId="floatingSelect" label="City">
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="City"
-                  >
-                    <option value="Amman">Amman</option>
-                    <option value="Zarqa">Zarqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Jarash">Jarash</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Al-Balqa">Al-Balqa</option>
-                  </Form.Select> */}
+                  
                 </FloatingLabel>
 
                 <FloatingLabel controlId="floatingSelect" label="Availability">
@@ -1317,15 +1190,7 @@ console.log(editBody)
                   </Form.Select>
                 </FloatingLabel>
 
-                {/* <FloatingLabel controlId="floatingSelect" label="Owner"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="Owner"
-                  >
-                    <option value="Owner">Owner</option>
-                    <option value="Broker">Broker</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+                
 
                 {process === "Rent" ? (
                   <FloatingLabel
@@ -1443,25 +1308,7 @@ console.log(editBody)
           {model === "warehouses" ? (
             <>
               <Form onSubmit={handleEdit}>
-                {/* <FloatingLabel controlId="floatingSelect" label="City"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="City"
-                  >
-                    <option value="Amman">Amman</option>
-                    <option value="Zarqa">Zarqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Jarash">Jarash</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Al-Balqa">Al-Balqa</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+               
 
                 <FloatingLabel
                   controlId="floatingSelect"
@@ -1492,7 +1339,6 @@ console.log(editBody)
                   </Form.Select>
                 </FloatingLabel>
 
-                {/* <FloatingLabel controlId="floatingSelect" label="Owner"> */}
                   <Form.Select
                     aria-label="Floating label select example"
                     name="Owner"
@@ -1500,7 +1346,6 @@ console.log(editBody)
                     <option value="Owner">Owner</option>
                     <option value="Broker">Broker</option>
                   </Form.Select>
-                {/* </FloatingLabel> */}
 
                 {process === "Rent" ? (
                   <FloatingLabel
@@ -1617,25 +1462,7 @@ console.log(editBody)
           {model === "chalets" ? (
             <>
               <Form onSubmit={handleEdit}>
-                {/* <FloatingLabel controlId="floatingSelect" label="City"> */}
-                  {/* <Form.Select
-                    aria-label="Floating label select example"
-                    name="City"
-                  >
-                    <option value="Amman">Amman</option>
-                    <option value="Zarqa">Zarqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Jarash">Jarash</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Al-Balqa">Al-Balqa</option>
-                  </Form.Select> */}
-                {/* </FloatingLabel> */}
+                 
 
                 <FloatingLabel controlId="floatingSelect" label="Availability">
                   <Form.Select
@@ -1695,7 +1522,6 @@ console.log(editBody)
                   </Form.Select>
                 </FloatingLabel>
 
-                {/* <FloatingLabel controlId="floatingSelect" label="Owner"> */}
                   <Form.Select
                     aria-label="Floating label select example"
                     name="Owner"
