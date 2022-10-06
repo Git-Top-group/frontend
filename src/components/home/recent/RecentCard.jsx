@@ -4,7 +4,8 @@ import { baseURL } from "../../../utilize/constants";
 // import { list } from "../../data/Data"
 import { LoginContext } from "../../context/context"
 import Button from "react-bootstrap/Button";
-
+import {Redirect ,Switch } from 'react-router-dom';
+import  cookie from 'react-cookies'
 // import FeaturedCard from "../featured/FeaturedCard";
 import { featured } from "../../data/Data";
 import "../featured/FeaturedCard.css";
@@ -15,6 +16,7 @@ const RecentCard = (props) => {
   const [users, setUsers] = useState([]);
   const [model, setModel] = useState("lands");
   const [images, setImages] = useState([]);
+  const [bid, setBid] = useState(false);
 
   const [postId, setPostId] = useState();
 
@@ -33,6 +35,12 @@ const RecentCard = (props) => {
   useEffect(() => {
     fetchData();
   }, [model]);
+
+const setBids=(id)=>{
+setPostId(id);
+setBid(true)
+
+}
 
   return (
     <>
@@ -87,13 +95,25 @@ const RecentCard = (props) => {
                     <label htmlFor=""> JOD</label>
                   </div>
                   <span>{model}</span>
-                  <span>post id = {id} </span>
+                  {/* <span>post id = {id} </span> */}
                 </div>
               </Link>
+              {cookie.load('code') ?  
+              
+              <Link to={`/bid/${model}/${id}`}>
+              <button onClick={()=>setBids(id)}>bidding</button>
+              {/* <span>go to bid</span> */}
+              </Link>
+            : <></>
+            }
             </div>
           );
         })}
       </div>
+{/* {bid ? <Switch>
+  <Redirect from="*" to={`/bid/${model}/${postId}`} /> 
+</Switch>  :<></> }    */}
+
     </>
   );
 };
