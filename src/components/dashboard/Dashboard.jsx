@@ -93,7 +93,62 @@ export default function Dashboard() {
     fetchOrders();
   }, []);
 
+  const getOrder = async (orderId, postId) => {
+    const order = await axios.get(`${baseURL}/allorders/${postId}/${orderId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+  }
 
+
+  const handleAcceptEvent = async (orderId, postId) => {
+    let order = getOrder(orderId, postId);
+    console.log(order);
+
+    try {
+      const data = await axios.post(
+        `${baseURL}/allorders/${postId}/${orderId}/accept`, {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log(data);
+    }
+    catch (error) {
+      console.log(error.response.data);
+    }
+    //if (data.data) {
+    // cookie.save("postId", data.data.id);
+    // setGoToPost(true);
+    //  }
+
+
+  }
+
+  const handleRejectEvent = async (orderId, postId) => {
+    let order = getOrder(orderId, postId);
+    console.log(order);
+
+    try {
+      const data = await axios.post(
+        `${baseURL}/allorders/${postId}/${orderId}/reject`, {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log(data);
+    }
+    catch (error) {
+      console.log(error.response.data);
+    }
+  }
 
   return (
     <>
@@ -165,10 +220,10 @@ export default function Dashboard() {
                       <td>{owner[index].username}</td>
                       <td>{postId}</td>
                       <td>
-                        <MDBBtn rounded color="success">
+                        <MDBBtn rounded color="success" onClick={() => handleAcceptEvent(id, postId)}>
                           Accept
                         </MDBBtn>
-                        <MDBBtn rounded className="mx-2" color="danger">
+                        <MDBBtn rounded className="mx-2" color="danger" onClick={() => handleRejectEvent(id, postId)}>
                           Reject
                         </MDBBtn>
                       </td>
