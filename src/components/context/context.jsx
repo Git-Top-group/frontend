@@ -16,9 +16,9 @@ export default function LoginProvider(props) {
         actions: cookie.load('actions') || [],
         id:cookie.load('id')|| null 
     });
-useEffect(()=>{
-    cookie.save('signUp' ,signUp)
-},[signUp])
+// useEffect(()=>{
+//     cookie.save('signUp' ,signUp)
+// },[signUp])
     useEffect(() => {
         const tokenFromCookies = cookie.load('token');
         const userId = cookie.load('id');

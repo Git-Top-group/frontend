@@ -9,6 +9,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
+import { Switch, Redirect } from "react-router-dom";
+
 
 
 const PostsCards = (props) => {
@@ -34,7 +36,7 @@ const PostsCards = (props) => {
   const [model, setModel] = useState("lands")
   const [PostModel, setPostModel] = useState("")
   const [PostId, setPostId] = useState()
-
+const [res ,setRes] =useState([])
 
   
 const [update,setUpdate]=useState(false)
@@ -279,22 +281,26 @@ if(data.data.length <=0 ){
 
   };
 
+useEffect(()=>{
 
+  post()
+
+},[editBody])
  const updatePost=(id,model)=>{
 
    setUpdate(true)
    setPostId(id)
    setPostModel(model)
-   sendPost()
+  //  sendPost()
  }
 
- const sendPost=()=>{
+//  const sendPost=()=>{
 
-  post()
-  console.log("++++++++++++++++++++++++++++++++++++++++++",PostId,PostModel)
+//   post()
+//   console.log(PostId,PostModel)
 
 
-}
+// }
 
 
 const post = async () => {
@@ -307,14 +313,11 @@ const post = async () => {
       },
     }
   );
-  {
 
-  
-  }
-
+  console.log(data)
+setRes(data.data)
 }; 
 
-console.log(editBody)
 
   return (
 
@@ -1607,6 +1610,12 @@ console.log(editBody)
       </div>
 : <></>}
 
+{res.length > 0 ?
+<Switch>
+  <Redirect from="/dashboard" to={`/postdetails/${PostModel}/${PostId}`} ></Redirect>
+  </Switch>
+
+ : <></>}
     </>
 
   )
