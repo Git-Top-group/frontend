@@ -166,3 +166,12 @@ transition: 0.3s;
 
 
 } */
+.HighestPrice{
+background-color: lightsalmon;
+border: 1px solid green;
+border-radius:3px;
+justify-content: center;
+padding-left: 155px;
+
+
+}
