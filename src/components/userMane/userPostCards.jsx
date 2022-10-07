@@ -20,7 +20,7 @@ const PostsCards = (props) => {
   const auth = useContext(LoginContext)
   
   const [available, setAvailable] = useState(true);
-  // eslint-disable-next-line
+  
   const [furnished, setFurnished] = useState(true);
   // eslint-disable-next-line
   const [elevator, setElevator] = useState(true);
@@ -52,7 +52,6 @@ const [update,setUpdate]=useState(false)
     
     setPosts(data.data)
 if(data.data.length <=0 ){
-  alert("opps !! you don't have posts in this Categories")
 }
   };
 
@@ -78,19 +77,12 @@ if(data.data.length <=0 ){
   }, [model])
   const handleEdit = (e) => {
     e.preventDefault();
-  // console.log("------------------")
-
-  // console.log(body)
-  // console.log("------------------")
+ 
     if (model === "lands" && process === "Sell") {
       setEditBody({
-        // process: process,
-        // type: e.target.Type.value,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         area: e.target.Area.value,
         availability: available,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -99,14 +91,10 @@ if(data.data.length <=0 ){
       });
     } else if (model === "lands" && process === "Rent") {
       setEditBody({
-        // process: process,
-        // type: e.target.Type.value,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         area: e.target.Area.value,
         availability: available,
         rentDuration: e.target.RentDuration.value,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -115,8 +103,6 @@ if(data.data.length <=0 ){
       });
     } else if (model === "houses" && process === "Sell") {
       setEditBody({
-        // process: process,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
@@ -127,7 +113,6 @@ if(data.data.length <=0 ){
         bathrooms: e.target.Bathrooms.value,
         availability: available,
         furnished: furnished,
-        // city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
         moreInfo: e.target.moreInfo.value,
@@ -137,8 +122,6 @@ if(data.data.length <=0 ){
       });
     } else if (model === "houses" && process === "Rent") {
       setEditBody({
-        // process: process,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
@@ -150,7 +133,6 @@ if(data.data.length <=0 ){
         availability: available,
         furnished: furnished,
         rentDuration: e.target.RentDuration.value,
-        // city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
         moreInfo: e.target.moreInfo.value,
@@ -160,8 +142,6 @@ if(data.data.length <=0 ){
       });
     } else if (model === "villas" && process === "Sell") {
       setEditBody({
-        // process: process,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
@@ -171,7 +151,6 @@ if(data.data.length <=0 ){
         bathrooms: e.target.Bathrooms.value,
         availability: available,
         furnished: furnished,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -180,8 +159,7 @@ if(data.data.length <=0 ){
       });
     } else if (model === "villas" && process === "Rent") {
       setEditBody({
-        // process: process,
-        // owner: e.target.Owner.value,
+      
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
@@ -192,7 +170,6 @@ if(data.data.length <=0 ){
         availability: available,
         furnished: furnished,
         rentDuration: e.target.RentDuration.value,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -201,8 +178,6 @@ if(data.data.length <=0 ){
       });
     } else if (model === "apartments" && process === "Sell") {
       setEditBody ({
-        // process: process,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         area: e.target.Area.value,
         floorNum: e.target.FloorNumber.value,
@@ -212,7 +187,6 @@ if(data.data.length <=0 ){
         availability: available,
         elevator: elevator,
         furnished: furnished,
-        // city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
         moreInfo: e.target.moreInfo.value,
@@ -222,8 +196,6 @@ if(data.data.length <=0 ){
       });
     } else if (model === "apartments" && process === "Rent") {
       setEditBody ({
-        // process: process,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         area: e.target.Area.value,
         floorNum: e.target.FloorNumber.value,
@@ -234,7 +206,6 @@ if(data.data.length <=0 ){
         elevator: elevator,
         furnished: furnished,
         rentDuration: e.target.RentDuration.value,
-        // city: e.target.City.value,
         address: e.target.address.value,
         finishing: e.target.Finishing.value,
         moreInfo: e.target.moreInfo.value,
@@ -244,8 +215,7 @@ if(data.data.length <=0 ){
       });
     } else if (model === "chalets" && process === "Sell") {
       setEditBody ({
-        // process: process,
-        // owner: e.target.Owner.value,
+        
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
@@ -254,7 +224,6 @@ if(data.data.length <=0 ){
         bathrooms: e.target.Bathrooms.value,
         availability: available,
         furnished: furnished,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -263,8 +232,6 @@ if(data.data.length <=0 ){
       });
     } else if (model === "chalets" && process === "Rent") {
       setEditBody ({
-        // process: process,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         surfaceArea: e.target.SurfaceArea.value,
         landArea: e.target.LandArea.value,
@@ -274,7 +241,6 @@ if(data.data.length <=0 ){
         availability: available,
         furnished: furnished,
         rentDuration: e.target.RentDuration.value,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -283,13 +249,9 @@ if(data.data.length <=0 ){
       });
     } else if (model === "warehouses" && process === "Sell") {
       setEditBody ({
-        // process: process,
-        // type: e.target.Type.value,
-        // owner: e.target.Owner.value,
         price: e.target.Price.value,
         area: e.target.Area.value,
         availability: available,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -299,14 +261,11 @@ if(data.data.length <=0 ){
     } else if (model === "warehouses" && process === "Rent") {
       setEditBody 
       ({
-        // process: process,
-        // type: e.target.Type.value,
-        // owner: e.target.Owner.value,
+        
         price: e.target.Price.value,
         area: e.target.Area.value,
         availability: available,
         rentDuration: e.target.RentDuration.value,
-        // city: e.target.City.value,
         address: e.target.address.value,
         moreInfo: e.target.moreInfo.value,
         url1: e.target.url1.value,
@@ -315,10 +274,7 @@ if(data.data.length <=0 ){
       });
     }
 
-  //   console.log(JSON.stringify(editBody));
-  //   setTimeout(function(){
-  //     sendPost()
-  //  }, 1000);
+  
 
 
   };
@@ -353,34 +309,12 @@ const post = async () => {
   );
   {
 
-    // setGoToPost(true);
+  
   }
-  // console.log(data);
+
 }; 
 
 console.log(editBody)
-
-
-// const onSubmit =()=>{
-//   if(update){
-//     axios.post(`https://akarcom-final2.herokuapp.com/newpost/${user.id}/${model}`,data)
-//     .then(res =>
-//       console.log(res))
-//       .catch(err =>
-//         console.log(err));}
-//         else{
-//           axios.put(`https://akarcom-final2.herokuapp.com/dashboard/${user.id}/${PostModel}/${PostId}`,data)
-//           .then(res =>
-//             console.log(res))
-//             .catch(err =>
-//               console.log(err));
-        
-//   }
-//   console.log(data);
-
-
-   
-
 
   return (
 
@@ -433,8 +367,9 @@ console.log(editBody)
                 </a>
 
               <div className='buttonflex2'>
-                <button onClick={() => deletePost(id)} >delete </button>
-                  <button onClick={() => updatePost(id ,model)} >Update </button>
+               <a href="/"> <button onClick={() => deletePost(id)} >delete </button>
+                </a>
+                 <button onClick={() => updatePost(id ,model)} >Update </button>
               </div>
             </div>
 
@@ -1066,9 +1001,7 @@ console.log(editBody)
           {model === "apartments" ? (
             <>
               <Form onSubmit={handleEdit}>
-                <FloatingLabel controlId="floatingSelect" label="City">
-                  
-                </FloatingLabel>
+                {/*  */}
 
                 <FloatingLabel controlId="floatingSelect" label="Availability">
                   <Form.Select
