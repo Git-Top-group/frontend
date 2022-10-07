@@ -1,16 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import { baseURL, defaultImageLink } from "../../utilize/constants";
+import { baseURL} from "../../utilize/constants";
 import noImage from "../images/noImage.png";
 import cookie from "react-cookies";
 import "./PostDetails.css";
 import { useHistory } from "react-router-dom";
+
 import {Redirect ,Switch ,Link} from 'react-router-dom';
 import Swal from 'sweetalert2';
+
+import {useParams} from 'react-router-dom';
+
+
 import { LoginContext } from "../context/context";
 
 const PostDetails = (props) => {
   const auth = useContext(LoginContext);
 
+
+let params = useParams()
+console.log(params)
   const [post, setPost] = useState({});
   const [images, setImages] = useState([]);
 const [redirect ,setRedirect]=useState(false)
@@ -30,7 +38,7 @@ const history = useHistory();
           key.includes("url") ? data[key] : null
         );
         let filteredImage = imag.filter(function (el) {
-          return el != null && el != "";
+          return el !== null && el !== "";
         });
         setImages(filteredImage);
       });
@@ -146,13 +154,13 @@ const history = useHistory();
                   class="mySlides fade"
                   style={{ display: index === 0 ? "block" : "none" }}
                 >
-                  <img src={image} style={{ width: "60%" }} />
+                  <img src={image} style={{ width: "60%" }} alt=""/>
                 </div>
               );
             })
           ) : (
             <div class="mySlides fade">
-              <img src={noImage} style={{ width: "60%" }} />
+              <img src={noImage} style={{ width: "60%" }} alt="" />
             </div>
           )}
 
@@ -183,12 +191,12 @@ const history = useHistory();
           })}
         </ul>
       </div>
-      {auth.loginStatus && (
+      {auth.loginStatus && ( <>
+      
         <button onClick={() => orderNow()}>order now</button>
+      </>
+        
       )} 
- {/* {not ? <button onClick={() => orderNow()}>order now</button> : <></> }  */}
-
-
 
       {redirect ? 
       

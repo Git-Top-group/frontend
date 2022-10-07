@@ -46,14 +46,13 @@ useEffect(()=>{
 alert(err)
       }
   }
-    const loginFunction = async (username, password) => {
+    const loginFunction = async (username, password, code) => {
         try {
             const response = await superagent.post(`${API}/signin`).set('authorization', `Basic ${base64.encode(`${username}:${password}`)}`);
             console.log('body >>> ', response.body.user.token);
-            validateMyUser(response.body.user);
-
+            validateMyUser(response.body.user ,code);
         } catch (err) {
-
+return("error")
         }
     }
     const logoutFunction = () => {
@@ -63,10 +62,12 @@ alert(err)
         cookie.remove('actions');
         cookie.remove('username');
         cookie.remove('id');
+        cookie.remove('code');
+        cookie.remove('email');
 
-        console.log('cookies removed ++++++++++++')
+      
     }
-    const validateMyUser = (user) => {
+    const validateMyUser = (user ,code) => {
         if (user.token) {
             // const userFromToken = jwt.decode(user.token);
             console.log('user.token >>>> ', user.token);
@@ -75,7 +76,11 @@ alert(err)
             cookie.save('token', user.token);
             cookie.save('username', user.username);
             cookie.save('id', user.id);
-
+            cookie.save('email', user.email);
+            if(code==="abcd1234"){
+                cookie.save("code", "subscriber")
+                
+                    }
 
             // const actionsCookie = JSON.stringify(user.actions);
             cookie.save('actions', user.capabilities)

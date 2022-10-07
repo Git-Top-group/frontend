@@ -6,17 +6,20 @@ const  SignIn =  () => {
 
   const auth =useContext(LoginContext)
   const handleLogin = async (e) => {
+
+  
     e.preventDefault();
         var body = {
       username: e.target.username.value,
       password: e.target.password.value,
     };
-    auth.loginFunction(body.username , body.password)
+    auth.loginFunction(body.username , body.password ,e.target.code.value)
+    // console.log("+++++++++++++++",auth.loginFunction(body.username , body.password))
     auth.loginStatus(true)
 
   };
   return (
-    <>
+      <div className="container">
 
       {auth.loginStatus && auth.user.id ?  
     <Switch>
@@ -26,9 +29,11 @@ const  SignIn =  () => {
       <form onSubmit={handleLogin} className="loginForm">
         <br></br>
         <label>Username</label>
-        <input type="text" name="username"></input>
+        <input type="text" name="username" required></input>
         <label>Password </label>
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
+        <label><a href="/contact">Subscription Code ?</a></label>
+        <input type="password" name="code" placeholder=""></input>
         <button className="buttonSignin">login </button>
       <Link to={'/signup'}>
             <p className='signinlink'>
@@ -36,13 +41,13 @@ const  SignIn =  () => {
             </p>
             </Link>
       </form>
+
       <Redirect from='/signup' to="/signin"></Redirect>
       </Switch>
     }
       
-    
+    </div>
    
-    </>
   );
 };
 export default SignIn;

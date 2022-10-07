@@ -89,6 +89,7 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+
     fetchOrders();
   }, []);
 
@@ -238,8 +239,9 @@ export default function Dashboard() {
         <>
 
 
+
           <section>
-            <Heading title="manage your posts" subtitle="orders table"></Heading>
+            <Heading title="manage your posts" subtitle="Start your Business"></Heading>
             <a href='/posts'>
               <button className='cc1'>Create Post</button>
             </a>

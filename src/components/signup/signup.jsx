@@ -18,7 +18,7 @@ auth.SignUpFunction(e.target.username.value,e.target.password.value  ,e.target.e
 
 
 
-return(<>
+return(    <div className="container">
 
 <form onSubmit={handleLogin} className="loginForm">
   <br></br>
@@ -49,7 +49,7 @@ return(<>
     <Redirect from='/signup' to={`/signin`}></Redirect>
     </Switch></> : <> </>}
 
-</>)
+</div>)
 
 }
 export default SignUp ;
