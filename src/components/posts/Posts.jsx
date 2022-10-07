@@ -271,18 +271,15 @@ export default function CreatePost() {
       });
     }
 
-    console.log(JSON.stringify(body));
-    setTimeout(function(){
-      sendPost()
-   }, 1000);
 
 
   };
 
-  const sendPost=()=>{
+  useEffect(()=>{
 
     post()
-  }
+  
+  },[body])
   const post = async () => {
     const data = await axios.post(
       `https://akarcom-final2.herokuapp.com/newpost/${user.id}/${model}`,
@@ -505,26 +502,8 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
+                <Button type="submit" variant="success">Submit</Button>
 
-                {/* <Button variant="success" type="submit">
-                  Submit
-                </Button> */}
-               
-        <OverlayTrigger
-          trigger="click"
-          key={placement}
-          placement={placement}
-          overlay={
-            <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Are You sure !</Popover.Header>
-              <Popover.Body>
-                  <Button type="submit" variant="danger">Confirm</Button>
-              </Popover.Body>
-            </Popover>
-          }
-        >
-          <Button type="submit" variant="success">Submit</Button>
-        </OverlayTrigger>
               </Form>
             </>
           ) : (
@@ -773,21 +752,8 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-                <OverlayTrigger
-          trigger="click"
-          key={placement}
-          placement={placement}
-          overlay={
-            <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Are You sure !</Popover.Header>
-              <Popover.Body>
-                  <Button type="submit" variant="danger">Confirm</Button>
-              </Popover.Body>
-            </Popover>
-          }
-        >
-          <Button type="submit" variant="success">Submit</Button>
-        </OverlayTrigger>
+                <Button type="submit" variant="success">Submit</Button>
+
               </Form>
             </>
           ) : (
@@ -1048,21 +1014,8 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-                <OverlayTrigger
-          trigger="click"
-          key={placement}
-          placement={placement}
-          overlay={
-            <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Are You sure !</Popover.Header>
-              <Popover.Body>
-                  <Button type="submit" variant="danger">Confirm</Button>
-              </Popover.Body>
-            </Popover>
-          }
-        >
-          <Button type="submit" variant="success">Submit</Button>
-        </OverlayTrigger>
+                <Button type="submit" variant="success">Submit</Button>
+
               </Form>
             </>
           ) : (
@@ -1326,21 +1279,8 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-                <OverlayTrigger
-          trigger="click"
-          key={placement}
-          placement={placement}
-          overlay={
-            <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Are You sure !</Popover.Header>
-              <Popover.Body>
-                  <Button type="submit" variant="danger">Confirm</Button>
-              </Popover.Body>
-            </Popover>
-          }
-        >
-          <Button type="submit" variant="success">Submit</Button>
-        </OverlayTrigger>
+                <Button type="submit" variant="success">Submit</Button>
+
               </Form>
             </>
           ) : (
@@ -1511,21 +1451,8 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-                <OverlayTrigger
-          trigger="click"
-          key={placement}
-          placement={placement}
-          overlay={
-            <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Are You sure !</Popover.Header>
-              <Popover.Body>
-                  <Button type="submit" variant="danger">Confirm</Button>
-              </Popover.Body>
-            </Popover>
-          }
-        >
-          <Button type="submit" variant="success">Submit</Button>
-        </OverlayTrigger>
+                <Button type="submit" variant="success">Submit</Button>
+
               </Form>
             </>
           ) : (
@@ -1754,21 +1681,8 @@ export default function CreatePost() {
                     name="url3"
                   />
                 </FloatingLabel>
-                <OverlayTrigger
-          trigger="click"
-          key={placement}
-          placement={placement}
-          overlay={
-            <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Are You sure !</Popover.Header>
-              <Popover.Body>
-                  <Button type="submit" variant="danger">Confirm</Button>
-              </Popover.Body>
-            </Popover>
-          }
-        >
-          <Button type="submit" variant="success">Submit</Button>
-        </OverlayTrigger>
+                <Button type="submit" variant="success">Submit</Button>
+
               </Form>
             </>
           ) : (
