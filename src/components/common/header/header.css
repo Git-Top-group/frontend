@@ -10,7 +10,8 @@ header {
 
 }
 header img {
-  width: 120px;
+  width: 350px;
+  margin-left : -100px;
 }
 header a {
   color:black;
