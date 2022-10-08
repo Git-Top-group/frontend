@@ -4,6 +4,8 @@ import { featured } from "../data/Data"
 import Logo from "../home/recent/noImage.png"
 import cookie from "react-cookies";
 import "./U.css"
+import { baseURL} from "../../utilize/constants";
+
 import axios from "axios";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
@@ -41,8 +43,7 @@ const [res ,setRes] =useState([])
   
 const [update,setUpdate]=useState(false)
   const fetchPost = async () => {
-    const data = await axios.get(
-      `https://akarcom-final2.herokuapp.com/dashboard/${user.id}/${model}`,
+    const data = await axios.get(`${baseURL}/dashboard/${user.id}/${model}`,
 
       {
         headers: {
@@ -58,7 +59,7 @@ if(data.data.length <=0 ){
   };
 
   const deletePost = async (id) => {
-    await axios.delete(`https://akarcom-final2.herokuapp.com/dashboard/${user.id}/${model}/${id}`, {
+    await axios.delete(`${baseURL}/dashboard/${user.id}/${model}/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -305,7 +306,7 @@ useEffect(()=>{
 
 const post = async () => {
   const data = await axios.put(
-    `https://akarcom-final2.herokuapp.com/dashboard/${user.id}/${PostModel}/${PostId}`,
+    `${baseURL}/dashboard/${user.id}/${PostModel}/${PostId}`,
     editBody,
     {
       headers: {

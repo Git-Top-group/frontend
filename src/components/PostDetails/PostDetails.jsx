@@ -105,12 +105,12 @@ const history = useHistory();
       cookie.load("actions")[1] === "CRUD_Users"
     ) {
       return (
-        <i
+        <i className="deletePostIcon"
           class="fa fa-trash"
           aria-hidden="true"
           style={{ float: "right", marginTop: "20px", cursor: "pointer" }}
           onClick={deletePost}
-        ></i>
+        > Delete Post</i>
       );
     }
   };

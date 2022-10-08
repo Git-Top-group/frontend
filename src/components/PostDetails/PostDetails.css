@@ -75,3 +75,9 @@
   from {opacity: .4}
   to {opacity: 1}
 }
+.fa-trash:before{
+
+  content: "\f1f8";
+  color: red;
+  font-size:25px;
+}

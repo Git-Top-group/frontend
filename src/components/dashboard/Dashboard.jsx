@@ -12,9 +12,10 @@ import { LoginContext } from "../context/context";
 import { Redirect, Switch } from "react-router-dom";
 import cookie from "react-cookies";
 import axios from "axios";
-import { baseURL } from "../../utilize/constants";
 import PostsCards from "../userMane/userPostCards"
 import Heading from "../common/Heading";
+import { baseURL, NotificationType, Placment } from "../../utilize/constants";
+import { pushNotification } from "../../utilize/pushNotifications";
 
 export default function Dashboard() {
   const [user] = useState({
@@ -87,68 +88,130 @@ export default function Dashboard() {
       // setPost([...post, allPosts.data]);
     }
   };
+  const onAcceptOrder = async (clientId, ownerId) => {
+    let client1 = client.find((item) => item.id === clientId);
+    let owner1 = owner.find((item) => item.id === ownerId);
+    let clientEmail = client1.email;
+    let ownerEmail = owner1.email;
+    let data = {
+      name: "AkarCom system",
+      email: clientEmail,
+      message: "the admin has been accepted your order",
+      subject: "order accepted",
+    };
+    let res = await axios.post(`${baseURL}/sendEmail`, data);
+    data = {
+      name: "AkarCom system",
+      email: ownerEmail,
+      message: "the admin has been accepted order on your post",
+      subject: "order accepted",
+    };
+    res = await axios.post(`${baseURL}/sendEmail`, data);
+    if (res.status === 200) {
+      pushNotification(
+        "Order accepted Successfully",
+        NotificationType["success"],
+        "Success",
+        Placment["bottomLeft"]
+      );
+    } else {
+      pushNotification(
+        "Error when accept order",
+        NotificationType["danger"],
+        "Error",
+        Placment["bottomLeft"]
+      );
+    }
+  };
+
+  const onRejectOrder = async (clientId) => {
+    let client1 = client.find((item) => item.id === clientId);
+    let clientEmail = client1.email;
+    let data = {
+      name: "AkarCom system",
+      email: clientEmail,
+      message: "the admin has been rejected your order",
+      subject: "order rejected",
+    };
+    let res = await axios.post(`${baseURL}/sendEmail`, data);
+    if (res.status === 200) {
+      pushNotification(
+        "Order rejected Successfully",
+        NotificationType["success"],
+        "Success",
+        Placment["bottomLeft"]
+      );
+    } else {
+      pushNotification(
+        "Error when reject order",
+        NotificationType["danger"],
+        "Error",
+        Placment["bottomLeft"]
+      );
+    }
+  };
 
   useEffect(() => {
 
     fetchOrders();
   }, []);
 
-  const getOrder = async (orderId, postId) => {
-    const order = await axios.get(`${baseURL}/allorders/${postId}/${orderId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
-  }
+  // const getOrder = async (orderId, postId) => {
+  //   const order = await axios.get(`${baseURL}/allorders/${postId}/${orderId}`,
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${user.token}`,
+  //       },
+  //     }
+  //   );
+  // }
 
 
-  const handleAcceptEvent = async (orderId, postId) => {
-    let order = getOrder(orderId, postId);
-    console.log(order);
+  // const handleAcceptEvent = async (orderId, postId) => {
+  //   let order = getOrder(orderId, postId);
+  //   console.log(order);
 
-    try {
-      const data = await axios.post(
-        `${baseURL}/allorders/${postId}/${orderId}/accept`, {},
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      console.log(data);
-    }
-    catch (error) {
-      console.log(error.response.data);
-    }
-    //if (data.data) {
-    // cookie.save("postId", data.data.id);
-    // setGoToPost(true);
-    //  }
+  //   try {
+  //     const data = await axios.post(
+  //       `${baseURL}/allorders/${postId}/${orderId}/accept`, {},
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(data);
+  //   }
+  //   catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  //   //if (data.data) {
+  //   // cookie.save("postId", data.data.id);
+  //   // setGoToPost(true);
+  //   //  }
 
 
-  }
+  // }
 
-  const handleRejectEvent = async (orderId, postId) => {
-    let order = getOrder(orderId, postId);
-    console.log(order);
+  // const handleRejectEvent = async (orderId, postId) => {
+  //   let order = getOrder(orderId, postId);
+  //   console.log(order);
 
-    try {
-      const data = await axios.post(
-        `${baseURL}/allorders/${postId}/${orderId}/reject`, {},
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      console.log(data);
-    }
-    catch (error) {
-      console.log(error.response.data);
-    }
-  }
+  //   try {
+  //     const data = await axios.post(
+  //       `${baseURL}/allorders/${postId}/${orderId}/reject`, {},
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(data);
+  //   }
+  //   catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  // }
 
   return (
     <>
@@ -220,10 +283,14 @@ export default function Dashboard() {
                       <td>{owner[index].username}</td>
                       <td>{postId}</td>
                       <td>
-                        <MDBBtn rounded color="success" onClick={() => handleAcceptEvent(id, postId)}>
+                        <MDBBtn rounded color="success" onClick={() => {
+                            onAcceptOrder(clientId, ownerId);
+                          }}>
                           Accept
                         </MDBBtn>
-                        <MDBBtn rounded className="mx-2" color="danger" onClick={() => handleRejectEvent(id, postId)}>
+                        <MDBBtn rounded className="mx-2" color="danger" onClick={() => {
+                            onRejectOrder(clientId);
+                          }}>
                           Reject
                         </MDBBtn>
                       </td>
