@@ -201,7 +201,7 @@ const history = useHistory();
       {redirect ? 
       
       <Switch>
-        <Redirect from="*" to="/" > </Redirect>
+        <Redirect from="*" to="/services" > </Redirect>
       </Switch>
       : <></>}
     </div>
