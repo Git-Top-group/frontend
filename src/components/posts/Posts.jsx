@@ -7,6 +7,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Back from "../common/Back";
 import Heading from "../common/Heading";
+import {baseURL} from "../../utilize/constants";
 
 import img from "../images/real-estate-hero.jpg";
 import axios from "axios";
@@ -282,7 +283,7 @@ export default function CreatePost() {
   },[body])
   const post = async () => {
     const data = await axios.post(
-      `https://akarcom-final2.herokuapp.com/newpost/${user.id}/${model}`,
+      `${baseURL}/newpost/${user.id}/${model}`,
       body,
       {
         headers: {
