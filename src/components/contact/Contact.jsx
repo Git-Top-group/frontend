@@ -3,7 +3,8 @@ import img from "../images/pricing.jpg";
 import Back from "../common/Back";
 import "./contact.css";
 import axios from "axios";
-import { baseURL } from "../../utilize/constants";
+import { baseURL, NotificationType, Placment } from "../../utilize/constants";
+import { pushNotification } from "../../utilize/pushNotifications";
 
 const Contact = () => {
   const handleSubmitForm = async (e) => {
@@ -11,14 +12,26 @@ const Contact = () => {
     const body = `Name : ${e.target.name.value} <br> Email : ${e.target.email.value} <br> Message : ${e.target.emailBody.value}`;
     const data = {
       name: e.target.name.value,
-      email: "gittopltuc55@gmail.com",
+      email: "gittopltuc@gmail.com",
       message: body,
       subject: e.target.subject.value,
     };
     let res = await axios.post(`${baseURL}/sendEmail`, data);
     if (res.status === 200) {
+      pushNotification(
+        "Email Sent Successfully",
+        NotificationType["success"],
+        "Success",
+        Placment["bottomLeft"]
+      );
       console.log("done send email");
     } else {
+      pushNotification(
+        "Error when sending email",
+        NotificationType["danger"],
+        "Error",
+        Placment["bottomLeft"]
+      );
       console.log("error while sending email");
     }
   };
