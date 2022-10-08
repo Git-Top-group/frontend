@@ -1,17 +1,23 @@
 .about {
   margin-bottom: 80px;
+
+ 
 }
 .about .heading {
   text-align: left;
   width: 100%;
   margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
 }
 .about p {
   font-size: 15px;
   padding-right: 30px;
   margin-bottom: 20px;
   line-height: 30px;
+
 }
+
+
 @media screen and (max-width: 768px) {
   .about .container {
     flex-direction: column;
@@ -24,7 +30,7 @@
   }
 }
 
-.m{ width:700;
+.m{ width:500;
    height:300;
   }
 
@@ -38,4 +44,20 @@
     flex-direction: row;
     margin-left: 5%;
     justify-content: space-between;
+ 
   }
+
+  .fl .heading{
+    font-family: 'Playfair Display', serif;
+  }
+
+
+  .btn2{
+margin-left: 40%;
+margin-top: 10%;
+  }
+
+  
+ .g .heading{
+  font-family: 'Playfair Display', serif;
+ }
