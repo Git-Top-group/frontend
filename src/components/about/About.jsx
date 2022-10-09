@@ -64,7 +64,7 @@ const About = () => {
 
 
           <a href="/contact">
-              <button className='btn2'>Contact Us</button>
+              <button className='btn7'>Contact Us</button>
             </a>
     </>
   )

@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.cbfedf9f.css",
-    "main.js": "/static/js/main.c79efcdd.js",
+    "main.css": "/static/css/main.5c50cac2.css",
+    "main.js": "/static/js/main.0d1bb1df.js",
+    "static/media/vid.mp4": "/static/media/vid.4c6d3b68cddddfadc6ce.mp4",
     "static/media/banner.png": "/static/media/banner.9f67aae1df8692f6de4e.png",
     "static/media/about.jpg": "/static/media/about.56e92b20e762df2fa5de.jpg",
     "static/media/real-estate-hero.jpg": "/static/media/real-estate-hero.5bc0cf47e75eb8587d11.jpg",
     "static/media/pricing.jpg": "/static/media/pricing.4552ccf3b91e93029513.jpg",
     "static/media/services.jpg": "/static/media/services.13be7fde05782bd5e2e8.jpg",
+    "static/media/apart.png": "/static/media/apart.7115f05d75de03809f79.png",
+    "static/media/one.png": "/static/media/one.7aac23bb2e5053914fd5.png",
+    "static/media/key.png": "/static/media/key.adf705525d5741bb8e08.png",
     "static/media/noImage.png": "/static/media/noImage.7190f7e99740381c9868.png",
     "index.html": "/index.html",
-    "main.cbfedf9f.css.map": "/static/css/main.cbfedf9f.css.map",
-    "main.c79efcdd.js.map": "/static/js/main.c79efcdd.js.map"
+    "main.5c50cac2.css.map": "/static/css/main.5c50cac2.css.map",
+    "main.0d1bb1df.js.map": "/static/js/main.0d1bb1df.js.map"
   },
   "entrypoints": [
-    "static/css/main.cbfedf9f.css",
-    "static/js/main.c79efcdd.js"
+    "static/css/main.5c50cac2.css",
+    "static/js/main.0d1bb1df.js"
   ]
 }

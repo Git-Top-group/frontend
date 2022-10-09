@@ -57,3 +57,26 @@ footer ul li {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.con2{
+  display: flex;
+  justify-content:center;
+  column-gap: 2rem;
+ 
+}
+ 
+.lnkz{
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
+  margin-left: 2%;
+ 
+}
+ 
+
+
+a:hover {
+  text-decoration: underline;
+  color: white;
+}
+

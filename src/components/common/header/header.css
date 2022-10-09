@@ -10,8 +10,8 @@ header {
 
 }
 header img {
-  width: 350px;
-  margin-left : -100px;
+  width: 120px;
+ 
 }
 header a {
   color:black;
@@ -51,10 +51,11 @@ header .toggle {
   }
   header .nav .flex {
     display: none;
+    size: 30cm;
   }
   header .toggle {
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   header .small {
     position: absolute;
@@ -144,4 +145,11 @@ header .toggle {
 }
 .dropdown1 .dropbtn:hover {
   color: #8a1212;
+}
+
+.nav{
+  font-family: 'Alkalami', serif;
+  font-size: 25px;
+  font-family: 'Alkalami', serif;
+font-family: 'Montserrat', sans-serif;
 }

@@ -51,9 +51,9 @@ const Header = () => {
     <>
       <header>
         <div className='container flex'>
-          <div className='logo'>
+          <div >
             <a href="/">
-            <img src='./images/akar.png' alt='' />
+            <img src='./images/logo.png' alt='' />
             </a>
           </div>
           <div className='nav'>
