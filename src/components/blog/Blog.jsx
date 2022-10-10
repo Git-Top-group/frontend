@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useEffect} from "react"
 import Back from "../common/Back"
 import RecentCard from "../home/recent/RecentCard"
 import Heading from "../common/Heading"
@@ -6,6 +6,9 @@ import "../home/recent/recent.css"
 import img from "../images/about.jpg"
 
 const Blog = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className='blog-out mb'>

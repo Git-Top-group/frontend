@@ -2,13 +2,15 @@ import React, { useState, useContext } from "react"
 import "./header.css"
 import { nav } from "../../data/Data"
 import Button from "react-bootstrap/Button";
-
+import Notify from '../../notifycationNav/notificationNav'
 import { Link } from "react-router-dom"
 import { LoginContext } from "../../context/context";
+// import {orderProvider} from '../../context/ordersContext'
 
-
+import OrdersContext from '../../context/ordersContext'
 const Header = () => {
   const [navList, setNavList] = useState(false)
+  // const order =useContext(orderProvider)
   const auth = useContext(LoginContext);
   const handleLogOut = () => {
     auth.logoutFunction();
@@ -93,15 +95,21 @@ const Header = () => {
                     </>}
 
                   </div>
+      
+
                 </div>
+                
               </div>
+              <div className="notify"> 
+
+</div>
 
 {getUserList()}
             </ul>
 
           </div>
           <div className='button flex'>
-
+{/* 
             {  auth.loginStatus ?  <></> : 
             
             <Link to={'/signup'}>
@@ -111,13 +119,19 @@ const Header = () => {
                 </Button>
             </Link>
             
-            }
+            } */}
           </div>
-
+      
           <div className='toggle'>
             <button onClick={() => setNavList(!navList)}>{navList ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}</button>
           </div>
         </div>
+      <div>  
+          <OrdersContext>
+<Notify width={"30px"} color={"#122C34"}  /> 
+
+</OrdersContext>
+</div>
       </header>
     </>
   )

@@ -1,4 +1,4 @@
-import React ,{useContext} from 'react';
+import React ,{useContext,useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import {Redirect ,Switch} from 'react-router-dom';
 
@@ -6,6 +6,9 @@ import {Redirect ,Switch} from 'react-router-dom';
 import './signup.css'
 import {LoginContext} from '../context/context'
  const SignUp = ()=>{
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 const auth =useContext(LoginContext)
 
 const handleLogin =(e)=>{

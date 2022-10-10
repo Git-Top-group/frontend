@@ -1,0 +1,40 @@
+.notification ul {
+    background-color: aliceblue;
+    /* border: 1px solid black; */
+    border-radius : 5px;
+    margin-right: 50px;
+}
+
+.notification li {
+    background-color: aliceblue;
+    width:fit-content;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    /* padding-bottom: 10px; */
+margin-left: -20px;
+}
+.notification {
+    overflow: hidden;
+    /* background-color: #333; */
+    margin-left:1380px;
+    width:fit-content;
+    margin-top: -55px;
+  }
+  
+  #cancel{
+/* margin-left: -20px; */
+
+    background-color:red;
+  }
+  #cancel1{
+
+    background-color:orange;
+/* margin-bottom:-20px; */
+
+  }
+  
+
+  .paddingDiv{
+    padding-bottom: 15px;;
+  }

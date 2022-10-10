@@ -16,8 +16,12 @@ import PostsCards from "../userMane/userPostCards"
 import Heading from "../common/Heading";
 import { baseURL, NotificationType, Placment } from "../../utilize/constants";
 import { pushNotification } from "../../utilize/pushNotifications";
+import { RotatingCircleLoader } from 'react-loaders-kit';
 
 export default function Dashboard() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [user] = useState({
     token: cookie.load("token") || null,
     id: cookie.load("id"),
@@ -31,6 +35,19 @@ export default function Dashboard() {
   const [client, setClient] = useState([]);
   const [owner, setOwner] = useState([]);
   const [post, setPost] = useState([]);
+
+  const [show ,setShow]=useState(true)
+  const [orderId ,setOrderId]=useState()
+
+  const [Reload, setReload] = useState(true);
+  const [loading, setLoading] = useState(true);
+   
+  const loaderProps = {
+    loading,
+    size: 40,
+    duration: 1.3,
+    colors: ['#5e22f0', '#5e22f0', '#c46210', '#27ae60']
+  }
 
   const fetchOrders = async () => {
     let arr1 = [];
@@ -57,6 +74,7 @@ export default function Dashboard() {
     setClient(arr2);
     setPost(arr3);
     setOrders(data.data);
+    setReload(false)
   };
   const fetchClients = async (clientId) => {
     if (clientId) {
@@ -88,7 +106,7 @@ export default function Dashboard() {
       // setPost([...post, allPosts.data]);
     }
   };
-  const onAcceptOrder = async (clientId, ownerId) => {
+  const onAcceptOrder = async (clientId, ownerId ,id ,postId) => {
     let client1 = client.find((item) => item.id === clientId);
     let owner1 = owner.find((item) => item.id === ownerId);
     let clientEmail = client1.email;
@@ -99,57 +117,91 @@ export default function Dashboard() {
       message: "the admin has been accepted your order",
       subject: "order accepted",
     };
-    let res = await axios.post(`${baseURL}/sendEmail`, data);
-    data = {
-      name: "AkarCom system",
-      email: ownerEmail,
-      message: "the admin has been accepted order on your post",
-      subject: "order accepted",
-    };
-    res = await axios.post(`${baseURL}/sendEmail`, data);
-    if (res.status === 200) {
-      pushNotification(
-        "Order accepted Successfully",
-        NotificationType["success"],
-        "Success",
-        Placment["bottomLeft"]
-      );
-    } else {
-      pushNotification(
-        "Error when accept order",
-        NotificationType["danger"],
-        "Error",
-        Placment["bottomLeft"]
-      );
-    }
-  };
+    console.log(id ,postId)
+    console.log(user.token)
 
-  const onRejectOrder = async (clientId) => {
+    acceptOrder(id, postId)
+
+    // let res = await axios.post(`${baseURL}/sendEmail`, data);
+    // data = {
+    //   name: "AkarCom system",
+    //   email: ownerEmail,
+    //   message: "the admin has been accepted order on your post",
+    //   subject: "order accepted",
+    // };
+    // res = await axios.post(`${baseURL}/sendEmail`, data);
+    // if (res.status === 200) {
+    //   pushNotification(
+    //     "Order accepted Successfully",
+    //     NotificationType["success"],
+    //     "Success",
+    //     Placment["bottomLeft"]
+    //   );
+    // } else {
+    //   pushNotification(
+    //     "Error when accept order",
+    //     NotificationType["danger"],
+    //     "Error",
+    //     Placment["bottomLeft"]
+    //   );
+    // }
+  };
+  const acceptOrder =async (orderId , postId)=>{
+    let accept = await axios.post(`${baseURL}/allorders/${postId}/${orderId}/accept` , {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    })
+   
+     console.log(accept);
+     setOrderId(orderId)
+
+     setShow(false)
+     
+   }
+  const onRejectOrder = async (clientId ,id ,postId) => {
     let client1 = client.find((item) => item.id === clientId);
     let clientEmail = client1.email;
-    let data = {
-      name: "AkarCom system",
-      email: clientEmail,
-      message: "the admin has been rejected your order",
-      subject: "order rejected",
-    };
-    let res = await axios.post(`${baseURL}/sendEmail`, data);
-    if (res.status === 200) {
-      pushNotification(
-        "Order rejected Successfully",
-        NotificationType["success"],
-        "Success",
-        Placment["bottomLeft"]
-      );
-    } else {
-      pushNotification(
-        "Error when reject order",
-        NotificationType["danger"],
-        "Error",
-        Placment["bottomLeft"]
-      );
-    }
+    rejectOrder(id,postId)
+
+    // let data = {
+    //   name: "AkarCom system",
+    //   email: clientEmail,
+    //   message: "the admin has been rejected your order",
+    //   subject: "order rejected",
+    // };
+    // let res = await axios.post(`${baseURL}/sendEmail`, data);
+    // if (res.status === 200) {
+    //   pushNotification(
+    //     "Order rejected Successfully",
+    //     NotificationType["success"],
+    //     "Success",
+    //     Placment["bottomLeft"]
+    //   );
+    // } else {
+    //   pushNotification(
+    //     "Error when reject order",
+    //     NotificationType["danger"],
+    //     "Error",
+    //     Placment["bottomLeft"]
+    //   );
+    // }
+
   };
+
+
+  const rejectOrder =async (orderId,postId)=>{
+    let reject = await axios.post(`${baseURL}/allorders/${postId}/${orderId}/reject` , {
+       headers: {
+         Authorization: `Bearer ${user.token}`,
+       },
+     })
+     console.log(reject)
+     setOrderId(orderId)
+    setShow(false)
+
+    }
+
 
   useEffect(() => {
 
@@ -229,6 +281,15 @@ export default function Dashboard() {
         <div>
           <Heading title="clients recent orders" subtitle="orders table"></Heading>
           <br></br>
+
+          {Reload ? 
+          <div align="middle">
+            <RotatingCircleLoader {...loaderProps} />
+            <br></br>
+            <br></br>
+            <br></br>
+          </div> :
+
           <MDBTable align="middle">
             <MDBTableHead>
               <tr>
@@ -272,28 +333,38 @@ export default function Dashboard() {
                       </td>
                       <td>
                         <MDBBadge
-                          color="primary"
+                          color={post[index].process === "Rent" ? "warning" : "primary"}
                           pill
                           style={{ width: "70px", height: "25px" }}>
                           {post[index].process}
                         </MDBBadge>
                       </td>
                       <td>{model}</td>
-                      <td>{createdAt}</td>
+                      <td>{createdAt.split("T")[0]}
+                          <br></br>
+                          {createdAt.split("T")[1].split(".")[0]}</td>
                       <td>{owner[index].username}</td>
                       <td>{postId}</td>
+                        {show  || orderId!==id ?   
                       <td>
+                        
+                        
                         <MDBBtn rounded color="success" onClick={() => {
-                            onAcceptOrder(clientId, ownerId);
+                            onAcceptOrder(clientId, ownerId ,id ,postId);
                           }}>
                           Accept
                         </MDBBtn>
                         <MDBBtn rounded className="mx-2" color="danger" onClick={() => {
-                            onRejectOrder(clientId);
+                            onRejectOrder(clientId, id ,postId);
                           }}>
                           Reject
                         </MDBBtn>
                       </td>
+                        : 
+                        <td>
+                        <label  >Client has been notified </label>
+                        </td>
+                        }
                     </tr>
                   );
                 }
@@ -301,6 +372,7 @@ export default function Dashboard() {
               })}
             </MDBTableBody>
           </MDBTable>
+          }
         </div>
       ) : (
         <>

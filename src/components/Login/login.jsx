@@ -1,8 +1,11 @@
-import React ,{useContext} from "react";
+import React ,{useContext,useEffect} from "react";
 import {Redirect ,Switch ,Link} from 'react-router-dom';
 import './login.css'
 import {LoginContext} from '../context/context'
 const  SignIn =  () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const auth =useContext(LoginContext)
   const handleLogin = async (e) => {

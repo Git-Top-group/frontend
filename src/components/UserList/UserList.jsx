@@ -4,6 +4,7 @@ import "./UserList.css";
 import cookie from "react-cookies";
 import Heading from "../common/Heading";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
@@ -34,6 +35,11 @@ const UserList = () => {
       })
       .then((data) => {
         getUsers();
+ Swal.fire(
+  "so Smoothy !",
+  "User Has Been Deleted Successfully ",
+  "success"
+);
       });
   };
 
