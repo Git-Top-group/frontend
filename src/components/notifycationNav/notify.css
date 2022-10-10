@@ -24,12 +24,19 @@ margin-left: -20px;
   
   #cancel{
 /* margin-left: -20px; */
-
+cursor:pointer;
     background-color:red;
   }
   #cancel1{
+    cursor:pointer;
 
     background-color:orange;
+/* margin-bottom:-20px; */
+
+  }
+   #cancel2{
+    cursor:pointer;
+
 /* margin-bottom:-20px; */
 
   }
