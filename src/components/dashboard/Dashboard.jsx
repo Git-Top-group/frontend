@@ -16,6 +16,7 @@ import PostsCards from "../userMane/userPostCards"
 import Heading from "../common/Heading";
 import { baseURL, NotificationType, Placment } from "../../utilize/constants";
 import { pushNotification } from "../../utilize/pushNotifications";
+import { RotatingCircleLoader } from 'react-loaders-kit';
 
 export default function Dashboard() {
   useEffect(() => {
@@ -34,8 +35,20 @@ export default function Dashboard() {
   const [client, setClient] = useState([]);
   const [owner, setOwner] = useState([]);
   const [post, setPost] = useState([]);
+
   const [show ,setShow]=useState(true)
   const [orderId ,setOrderId]=useState()
+
+  const [Reload, setReload] = useState(true);
+  const [loading, setLoading] = useState(true);
+   
+  const loaderProps = {
+    loading,
+    size: 40,
+    duration: 1.3,
+    colors: ['#5e22f0', '#5e22f0', '#c46210', '#27ae60']
+  }
+
   const fetchOrders = async () => {
     let arr1 = [];
     let arr2 = [];
@@ -61,6 +74,7 @@ export default function Dashboard() {
     setClient(arr2);
     setPost(arr3);
     setOrders(data.data);
+    setReload(false)
   };
   const fetchClients = async (clientId) => {
     if (clientId) {
@@ -267,6 +281,15 @@ export default function Dashboard() {
         <div>
           <Heading title="clients recent orders" subtitle="orders table"></Heading>
           <br></br>
+
+          {Reload ? 
+          <div align="middle">
+            <RotatingCircleLoader {...loaderProps} />
+            <br></br>
+            <br></br>
+            <br></br>
+          </div> :
+
           <MDBTable align="middle">
             <MDBTableHead>
               <tr>
@@ -310,14 +333,16 @@ export default function Dashboard() {
                       </td>
                       <td>
                         <MDBBadge
-                          color="primary"
+                          color={post[index].process === "Rent" ? "warning" : "primary"}
                           pill
                           style={{ width: "70px", height: "25px" }}>
                           {post[index].process}
                         </MDBBadge>
                       </td>
                       <td>{model}</td>
-                      <td>{createdAt}</td>
+                      <td>{createdAt.split("T")[0]}
+                          <br></br>
+                          {createdAt.split("T")[1].split(".")[0]}</td>
                       <td>{owner[index].username}</td>
                       <td>{postId}</td>
                         {show  || orderId!==id ?   
@@ -347,6 +372,7 @@ export default function Dashboard() {
               })}
             </MDBTableBody>
           </MDBTable>
+          }
         </div>
       ) : (
         <>
