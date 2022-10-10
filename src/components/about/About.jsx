@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useEffect} from "react"
 import Back from "../common/Back"
 import Heading from "../common/Heading"
 import img from "../images/apart.png"
@@ -8,6 +8,9 @@ import vd from "../images/vid.mp4"
 import one from "../images/one.png"
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className='about'>

@@ -111,6 +111,7 @@ return("error")
         setSignUp : setSignUp
     }
     return (
+        
         <LoginContext.Provider value={state}>
             {props.children}
         </LoginContext.Provider>

@@ -142,12 +142,12 @@ const Profile = () => {
                  <FloatingLabel
                   controlId="floatingTextarea"
                   label="Password"
-                  className="mb-3"
+                  className="mb-3" 
                 >
                   <Form.Control
                     
                     placeholder="Password"  className="inputF"
-                    name="password" type="password" onChange={handleChange}
+                    name="password" type="password" onChange={handleChange} required
                   />
                 </FloatingLabel>
               
