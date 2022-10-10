@@ -44,9 +44,9 @@ const Pages = () => {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
+          <Route exact path="/postdetails/:model/:id" component={PostDetails}/>
           <PostsRoutes exact path='/posts' component={Posts} />
           <DashBoardRoutes path={`/dashboard`} component={Dashboard} />
-          <Route exact path="/postdetails/:model/:id" component={PostDetails}/>
           <Route exact path="/userList" component={UserList}/>
           <Route exact path="/userDetails" component={UserDetails}/>
 

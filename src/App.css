@@ -18,7 +18,7 @@ body {
   align-items: center;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #000;
   text-transform: capitalize;
 }
@@ -192,3 +192,4 @@ padding: -40px;
       color:rgb(0, 0, 0) ;
       font-size :40px;
     }
+    
