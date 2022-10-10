@@ -305,6 +305,7 @@ export default function CreatePost() {
       <Heading title='Create and publish your wonderful property details ' subtitle='Remember Providing Clear and Honest Details will help to Attract more Clients ' />
       </div>
       <div className="Post">
+          <h3>What do you Like to Post ?  </h3>
         <div className="beforeForm">
           <FloatingLabel controlId="floatingSelect" label="Model">
             <Form.Select

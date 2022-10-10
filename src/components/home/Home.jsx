@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useEffect} from "react"
 import Hero from "./hero/Hero"
 import Location from "./location/Location"
 import Team from "./team/Team"
@@ -8,6 +8,11 @@ import Heading from "../common/Heading"
 
 
 const Home = () => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Hero />
