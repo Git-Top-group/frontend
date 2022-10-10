@@ -156,7 +156,7 @@ const PostDetails = (props) => {
                   class="mySlides fade-card-carosel"
                   style={{ display: index === 0 ? "block" : "none" }}
                 >
-                  <img src={image} style={{ width: "60%" }} alt="" />
+                  <img src={image} style={{ width: "600px", height:"300px" }} alt="" />
                 </div>
               );
             })

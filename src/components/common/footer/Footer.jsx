@@ -1,51 +1,45 @@
 import React from "react"
 import { footer } from "../../data/Data"
+import { BsTwitter } from "react-icons/bs";
+import { BsLinkedin } from "react-icons/bs";
+import { FaFacebookSquare } from "react-icons/fa";
+import logo from "../../images/logo.png"
+
 import "./footer.css"
 
 const Footer = () => {
   return (
     <>
-      {/* <section className='footerContact'>
-        <div className='container'>
-          <div className='send flex'>
-            <div className='text'>
-              <h1>Do You Have Questions ?</h1>
-              <p>We'll help you to grow your career and growth.</p>
-            </div>
-            <button className='btn5'>Contact Us Today</button>
-          </div>
-        </div>
-      </section> */}
+    
 
       <footer>
-        <div className='container'>
-          {/* <div className='box'>
-            <div className='logo'>
-              <img src='../images/logo-light.png' alt='' />
-              <h2>Do You Need Help With Anything?</h2>
-              <p>Receive updates, hot deals, tutorials, discounts sent straignt in your inbox every month</p>
-
-              <div className='input flex'>
-                <input type='text' placeholder='Email Address' />
-                <button>Subscribe</button>
-              </div>
+             
+             <div className='box2'>
+              <a className="afot" href="/" >Home</a> 
+              <a  className="afot" href="/about" >About</a>
+              <a className="afot"  href="/services" >Servics</a>
             </div>
-          </div> */}
-
-          {footer.map((val) => (
-            <div className='box'>
-              <h3>{val.title}</h3>
-              <ul>
-                {val.text.map((items) => (
-                  <li> {items.list} </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            
+            <img className="im3" src={logo}></img>
+       
+        <div className="con2">
+           <a className="afot" href="https://twitter.com/login"><BsTwitter  size={30} /> </a>
+           <a className="afot" href="www.linkedin.com"></a><BsLinkedin size={30} />
+           <FaFacebookSquare size={30} />
         </div>
+          
+       
+
+    
+             
+          
+      
+
       </footer>
       <div className='legal'>
-        <span>© 2022 AkarCom. Designd By GitTop Team.</span>
+        <span>© 2022 AkarCom. Designd By GitTop Team.</span><br/>
+        <span>Please reference the Terms of Use and the Supplemental Terms for specific information related to your state. Your use of this website constitutes acceptance of the Terms of Use, Supplemental Terms, Privacy Policy and Cookie Policy. Do Not Sell My Personal Information</span>
+        <span></span>
       </div>
     </>
   )

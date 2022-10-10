@@ -10,8 +10,8 @@ header {
 
 }
 header img {
-  width: 350px;
-  margin-left : -100px;
+  width: 120px;
+ 
 }
 header a {
   color:black;
@@ -51,10 +51,11 @@ header .toggle {
   }
   header .nav .flex {
     display: none;
+    size: 30cm;
   }
   header .toggle {
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   header .small {
     position: absolute;
@@ -94,7 +95,7 @@ header .toggle {
 }
 
 .dropdown1 .dropbtn1 {
-  font-size: 16px;
+  font-size: 20px;
   border-radius:0px;  
   border: none;
   outline: none;
@@ -104,6 +105,7 @@ header .toggle {
   font-family: inherit;
   margin: 0;
   transition: 0.3s;
+ 
 }
 .dropdown1 .dropbtn {
   font-size: 16px;  
@@ -112,7 +114,7 @@ header .toggle {
   color: #27ae60;
   padding: 14px 16px;
   background-color: inherit ;
-  font-family: inherit;
+  /* font-family: inherit; */
   margin: 0;
   transition: 0.3s;
 }
@@ -124,6 +126,7 @@ header .toggle {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+ 
 }
 
 .dropdown-content a {
@@ -145,3 +148,12 @@ header .toggle {
 .dropdown1 .dropbtn:hover {
   color: #8a1212;
 }
+
+.nav{
+  /* font-family: 'Alkalami', serif; */
+  font-size: 20px;
+  margin-left: 20px;
+  /* font-family: 'Alkalami', serif;
+font-family: 'Montserrat', sans-serif; */
+}
+

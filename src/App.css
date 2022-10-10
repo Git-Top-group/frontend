@@ -9,8 +9,8 @@ body {
   background-color: #fff;
 }
 .container {
-  /* max-width: 90%; */
-  margin: auto;
+  max-width: 90%;
+   margin: auto;
 }
 .flex {
   display: flex;
@@ -18,7 +18,7 @@ body {
   align-items: center;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #000;
   text-transform: capitalize;
 }
@@ -48,7 +48,7 @@ button i {
   color: #2d3954;
   font-weight: 600;
   text-transform: capitalize;
-  font-size: 35px;
+  font-size: 40px;
 }
 .heading p {
   color: #72809d;
@@ -192,3 +192,4 @@ padding: -40px;
       color:rgb(0, 0, 0) ;
       font-size :40px;
     }
+    
