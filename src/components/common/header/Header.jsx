@@ -48,7 +48,22 @@ const Header = () => {
     );
   }
   }
-
+  const getZoom = () => {
+    if (
+      (auth !== undefined &&
+        auth.loginStatus &&
+        auth.user.actions !== undefined &&
+        auth.user.actions[0] === "CRUD") ||
+      (auth.user.capabilities !== undefined &&
+        auth.user.capabilities[0] === "CRUD")
+    ) {
+      return (
+        <li>
+          <a href={"https://LTUC.zoom.us/j/2617555117"}>Meeting</a>
+        </li>
+      );
+    }
+  }
   return (
     <>
       <header>
@@ -67,6 +82,8 @@ const Header = () => {
               ))}
 
 {getDashboard()}
+{getZoom()}
+
               <div class="navbar1">
                 <div class="dropdown1">
                   <button className="dropbtn1">Settings

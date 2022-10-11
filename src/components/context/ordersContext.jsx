@@ -43,9 +43,9 @@ const acceptMeet = async (id)=>{
 
 
   Swal.fire(
-    "Thank You For Accepted!",
-    "We will meet At Zoom meeting",
-    "success"
+    "Thank You For Your Acceptance!",
+    " To Join us on Zoom , Use Meeting password : AkarCom$1",
+      "success"
   );
 
 }
@@ -63,7 +63,7 @@ const rejectMeet = async (id)=>{
       "success"
     );
   setShowButtons(false)
-  setMessage({ id: id , message: "Admin : Thank you ,we will contact you soon "})
+  setMessage({ id: id , message: "Admin : Thank you , We will contact you soon "})
   setOrderId(id)
   deleteStatus(id ,"")
 

@@ -17,7 +17,10 @@ import Heading from "../common/Heading";
 import { baseURL, NotificationType, Placment } from "../../utilize/constants";
 import { pushNotification } from "../../utilize/pushNotifications";
 import { RotatingCircleLoader } from 'react-loaders-kit';
-
+import Button from "react-bootstrap/Button";
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import './dashboard.css'
 export default function Dashboard() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -348,17 +351,20 @@ export default function Dashboard() {
                         {show  || orderId!==id ?   
                       <td>
                         
-                        
-                        <MDBBtn rounded color="success" onClick={() => {
+                        <Button onClick={() => {
                             onAcceptOrder(clientId, ownerId ,id ,postId);
-                          }}>
-                          Accept
-                        </MDBBtn>
-                        <MDBBtn rounded className="mx-2" color="danger" onClick={() => {
-                            onRejectOrder(clientId, id ,postId);
-                          }}>
-                          Reject
-                        </MDBBtn>
+                          }} variant="success"> Accept</Button>
+                     
+                            <Button onClick={() => {
+                              onRejectOrder(clientId, id ,postId);
+                            }} variant="danger"> Reject</Button>
+                                <FloatingLabel
+        controlId="floatingTextarea"
+        label="Let's Meet on "
+        className="mb-3"  
+      >
+        <Form.Control as="textarea" placeholder="Leave a comment here" />
+      </FloatingLabel>             
                       </td>
                         : 
                         <td>

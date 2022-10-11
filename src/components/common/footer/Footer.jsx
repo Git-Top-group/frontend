@@ -17,7 +17,7 @@ const Footer = () => {
              <div className='box2'>
               <a className="afot" href="/" >Home</a> 
               <a  className="afot" href="/about" >About</a>
-              <a className="afot"  href="/services" >Servics</a>
+              <a className="afot"  href="/services" >Services</a>
             </div>
             
             <img className="im3" src={logo}></img>

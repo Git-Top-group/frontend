@@ -5,6 +5,8 @@ import base64 from 'base-64';
 import cookie from 'react-cookies';
 import axios from 'axios';
 import { baseURL } from "../../utilize/constants";
+import Swal from "sweetalert2";
+
 export const LoginContext = React.createContext();
 const API = `${baseURL}`
 // const API = `https://akarcom-mid-project.herokuapp.com`
@@ -40,10 +42,18 @@ export default function LoginProvider(props) {
          
          const userData = { username:`${username}`, password:`${password}` , phoneNumber:`${phone}` , email:`${email}`, firstName:`${first}`, lastName:`${last}`}
           // validateMyUser(response.body);
-        axios.post(`${baseURL}/signup` , userData)       
+       let data = await axios.post(`${baseURL}/signup` , userData)    
 .then(setSignUp(true))
       } catch (err) {
-alert(err)
+          setSignUp(false)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Failed to sign up!',
+            footer: '<a href="/signup">username must be unique ..please try again?</a>'
+          })
+        
+// alert("username must be unique ..please try again")
       }
   }
     const loginFunction = async (username, password, code) => {
