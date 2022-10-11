@@ -3,6 +3,7 @@ import {orderProvider} from '../context/ordersContext'
 import './notify.css'
 import '../../components/common/header/header.css'
 import cookie from 'react-cookies'
+
 // import Notify from '../dashboard/notify';
 const notyIconStyle = {
   position: "relative",
@@ -23,13 +24,7 @@ const orders =useContext(orderProvider)
 const [count ,setCount]=useState()
    const [show ,setShow]=useState(false)
 
-//  useEffect(()=>{
-//     fetchMyorders()
-//  })
-// const [newCount] = useState(0)
-
 useEffect(()=>{
-
 
   let newCount = 0;
   
@@ -38,7 +33,6 @@ useEffect(()=>{
       
       newCount +=1 ;
       setCount(newCount)
-    console.log("newCount : ",newCount)
       
     }else continue
   }
@@ -94,8 +88,9 @@ console.log("from notification +++++ ",orders.myOrders)
  <>
  
  <li key={idx}> order {item.id}  : {item.status}ed   </li>
- <p> Admin : You have a meeting on Tuesday at 9:00 . are you Available at this time ? </p>
- <span onClick={()=>{orders.acceptMeet(item.id)}} >Accept </span>
+  
+ <p> Admin : You have a meeting Next Thursday at 10:00 am. are you Available at this time ? </p>
+ <span id="cancel2" onClick={()=>{orders.acceptMeet(item.id)}} >Accept </span>
  <span id="cancel1" onClick={()=>{orders.rejectMeet(item.id)}} >reject</span>
  </>
  :<>

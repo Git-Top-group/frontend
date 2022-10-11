@@ -53,7 +53,13 @@ const PostDetails = (props) => {
         },
       }
     )
+
       .then((response) => {
+        Swal.fire(
+          "Post has been Deleted Successfully!",
+          "Please Wait Until the Admin Contact You.",
+          "success"
+        );
         return response;
       })
       .then((data) => {
@@ -79,18 +85,31 @@ const PostDetails = (props) => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        setRedirect(true);
+        if(auth.loginStatus){
+
+          setRedirect(true);
+        }else if(!auth.loginStatus){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'I Think You  Forget to Sign in  !',
+            footer: '<a href="/signin">Click here to Sign In</a>'
+          })
+          setRedirect(false);
+        }
         return response;
       })
       .then((data) => {
         console.log("done order");
       });
+      if(auth.loginStatus){
 
-    Swal.fire(
-      "Order Sent Successfully!",
-      "Please Wait Until Admin Contact You.",
-      "success"
-    );
+        Swal.fire(
+          "Order Sent Successfully!",
+          "Please Wait Until the Admin Contact You.",
+          "success"
+        );
+      }
   };
   const getDateTime = (dateTime) => {
     try {
@@ -203,7 +222,7 @@ const PostDetails = (props) => {
           })}
         </ul>
       </div>
-      {auth.loginStatus && auth.user.id != post.userId && post != {} && (
+      { auth.user.id != post.userId && post != {} && (
         <>
           <button onClick={() => orderNow()}>order now</button>
         </>
