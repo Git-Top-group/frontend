@@ -361,7 +361,7 @@ export default function Dashboard() {
                                 <FloatingLabel
         controlId="floatingTextarea"
         label="Let's Meet on "
-        className="mb-3"  
+        className="mb-3"   className="ordersInput"
       >
         <Form.Control as="textarea" placeholder="Leave a comment here" />
       </FloatingLabel>             
