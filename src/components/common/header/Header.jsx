@@ -59,7 +59,7 @@ const Header = () => {
     ) {
       return (
         <li>
-          <a href={"https://LTUC.zoom.us/j/2617555117"}>Meeting</a>
+          <a href={"https://us05web.zoom.us/j/87558399586?pwd=ZjlsNkw3Z04yYWdlMkFnUno4ZnFCZz09"}>Meeting</a>
         </li>
       );
     }
