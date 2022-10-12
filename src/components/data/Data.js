@@ -44,32 +44,32 @@ export const featured = [
   {
     cover: "../images/hero/h1.png",
     name: "houses",
-    total: "122 Property",
+    total: "6 Property",
   },
   {
     cover: "../images/hero/h2.png",
     name: "villas",
-    total: "155 Property",
+    total: "2 Property",
   },
   {
     cover: "../images/hero/h3.png",
     name: "apartments",
-    total: "300 Property",
+    total: "4 Property",
   },
   {
     cover: "../images/hero/h4.png",
     name: "chalets",
-    total: "80 Property",
+    total: "2 Property",
   },
   {
     cover: "../images/hero/h6.png",
     name: "lands",
-    total: "80 Property",
+    total: "4 Property",
   },
   {
     cover: "../images/hero/h6.png",
     name: "warehouses",
-    total: "80 Property",
+    total: "1 Property",
   }
 ]
 export const list = [
